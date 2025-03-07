@@ -1,0 +1,612 @@
+Her er en samlet, dybdegående forklaring af kursets materiale om komplekse features:
+
+OVERORDNET FORMÅL
+Kurset handler om hvordan man kan udtrække og arbejde med features (karakteristiske træk) fra både tekst og billeder i AI-systemer. Dette er fundamentalt for mange AI-applikationer, da det handler om at transformere rå data til brugbare numeriske repræsentationer.
+
+TEKSTFEATURES
+
+1. Bag-of-Words (BoW)
+- Grundlæggende teknik der omdanner tekst til numeriske vektorer
+- Proces:
+  * Tokenisering af tekst
+  * Optælling af ord-frekvenser
+  * Opbygning af vokabular
+- Vigtige preprocessering-skridt:
+  * Fjernelse af stopord
+  * Stemming/lemmatization
+  * Fjernelse af tegnsætning
+- Begrænsninger:
+  * Mister ordrækkefølge
+  * Problemer med dokumentlængde
+  * Ingen semantisk forståelse
+
+2. TF-IDF (Term Frequency-Inverse Document Frequency)
+- Forbedring af BoW der vægler ord baseret på deres vigtighed
+- Term Frequency (TF):
+  * Måler hvor ofte et ord optræder i et dokument
+  * Normaliseret for dokumentlængde
+  * Formula: tf(t,d) = ft,d / Σt'∈d ft',d
+- Inverse Document Frequency (IDF):
+  * Nedvægter almindelige ord
+  * Opvægter sjældne, informative ord
+  * Formula: idf(t,D) = log(N/(1 + |{d ∈ D: t ∈ d}|))
+- Kombineret TF-IDF:
+  * Multiplicerer TF og IDF
+  * Giver balanceret vægtning af ord
+  * Meget anvendt i praksis
+
+BILLEDFEATURES
+
+1. Basic Image Features
+- Simple geometriske egenskaber:
+  * Areal
+  * Højde/bredde forhold
+  * Cirkularitet
+  * Antal huller
+  * Omkreds
+  * Bounding box
+- Bruges primært til simple klassifikationsopgaver
+
+2. Histogram of Oriented Gradients (HOG)
+- Avanceret feature descriptor specifikt god til objektgenkendelse
+- Process:
+  * Normalisering af farver
+  * Beregning af gradienter
+  * Opdeling i celler
+  * Opbygning af orienterings-histogrammer
+  * Normalisering over blokke
+- Særligt effektiv til:
+  * Persondetektion
+  * Objektgenkendelse
+  * Form-baseret detektion
+
+3. Scale Invariant Feature Transform (SIFT)
+- Robust feature detector og descriptor
+- Fire hovedkomponenter:
+  a) Scale-space extrema detection:
+     * Bygger billedpyramide med Gaussian blur
+     * Finder interessepunkter på tværs af skalaer
+  
+  b) Keypoint localization:
+     * Præcis bestemmelse af keypoint position
+     * Filtrering af svage punkter
+  
+  c) Orientation assignment:
+     * Beregning af dominerende retninger
+     * Sikrer rotationsinvarians
+  
+  d) Keypoint descriptor:
+     * 128-dimensional feature vektor
+     * Baseret på gradient-histogrammer
+     * Robust over for belysning og viewpoint ændringer
+
+PRAKTISKE ANVENDELSER
+
+1. Tekstanalyse:
+- Dokumentklassifikation
+- Sentiment analyse
+- Informationssøgning
+- Tekstsammenligning
+
+2. Billedanalyse:
+- Objektgenkendelse
+- Billedstitching (panoramaer)
+- Tracking
+- 3D rekonstruktion
+- Robotnavigation
+
+NØGLEELEMENTER AT HUSKE:
+1. Features skal være:
+   - Diskriminative (kunne skelne mellem forskellige klasser)
+   - Robuste (stabile over for støj og variationer)
+   - Effektive at beregne
+
+2. Valg af features afhænger af:
+   - Opgavens art
+   - Datatyperne
+   - Krav til robusthed
+   - Beregningsmæssige begrænsninger
+
+3. Modern udvikling:
+   - Bevægelse mod deep learning features
+   - Men traditionelle features er stadig vigtige:
+     * Mindre datakrævende
+     * Mere fortolkelige
+     * Computationelt effektive
+
+Dette materiale danner grundlag for forståelse af feature extraction i AI-systemer, hvilket er essentielt for at bygge robuste og effektive AI-løsninger.
+
+
+Slide 1-3: Introduktion
+- Kurset handler om "Complex features" inden for design og udvikling af AI-systemer
+- Vi ser et billede af AAU campus med studerende
+- Der er information om en studenterstudievejleder med et link
+- Der er også information om studietur
+
+Slide 4-5: "What are features?"
+- Introducerer konceptet features gennem to eksempler:
+1. Et datasæt (census2011.csv) der viser forskellige statistiske features for indiske distrikter som:
+   - Population
+   - Vækst
+   - Kønsratio
+   - Literacy rate
+2. Et billede der illustrerer feature extraction gennem et "smiley" lavet af frugter:
+   - To æbler der fungerer som øjne
+   - En banan der fungerer som mund
+   Dette demonstrerer hvordan objekter kan genkendes gennem deres karakteristiske træk/features
+
+Slide 6-7: Agenda
+Dagens program er opdelt i to hovedemner:
+1. Text features:
+   - Bag-of-words
+   - Term Frequency - Inverse Document Frequency (TF-IDF)
+2. Image features:
+   - Histogram of Oriented Gradients (HOG)
+   - Scale-Invariant Feature Transform (SIFT)
+
+Slide 8: Text Features
+- Viser et eksempel på sentiment analyse af tekst
+- Tre forskellige kundefeedback kategoriseres som:
+  - Negative: "Totally dissatisfied with the service. Worst customer care ever."
+  - Neutral: "Good Job but I will expect a lot more in future."
+  - Positive: "Brilliant effort guys! Loved Your Work."
+- Dette illustreres med emojis og farvekodning (rød for negativ, blå for neutral, gul for positiv)
+
+Slide 9-11: Bag-of-words
+- Introducerer bag-of-words konceptet gennem et eksempel med Dr. Seuss tekster
+- Viser hvordan tekst kan omdannes til numeriske vektorer
+- Fremhæver vigtige overvejelser:
+  - Fjern stopord
+  - Udfør stemming
+  - Fjern tegnsætning
+  - Brug professionelle tokenizers
+- Påpeger begrænsninger:
+  - Tab af ordrækkefølge
+  - Problemer med dokumentlængde
+
+
+Slide 12-14: Term Frequency (TF)
+	• Introducerer TF (Term Frequency) konceptet
+	• Forklarer at et dokument med 10 forekomster af et ord er mere relevant end et med 1 forekomst
+	• Men understreger at det: 
+		1. Ikke er 10 gange mere relevant
+		2. Især ikke hvis dokumentet er 10 gange længere
+	• Viser formlen for TF: 
+
+Copy
+tf(t,d) = ft,d / Σt'∈d ft',d
+Hvor: 
+		○ ft,d er antallet af forekomster af term t i dokument d
+		○ nævneren er summen af alle ord i dokumentet
+	• Dette normaliserer for dokumentlængde
+Slide 15-16: IDF (Inverse Document Frequency)
+	• Introducerer IDF konceptet
+	• Hovedprincip: Sjældne ord er mere informative end hyppige ord
+	• Eksempel: Hvis et dokument indeholder ordet "arachnocentric" (sjældent ord), er det sandsynligvis relevant for en søgning på dette ord
+	• Viser IDF formlen: 
+
+Copy
+idf(t,D) = log(N/(1 + |{d ∈ D: t ∈ d}|))
+Hvor: 
+		○ N er det totale antal dokumenter
+		○ nævneren er antal dokumenter der indeholder termen + 1 (for at undgå division med 0)
+Slide 17: TF-IDF
+	• Kombinerer TF og IDF: 
+
+Copy
+tfidf(t,d,D) = tf(t,d) * idf(t,D)
+	• Dette giver en vægt der: 
+		1. Stiger med hvor ofte ordet optræder i dokumentet
+		2. Falder med hvor almindeligt ordet er i hele dokumentsamlingen
+	• Dette er en af de mest brugte feature extraction metoder til tekst
+Slide 18: Note om word2vec
+	• Kort reference til word2vec som en mere avanceret metode
+	• Antyder at dette er næste skridt hvis man vil udover TF-IDF
+
+Slide 19-22: Image Features - Applications
+- Introducerer formålet med image features:
+  1. En måde at beskrive områder eller objekter i et billede
+  2. Anvendelser inkluderer:
+     - Detection/recognition (genkendelse af objekter)
+     - Stitching/matching/aligning images (sammensætning af billeder)
+     - Tracking/motion analysis (bevægelsesanalyse)
+     - Model construction (modelbygning)
+     - Stereo vision (3D rekonstruktion)
+
+- Viser praktiske eksempler gennem billeder:
+  1. Fingeraftryksanalyse med feature matching
+  2. Trafikscener med objektgenkendelse (biler, personer, cykler)
+  3. Luftfoto/satellitbilleder med feature matching
+  4. Panoramabillede-stitching af landskab
+
+Slide 23: Image Features - Feature Descriptors
+- Forklarer at feature descriptors er måder at beskrive lokale regioner
+- Viser forskellige typer af features:
+  1. Gradient-baserede features
+  2. Keypoint descriptors
+  3. Matchede features mellem billeder
+- Understreger at features bruges til:
+  - Matching
+  - Recognition
+  - Detection
+
+Slide 24: Basic Image Features
+- Gennemgår klassiske features for klassifikation:
+  1. Area (areal)
+  2. Height/width ratio (højde/bredde forhold)
+  3. Circularity (cirkularitet)
+  4. Holes (huller)
+  5. Perimeter (omkreds)
+  6. Bounding box (afgrænsende boks)
+- Disse features beskriver egenskaber ved en BLOB (Binary Large OBject)
+- Viser et eksempel med forskellige geometriske former og deres bounding boxes
+
+Slide 25-30: Histogram of Oriented Gradients (HOG)
+- Detaljeret gennemgang af HOG-algoritmen:
+  1. Normalisér farver
+  2. Beregn gradienter
+  3. Vægtet afstemning i rumlige og orienterings-celler
+  4. Kontrast-normalisering over overlappende rumlige blokke
+  5. Indsaml HOG'er over detektionsvindue
+  6. Kør lineær SVM klassifikator
+
+- Oprindeligt foreslået til person-detektion
+- Viser visuelle eksempler på:
+  1. Gradient beregning
+  2. Celle-opdeling
+  3. Histogram-opbygning
+  4. Endelig feature representation
+
+Slide 31-33: Scale Invariant Feature Transform (SIFT) - Introduktion
+- Fokuserer på skala-invariant detektion
+- Viser hvordan man betragter regioner (fx cirkler) af forskellige størrelser omkring et punkt
+- Rejser det centrale spørgsmål: Hvordan vælger vi tilsvarende størrelser uafhængigt i hvert billede?
+- Dette er kerneproblemet som SIFT løser
+
+Slide 34: SIFT - Hovedkomponenter
+SIFT består af fire hovedtrin:
+1. Scale-space extrema detection
+2. Keypoint localization
+3. Orientation assignment
+4. Keypoint descriptor
+- Oprindeligt publiceret af Lowe i 2004 i "Distinctive Image Features from Scale-Invariant Keypoints"
+
+Slide 35-36: SIFT - Extrema Detection
+- Forklarer hvordan DoG (Difference of Gaussian) features udtrækkes ved forskellige skalaer
+- Proces:
+  1. Konstruerer en skala-rum pyramide med Gaussian blur
+  2. Beregner differensen mellem nabo-skalaer
+  3. Finder lokale ekstrema i både rum og skala
+- Viser det visuelle hierarki af billedpyramiden
+- Søger efter punkter der er ekstreme i forhold til deres 26 naboer (8 i samme niveau, 9 i niveauet over og 9 i niveauet under)
+
+Slide 37: SIFT - Orientation Assignment
+- Formål: Gør features rotationsinvariante
+- Process:
+  1. Beregner gradient retninger omkring keypoint
+  2. Laver et histogram med 36 bins (10° per bin)
+  3. Vægter bidrag med gradientens magnitude og en Gaussian vægt
+  4. Finder dominerende retninger
+  5. Enhver retning inden for 80% af hovedretningen får sin egen descriptor
+
+Slide 38-39: SIFT - Keypoint Descriptor
+- Beskriver hvordan feature vektoren konstrueres:
+  1. 16x16 vindue omkring keypoint
+  2. Opdeles i 4x4 regioner
+  3. 8 retningsbins per region
+  4. Resulterer i 128-dimensional feature vektor (4x4x8)
+- Illuminations-invarians opnås gennem:
+  1. Normalisering til enhedslængde
+  2. Threshold af værdier ved 0.2
+  3. Re-normalisering
+
+Slide 40-41: SIFT - Praktisk Anvendelse
+- Viser praktiske eksempler på SIFT matching:
+  1. Objektgenkendelse i komplekse scener
+  2. Matching af features mellem forskellige viewpoints
+  3. Robusthed over for skala- og rotationsændringer
+- Demonstrerer hvordan SIFT kan:
+  1. Finde gode keypoints
+  2. Beskrive dem konsistent
+  3. Matche dem mellem billeder
+  4. Bruges til detektion, genkendelse og image stitching
+
+Dette afslutter gennemgangen af kursets materiale om komplekse features, fra tekstbaserede metoder som TF-IDF til avancerede billedfeatures som HOG og SIFT.
+
+Noter: Feature Detectors, Points & Patches
+Disse noter dækker nøje og detaljeret indholdet af forelæsningsmaterialet om feature detectors, herunder konceptualisering, matematiske formuleringer og praktiske metoder til skala- og rotationsinvarians samt affine transformationer.
+
+1. Introduktion til Feature Detectors
+	• Formål:
+At finde billedeområder (features) der kan matches pålideligt mellem billeder.
+		○ Eksempel: Sammenligning af patches i et par billeder (se f.eks. Figure 7.3).
+	• Vigtige observationer:
+		○ Teksturløse områder: Vanskelige at lokalisere, da de mangler karakteristiske detaljer.
+		○ Høj kontrast og flere gradienter: Gør patches nemmere at lokalisere, mens patch med én dominerende retning (f.eks. en kant) lider af aperture-problemet – kun normalretningen til kanten kan præcist estimeres.
+Opsummering:
+For at opnå stabile matches skal vi vælge patches med rig tekstur og gradienter i mindst to retninger.
+
+2. Matching Kriterium: Weighted Sum of Squared Differences (WSSD)
+	• Grundlæggende idé:
+Sammenligning af to image patches ved at beregne den vægtede summen af kvadrerede forskelle.
+	• Matematisk formulering (Eq. 7.1):
+EWSSD(u)=∑iw(xi)[I1(xi+u)−I0(xi)]2E_{\text{WSSD}}(u) = \sum_{i} w(x_i)\left[I_1(x_i + u) - I_0(x_i)\right]^2EWSSD​(u)=i∑​w(xi​)[I1​(xi​+u)−I0​(xi​)]2
+		○ I₀ og I₁: De to billeder der sammenlignes.
+		○ u=(u,v)u = (u,v)u=(u,v): Displacementsvektoren (hvordan patchen flytter sig).
+		○ w(x)w(x)w(x): En vægtfunktion (typisk en Gaussisk eller et andet lokalt vindue).
+Opsummering:
+WSSD-kriteriet måler hvor godt to patches matcher ved at vurdere forskellene, vægtet efter pixelplaceringen.
+
+3. Auto-korrelations Overflade
+	• Definition:
+Når vi sammenligner et patch med sig selv for at vurdere lokal stabilitet, kaldes det auto-korrelationsfunktionen.
+	• Formulering (Eq. 7.2):
+EAC(u)=∑iw(xi)[I0(xi+u)−I0(xi)]2E_{\text{AC}}(u) = \sum_{i} w(x_i)\left[I_0(x_i + u) - I_0(x_i)\right]^2EAC​(u)=i∑​w(xi​)[I0​(xi​+u)−I0​(xi​)]2
+	• Visuelle eksempler:
+		○ Blomsterbed: Vis en tydelig, entydig minimum (god lokaliserbarhed).
+		○ Tagkant: Usikkerhed i én retning (aperture-problemet).
+		○ Skyområde: Ingen stabil minimum (dårlig lokalisering).
+Opsummering:
+Auto-korrelations overfladen hjælper os med at bedømme, hvor lokalt stabil et patch er – et essentielt skridt for pålidelig feature detection.
+
+4. Taylor Series Approksimation og Auto-korrelationsmatrix
+	• Approksimation:
+Ved hjælp af en Taylor-udvidelse af I0(xi+u)I_0(x_i+u)I0​(xi​+u) kan vi lineært tilnærme ændringen i patchet, hvilket fører til en kvadratisk form:
+EAC(u)≈uTAuE_{\text{AC}}(u) \approx u^T A uEAC​(u)≈uTAu
+	• Beregning af gradient:
+I0(xi)=(I0x(xi)I0y(xi))I_0(x_i) = \begin{pmatrix} I_{0x}(x_i) \\ I_{0y}(x_i) \end{pmatrix}I0​(xi​)=(I0x​(xi​)I0y​(xi​)​)
+hvor I0xI_{0x}I0x​ og I0yI_{0y}I0y​ er billedets gradienter i henholdsvis x- og y-retningen.
+	• Auto-korrelationsmatrix A (Eq. 7.8):
+A=∑iw(xi)(I0x(xi)2I0x(xi)I0y(xi)I0x(xi)I0y(xi)I0y(xi)2)A = \sum_{i} w(x_i) \begin{pmatrix} I_{0x}(x_i)^2 & I_{0x}(x_i) I_{0y}(x_i) \\ I_{0x}(x_i) I_{0y}(x_i) & I_{0y}(x_i)^2 \end{pmatrix}A=i∑​w(xi​)(I0x​(xi​)2I0x​(xi​)I0y​(xi​)​I0x​(xi​)I0y​(xi​)I0y​(xi​)2​)
+		○ A kan tolkes som en tensor der beskriver den lokale (kvadratiske) form af auto-korrelationsfunktionen.
+Opsummering:
+Ved at approksimere auto-korrelationen med en Taylor-serie og opsummere gradientprodukter, udleder vi en matrix AAA, som giver en lokal beskrivelse af patchens geometriske stabilitet.
+
+5. Eigenvalue Analyse og Feature Lokalisering
+	• Eigenvalue-analysen:
+		○ Matrix AAA har to egenværdier λ0\lambda_0λ0​ og λ1\lambda_1λ1​.
+		○ En stor forskel mellem egenværdierne indikerer anisotropi, hvilket kan signalere en kant (aperture-problemet).
+		○ Stabile features: Patches med to høje egenværdier er mere entydige og lokaliserbare.
+	• Metoder til keypoint-detektion:
+		○ Shi-Tomasi kriteriet: Brug minimums-egenværdien (min⁡(λ0,λ1)\min(\lambda_0, \lambda_1)min(λ0​,λ1​)) for at lokalisere gode features.
+		○ Harris detektor (Eq. 7.9): R=det⁡(A)trace(A)2=λ0λ1(λ0+λ1)2R = \frac{\det(A)}{\text{trace}(A)^2} = \frac{\lambda_0\lambda_1}{(\lambda_0 + \lambda_1)^2}R=trace(A)2det(A)​=(λ0​+λ1​)2λ0​λ1​​
+			§ Denne måling er rotationsinvariant og nedvægter kanten-lignende features.
+	• Andre varianter:
+		○ Forskellige kombinationer, som den harmoniske middelværdi (Eq. 7.11), for at få en glattere respons.
+Opsummering:
+Eigenvalue-analysen af matrix AAA er central for at vurdere en patches stabilitet. Ved at identificere områder med to høje egenværdier kan vi finde de mest entydige features til tracking.
+
+6. Adaptive Non-Maximal Suppression (ANMS)
+	• Problemstilling:
+Standard non-maximal suppression kan føre til, at features koncentreres i områder med høj kontrast, hvilket kan give en ujævn fordeling.
+	• Løsning – ANMS:
+		○ Sorter alle lokale maksimum baseret på deres responsstyrke.
+		○ For hvert punkt beregnes en suppression radius: Det mindste afstandsrum, hvor naboens respons er inden for 10 % af punktets respons.
+		○ Udvælg de punkter, der både er lokale maksimum og har en betydelig suppression radius.
+	• Resultat:
+En mere ensartet spredning af features i hele billedet (se Figure 7.9).
+Opsummering:
+ANMS hjælper med at opnå en uniform fordeling af keypoints, hvilket forbedrer den samlede robusthed af feature matching.
+
+7. Repeatability af Feature Detektorer
+	• Definition:
+Repeatability måler, hvor ofte keypoints fra et billede kan genfindes i et transformeret billede (typisk inden for en 15 pixels tolerance).
+	• Faktorer der påvirker repeatability:
+		○ Rotation, skalaændringer, belysningsvariationer og støj.
+		○ Informationsindhold: Kvantificeret ved entropien af rotationsinvariante lokale descriptorer.
+	• Praktisk observation:
+Den forbedrede (Gaussisk afledte) version af Harris operatoren med specifikke skalaindstillinger har vist sig at fungere bedst ifølge eksperimentelle resultater.
+Opsummering:
+En høj repeatability er essentiel for pålidelig feature matching – det vil sige, at de detekterede features skal kunne genfindes under forskellige billedtransformationer.
+
+8. Scale Invariance
+	• Behov:
+		○ I situationer med få højfrekvente detaljer (f.eks. skyer) kan features i fin skala mangle.
+		○ Ved store skalaændringer (f.eks. i objektgenkendelse) skal features være stabile på tværs af skalaer.
+	• Metoder:
+		○ Multi-scale pyramider: Udfør feature detection på forskellige billedopløsninger (se f.eks. Figure 7.10).
+		○ Laplacian of Gaussian (LoG): Tidlige metoder af Lindeberg.
+		○ Difference of Gaussian (DoG): Lowe’s tilgang til SIFT:
+			§ Filtrering med DoG i en 3D skala-rum (rum + skala) og finde maksimum/minimum (se Figure 7.11).
+			§ Efterfølgende sub-pixel og sub-skala finjustering.
+	• Matematiske aspekter:
+		○ Normalisering med σ2\sigma^2σ2 er nødvendig for ægte skaalainvarians.
+		○ Afvisning af punkter med stærk asymmetri via Hessian-matrixen (Eq. 7.12 og 7.13).
+Opsummering:
+Scale invariance sikrer, at de udtrukne features er robuste over for ændringer i billedstørrelse og detaljegrad – en kritisk egenskab for objektgenkendelse og billedmatching.
+
+9. Konstruktion af Difference-of-Gaussian (DoG) Pyramider
+	• Fremgangsmåde:
+		○ Gaussian pyramid: Billedet konvolveres gentagne gange med Gaussiske filtre, hvor σ\sigmaσ fordobles pr. octave.
+		○ For hver octave genereres s+3s+3s+3 billeder for at dække hele intervallet.
+		○ DoG-billeder: Forskellen mellem tilstødende Gaussiske billeder beregnes og danner DoG-pyramiden.
+	• Lokal ekstremen-detektion:
+		○ For hvert punkt i pyramiden sammenlignes med dets 26 naboer (8 i nuværende niveau, 9 i niveauerne over og under – se Figure 2).
+		○ Kun punkter der er maksimale eller minimale i denne 3D struktur bevares.
+Opsummering:
+DoG-pyramiden er en effektiv metode til at identificere stabile lokale extrema i både rum og skala, som danner grundlaget for mange skala-invariante feature detektorer.
+
+10. Rotationsinvarians og Orienteringsestimering
+	• Problemstilling:
+		○ Billeder kan rotere, hvorfor er det nødvendigt at tilpasse descriptorerne til en dominant orientering.
+	• Metoder til orienteringsestimering:
+		1. Gennemsnitlig gradient:
+			§ Beregn den gennemsnitlige gradient i et lokalområde (kan ses som et førstegangs steerable filter).
+		2. Histogram over gradientorienteringer:
+			§ Opret et histogram (typisk 36 bins) af gradientorienteringer, hvor hver bidrager med vægt efter gradientens størrelse og afstand fra centrum (se Figure 7.12).
+			§ Find de signifikante toppe og finjuster orienteringen med en parabolisk tilpasning.
+	• Effekt:
+Udtrukne patches kan normaliseres til at have samme orientering, hvilket gør descriptors rotationsinvariante.
+Opsummering:
+En korrekt estimering af dominant orientering er afgørende for at gøre feature descriptors uafhængige af in-plane rotationer.
+
+11. Affin Invarians
+	• Motivation:
+		○ Ud over skala og rotation kan billeder undergå affine deformationer (f.eks. perspektivforkortning).
+		○ Dette er særligt vigtigt for wide baseline stereo matching og lokationsgenkendelse.
+	• Metoder:
+		1. Ellipse tilpasning:
+			§ Brug korrelations- eller Hessianmatricen til at tilpasse en ellipse, hvor de primære akser danner det affint tilpassede koordinatsystem.
+		2. Maximally Stable Extremal Regions (MSER):
+			§ Identificerer stabile binære regioner ved at threshold’e billedet ved alle mulige niveauer.
+			§ Overvågning af områdets arealændring med thresholdændringer definerer de mest stabile regioner (se Figure 7.14).
+Opsummering:
+Affine invarians opnås ved at tilpasse et lokalt affint koordinatsystem til features – enten via ellipse tilpasning eller ved at udtrække MSER, hvilket giver robusthed over for både geometriske og fotometriske transformationer.
+
+12. Moderne Feature Detektorer og Udvidelser
+	• Klassiske metoder:
+		○ Harris, Shi-Tomasi, SIFT (baseret på DoG og orienteringsestimering).
+	• Nyere og hurtigere metoder:
+		○ SURF: Udnytter integral images for hurtigere konvolutioner.
+		○ FAST/FASTER: Tidlige læringsbaserede detektorer med hurtig beregning.
+		○ BRISK, ORB: Kombinerer skala- og rotationsinvarians med letvægts descriptorer.
+		○ KAZE og Accelerated-KAZE: Benytter ikke-lineær diffusion til skalaudvælgelse.
+	• Deep Learning-baserede metoder:
+		○ LIFT, SuperPoint, LF-Net: Sammenligner både detektor og descriptor i en samlet pipeline.
+		○ AffNet, Key.Net, D2-Net, R2D2, D2D: Moderne metoder, der udnytter CNN’er til at lære robuste og matchbare features.
+	• Andre former for features:
+		○ Ud over punkt features kan også linjer, kurver og regioner anvendes, f.eks. i homography estimation eller 3D-struktur udtrækning.
+Opsummering:
+Forskningen inden for feature detection er meget aktiv. Der findes et bredt spektrum fra klassiske metoder til deep learning-baserede teknikker, som alle søger at optimere på robusthed, hastighed og invarians over for transformationer.
+
+Samlet Opsummering af Noterne
+	• Feature Detectors skal identificere patches med høj tekstur og flere gradienter for pålidelig lokalisering.
+	• Matching kriteriet (WSSD) og auto-korrelations overfladen danner grundlaget for at måle patch-stabilitet.
+	• Eigenvalue-analyse af auto-korrelationsmatrixen hjælper med at udvælge de mest stabile keypoints.
+	• ANMS sikrer en jævn fordeling af features på tværs af billedet.
+	• Skala- og rotationsinvarians opnås gennem multi-scale pyramider, DoG, og nøjagtig orienteringsestimering.
+	• Affine invarians udvides til at håndtere perspektivforvrængninger via ellipse tilpasning og MSER.
+	• Der findes både klassiske og moderne (herunder deep learning-baserede) metoder, der alle bidrager til at forbedre feature matching i computer vision.
+
+
+25.3 Simple Image Features
+Nedenfor er omfattende noter, der dækker alle centrale aspekter af forelæsningsmaterialet om simple billedeegenskaber. Noterne er opdelt i sektioner med overskrifter, underoverskrifter, punktopstillinger og korte opsummeringer for at fremhæve de vigtigste pointer.
+
+1. Introduktion til Billedeegenskaber
+	• Billeddannelse:
+Et billede består af millioner af pixels (fx 12 mio. pixels med 3 byte hver), som opsamler lys reflekteret fra objekter.
+	• Udfordringer: 
+		○ Støj: Uundgåelige variationer fra sensorens målinger og eksterne forstyrrelser.
+		○ Store datamængder: Direkte behandling af rå billeddata er ofte upraktisk.
+	• Løsning:
+Udvikling af forenklede repræsentationer, der fremhæver vigtige informationer, men reducerer detaljegraden.
+	• Fire centrale egenskaber: 
+		○ Kanter
+		○ Tekstur
+		○ Optisk flow
+		○ Segmentering
+	Opsummering:
+	Det primære mål er at udtrække meningsfulde og reducerede repræsentationer fra store og støjfyldte billeddata ved at fokusere på kanter, tekstur, optisk flow og segmentering.
+
+2. Kanter
+2.1 Definition og Årsager til Kanter
+	• Definition:
+Kanter er linjer eller kurver i et billede, hvor der sker en markant ændring i pixelintensitet.
+	• Årsager til kanter: 
+		○ Dybsforskel (depth discontinuities): Skift i farve, når man krydser fra et objekt til et andet.
+		○ Ændring i overfladeorientering: Ændring af overfladens normal fører til intensitetsændringer.
+		○ Ændring i overfladens reflektans: Forskelle i materialets egenskaber.
+		○ Skygger (illumination discontinuities): Ændringer i lysforhold, selvom objektets struktur ikke ændres.
+2.2 Metode til Kantdetektion
+	• Lokal operation:
+Kantdetektion udføres ofte ved at sammenligne et pixel med nærliggende pixels.
+	• Differentiering: 
+		○ Man kan beregne den afledte I′(x)I'(x) af en intensitetsprofil for at finde store ændringer (peaks) ved kanter.
+		○ Problem: Støj fører til falske peaks.
+	• Glatning med Gaussisk Filter: 
+		○ Formål: Undertrykke støj ved at beregne et vægtet gennemsnit af nærliggende pixels.
+		○ Gaussisk funktion: 
+			§ 1D: Gσ(x)=12πσe−x22σ2G_\sigma(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{x^2}{2\sigma^2}} 
+			§ 2D: Gσ(x,y)=12πσ2e−x2+y22σ2G_\sigma(x,y) = \frac{1}{2\pi\sigma^2} e^{-\frac{x^2+y^2}{2\sigma^2}} 
+		○ Konvolution:
+Udskift intensiteten I(x0,y0)I(x_0,y_0) med summen af nærliggende pixels vægtet af Gaussisk funktion. Notationen I∗GσI \ast G_\sigma benyttes.
+	• Kombination af Glatning og Differentiering: 
+		○ Ved hjælp af sætningen om, at den afledte af en konvolution er lig med konvolutionen med den afledte, kan man beregne kanter ved at konvolvere billedet med den afledte af den Gaussiske funktion Gσ′G'_\sigma.
+	• I 2D-billeder: 
+		○ Gradient: ∇I=(∂I∂x∂I∂y)\nabla I = \begin{pmatrix} \frac{\partial I}{\partial x} \\[4mm] \frac{\partial I}{\partial y} \end{pmatrix} 
+		○ Gradientens størrelse:
+Et stort ∥∇I∥\| \nabla I \| indikerer en kant.
+		○ Kantorientering:
+Retningen af gradienten ∇I∥∇I∥\frac{\nabla I}{\|\nabla I\|} giver kantens retning.
+		○ Ikke-maksimumsundertrykkelse:
+Kantpunkter defineres som de punkter, hvor gradientens størrelse er et lokalt maksimum langs gradientens retning.
+		○ Sammenkædning:
+Til sidst linkes tilstødende kantpixels med konsistente orienteringer for at danne sammenhængende kantkurver.
+	Opsummering:
+	Kantdetektion anvender glatning (ved hjælp af et Gaussisk filter) efterfulgt af differentiering for at identificere punkter med store intensitetsændringer. Processen inkluderer udregning af gradient, bestemmelse af kantorientering og sammenkædning af kantpixels for at opnå en kompakt repræsentation af de vigtige billedkanter.
+
+3. Tekstur
+3.1 Definition af Tekstur
+	• Tekstur:
+Refererer til det visuelle mønster, der giver en idé om, hvordan en overflade føles, fx blød, ru, stribet eller prikket.
+	• Eksempler: 
+		○ Striber: Som på en trøje eller et zebra-mønster.
+		○ Pletter: Som på en leopard.
+		○ Periodiske mønstre: Fx vinduesarrangementer på en bygning.
+3.2 Repræsentation af Tekstur
+	• Lokal egenskab:
+Tekstur beskrives for et billedepatch (et sammenhængende område), ikke for enkelte pixels.
+	• Gradientorientering: 
+		○ For hvert pixel i et patch beregnes gradientens orientering.
+		○ Histogram over orienteringer:
+Opsummerer fordelingen af gradientretninger i patchen.
+		○ Fordele: 
+			§ Invarians overfor belysningsændringer: Ændringer i lysstyrke påvirker længden af gradientvektoren, men ikke retningen.
+			§ Skalering: Ved at beskrive patchen over forskellige skalaer kan man fange både finere og grovere mønstre.
+	• Modellering:
+Mange teksturrepræsentationer antager, at et billedepatch består af gentagne elementer (texels). Moderne metoder anvender ofte konvolutionelle neurale netværk til at lære disse repræsentationer automatisk.
+	Opsummering:
+	Tekstur beskrives som et mønster over et billedepatch, typisk opsummeret ved et histogram af gradientorienteringer. Dette gør det muligt at skelne objekter, der kan have samme form men forskellig overfladestruktur.
+
+4. Optisk Flow
+4.1 Definition af Optisk Flow
+	• Optisk flow:
+Det visuelle indtryk af bevægelse i en sekvens af billeder, som opstår ved relativ bevægelse mellem kameraet og objekterne i scenen.
+	• Anvendelser: 
+		○ At skelne bevægende objekter fra stationær baggrund.
+		○ At estimere afstandsforhold (når nærliggende objekter bevæger sig hurtigere end fjerne objekter).
+4.2 Metoder til Måling af Optisk Flow
+	• Block Matching: 
+		○ Tag et blok af pixels centreret omkring et punkt p=(x0,y0)p=(x_0, y_0) i et billede ved tid tt.
+		○ Sammenlign denne blok med blokke i det efterfølgende billede ved t+Δtt + \Delta t for at finde den bedste overensstemmelse.
+	• Måling med Sum of Squared Differences (SSD): SSD(Δx,Δy)=∑(x,y)∈blok(I(x,y,t)−I(x+Δx,y+Δy,t+Δt))2SSD(\Delta x, \Delta y) = \sum_{(x,y) \in \text{blok}} \Big(I(x,y,t) - I(x+\Delta x, y+\Delta y, t+\Delta t)\Big)^2 
+		○ Det par (Δx,Δy)(\Delta x, \Delta y) der minimerer SSD’en, definerer bevægelsen, dvs. den optiske flow vektor (vx,vy)(v_x, v_y).
+	• Vigtigt: 
+		○ Metoden virker bedst, når billedet indeholder tekstur – uden variation (fx en ensfarvet væg) vil SSD’en ikke give en entydig løsning.
+	Opsummering:
+	Optisk flow estimeres ved at finde tilsvarende områder i to på hinanden følgende billeder. Ved at minimere SSD for et blok af pixels kan man bestemme retningen og hastigheden af bevægelse, hvilket er centralt for at forstå scenens dynamik.
+
+5. Segmentering af Naturlige Billeder
+5.1 Hvad er Segmentering?
+	• Segmentering:
+Processen med at opdele et billede i grupper af pixels, der deler lignende visuelle egenskaber (fx intensitet, farve, tekstur).
+	• Formål:
+At identificere og adskille objekter eller regioner i et billede, hvor der er markante ændringer mellem objekterne.
+5.2 Tilgange til Segmentering
+	• Kantbaseret tilgang: 
+		○ Boundary Detection:
+Klassificeringsbaseret metode, hvor man ved hjælp af maskinlæring estimerer sandsynligheden Pb(x,y,θ)P_b(x,y,\theta) for, at der findes en grænse ved et pixel med orientering θ\theta.
+		○ Udfordringer: 
+			§ De detekterede kanter danner ikke altid lukkede kurver, hvilket betyder, at man ikke direkte får definerede regioner.
+			§ Anvender kun lokal kontekst, uden globale sammenhængsregler.
+	• Regionbaseret tilgang: 
+		○ Clustering:
+Pixels grupperes sammen ud fra ligheder i brightness, farve og tekstur.
+		○ Graph Partitioning: 
+			§ Eksempel: Metoden af Shi og Malik (2000), hvor pixels ses som noder i en graf med vægte baseret på lighed.
+			§ Målet er at minimere vægtene på tværs af grupper (cut) og maksimere vægtene inden for grupper.
+	• Oversegmentering og Superpixels: 
+		○ Første skridt kan være at lave en oversegmentering, hvor man sikrer, at alle rigtige kanter er med, selvom der opstår ekstra (falske) kanter.
+		○ Disse mindre regioner kaldes superpixels og reducerer den beregningsmæssige kompleksitet, da der er langt færre superpixels end pixels i originalbilledet.
+	Opsummering:
+	Segmentering handler om at opdele et billede i meningsfulde regioner. Dette kan gøres via direkte kantdetektion eller ved at gruppere pixels med lignende visuelle egenskaber. Oversegmentering med superpixels anvendes ofte for at lette den efterfølgende objektgenkendelse.
+
+Samlet Oversigt af Nøglebegreber
+	• Billedrepræsentation: Forenklede modeller af store, støjfyldte billeddata.
+	• Kanter: Markante ændringer i intensitet; funderet i lokal differentiering og glatning (Gaussisk filter, konvolution).
+	• Gradient og Kantorientering: Beregnes for at bestemme både styrke og retning af kanter.
+	• Tekstur: Visuelle mønstre, ofte beskrevet via histogrammer af gradientorienteringer.
+	• Optisk Flow: Vektorfelt, der beskriver bevægelse i en billedsekvens; beregnet med metoder som SSD.
+	• Segmentering: Opdeling af et billede i regioner baseret på visuelle attributter, med metoder som boundary detection og graph partitioning.
+
+Disse noter giver et detaljeret overblik over de grundlæggende metoder og koncepter i simple billedeegenskaber, som er fundamentale for videre behandling og analyse inden for computervision og anvendelse af kunstig intelligens. Hver sektion indeholder både teoretiske forklaringer og praktiske metoder, der tilsammen bidrager til en dybere forståelse af, hvordan komplekse billeddata kan analyseres og forenkles til meningsfulde repræsentationer.

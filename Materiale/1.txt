@@ -1,0 +1,296 @@
+1. Introduktion
+	• Formål med forelæsningen:
+At gennemgå, hvordan digitale billeder repræsenteres, manipuleres og analyseres for at udtrække features. Disse teknikker er grundlaget for mange AI-projekter, fx objektgenkendelse, segmentering og template matching.
+	• Overordnede temaer:
+		○ Grundlæggende billedrepræsentation
+		○ Point processing vs. neighborhood processing (foldning/convolution)
+		○ Forskellige filtertyper (mean, median, Gaussian)
+		○ Kantdetektion og template matching
+
+2. Grundlæggende om Digitale Billeder
+2.1 Hvad er et digitalt billede?
+	• Definition:
+Et digitalt billede er en diskret repræsentation af et visuelt signal, typisk som et 2D-array (matrice) af pixels.
+	• Pixels:
+		○ Hver pixel har en adresse angivet ved koordinaterne (x, y).
+		○ Pixelværdier kan være:
+			§ Gråskala: Én intensitetsværdi (typisk 0–255, hvor 0 = sort og 255 = hvid).
+			§ Farvebilleder: Tre værdier for Rød, Grøn og Blå (RGB), som tilsammen danner farver.
+2.2 Koordinatsystem og Adressering
+	• Koordinatsystem:
+		○ Ofte starter (0,0) i øverste venstre hjørne (skærmkoordinater).
+		○ Pixeladresser skal være heltal og inden for billedets udstrækning (bredde og højde).
+	• Region of Interest (ROI):
+		○ En defineret del af billedet, som er interessant at analysere (fx en del med et vejskilt eller et objekt).
+2.3 Farver og Farverum
+	• RGB-farverum:
+		○ Baseret på de tre primære farver: Rød, Grøn og Blå.
+		○ Hver pixel i et farvebillede repræsenteres som en vektor: (R, G, B).
+		○ Eksempel: En rød blomst vil have høj rød komponent, mens blå komponent er lav.
+	• Gråskala:
+		○ Udregnes ofte ved at tage gennemsnittet af RGB-komponenterne eller et vægtet gennemsnit (f.eks. fordi det menneskelige øje er mere følsomt over for grøn).
+	• HSV-farverum:
+		○ H (Hue): Vinkel i en farvecirkel, der angiver farvetonen.
+		○ S (Saturation): Mætning, dvs. farvens intensitet.
+		○ V (Value): Lysstyrke (eller “sorthedsgrad”).
+		○ Fordel: Ved at separere farvetone fra lysstyrke bliver det lettere at sætte thresholds, fx for at finde objekter med en bestemt farve under varierende belysning.
+
+3. Billedfeatures og Histogrammer
+3.1 Histogrammer
+	• Definition:
+Et histogram viser fordelingen af pixelværdier (fx intensitet eller farvekomponenter) i et billede.
+	• Anvendelser:
+		○ Bestemme, om et billede er generelt mørkt, lyst eller har høj/lav kontrast.
+		○ Hjælpe med at finde passende thresholds til segmentering.
+	• Eksempel:
+		○ Et histogram for et mørkt billede vil have de fleste værdier i den lave del af skalaen (nær 0).
+		○ Et histogram med spredte værdier (fra 0 til 255) kan indikere høj kontrast.
+3.2 Thresholding (Segmentering)
+	• Princip:
+Ved at sætte en grænseværdi (threshold) kan vi klassificere pixels – fx:
+		○ Hvis pixelværdi > threshold ⇒ sæt til hvid (eller 1)
+		○ Hvis pixelværdi ≤ threshold ⇒ sæt til sort (eller 0)
+	• Anvendelse:
+		○ Udtrække objekter fra baggrunden (fx isolere vejskilte eller finde blokke af ensfarvede områder).
+	• Udfordringer:
+		○ Histogrammet varierer ofte med ændringer i motiv, lys og kamerainstilling, hvorfor træningsdata eller dynamiske thresholds kan være nødvendige.
+		○ I farvebilleder kræver thresholding ofte, at vi sætter grænser for alle tre kanaler (min. og max. for R, G og B) eller konverterer til HSV.
+
+4. Convolution (Foldning) og Filtrering
+4.1 Point Processing vs. Neighborhood Processing
+	• Point Processing:
+		○ Operationer, hvor outputværdien for en pixel afhænger udelukkende af den pixelværdi (fx tilføje et konstant tal for at gøre billedet lysere eller mørkere).
+	• Neighborhood Processing (Foldning/Convolution):
+		○ Operationer, hvor outputværdien for en pixel afhænger af en hel nabomatrice af pixels.
+		○ Gøres ved at "lægge et filter" (kernel) hen over billedet.
+4.2 Konceptet med Convolution
+	• Definition:
+		○ Vi har et filter (kernel) med bestemte koefficienter, som "foldes" (convolves) over billedet.
+		○ For hver position multipliceres kernel-koefficienterne med de tilsvarende pixelværdier, og produkterne summeres til at danne den nye pixelværdi.
+	• Matematisk udtryk (1D eksempel):
+(f∗h)[x]=∑if(x+i)⋅h(i)(f * h)[x] = \sum_{i} f(x+i) \cdot h(i)(f∗h)[x]=∑i​f(x+i)⋅h(i)
+Hvor hhh er filteret, og fff er signalet.
+	• Bemærk:
+		○ Der er en forskel mellem korrelation og convolution:
+			§ Ved convolution spejles (flippes) filteret før operationen, men hvis filteret er symmetrisk, bliver resultatet det samme.
+		○ I billedbehandling benytter man ofte korrelationsterminologi, selvom det teknisk set er convolution.
+4.3 Håndtering af Billedkanter (Edge Issues)
+	• Problemet:
+Når filteret lægges over kanterne af billedet, mangler nogle nabo-pixels.
+	• Løsninger:
+		1. Cropping: Kun anvend filteret, hvor hele kernel'en dækker billedet. Dette medfører et outputbillede, der er mindre end input.
+		2. Padding: Udvide billedet med ekstra pixels omkring kanterne (fx:
+			§ Zero Padding: Tilføjelse af nuller (sort pixels).
+			§ Kantkopiering: Kopier de nærmeste pixelværdier fra kanten).
+
+5. Filtrering og Støjreduktion
+5.1 Mean Filter (Gennemsnitsfilter)
+	• Funktion:
+Udglatter billedet ved at erstatte hver pixel med gennemsnittet af dens nabolag.
+	• Effekt:
+Reducerer tilfældigt støj, men kan også sløre vigtige detaljer (fx kanter).
+5.2 Gaussian Filter (Gaussisk Blur)
+	• Funktion:
+Anvender en vægtet gennemsnitsberegning, hvor pixels tættere på midten har større vægt (bell curve-form).
+	• Effekt:
+Blødgør billedet på en mere "naturlig" måde, ofte æstetisk pænere end et simpelt mean filter.
+5.3 Medianfilter (Rank Filter)
+	• Funktion:
+Sorterer pixelværdierne i et givet nabolag og vælger medianen i stedet for et gennemsnit.
+	• Fordel:
+Effektiv til at fjerne salt & pepper noise (isolering af outliers) uden at sløre billedets kanter væsentligt.
+
+6. Kantdetektion (Edge Detection)
+6.1 Hvad er en kant?
+	• Definition:
+En kant er et område i billedet, hvor der sker en markant ændring i intensitet (fx fra mørkt til lyst).
+6.2 Metoder til Kantdetektion
+	• Convolution-baserede metoder:
+		○ Anvend specielt designede kernel'er, som fremhæver intensitetsforskelle.
+		○ Eksempler på filtre:
+			§ Lodret filter: Fremhæver lodrette ændringer.
+			§ Vandret filter: Fremhæver vandrette ændringer.
+	• Kombinering af filtre:
+		○ Ved at køre både lodrette og vandrette filtre og kombinere deres resultater (fx ved at tage Pythagoras-summen af deres respons), opnås et billede med kanter i alle retninger.
+6.3 Thresholding på Kantdetektion
+	• Formål:
+Efter beregning af gradienten kan man sætte en threshold, så kun kanter med en gradient over en vis værdi bevares.
+	• Anvendelse:
+		○ Reduktion af støjende eller irrelevante kanter.
+		○ Udtrækning af tekstur-information fra billedet (mange kanter indikerer fx et detaljeret mønster).
+
+7. Template Matching
+7.1 Hvad er Template Matching?
+	• Definition:
+En metode til at finde en bestemt form eller et mønster i et billede ved at sammenligne billedet med en foruddefineret template (skabelon).
+7.2 Metoden
+	• Fremgangsmåde:
+		○ Behandl templaten som et filter/kernel.
+		○ "Fold" templaten hen over hele billedet ved at beregne en form for overensstemmelse (korrelation) for hver position.
+		○ De områder med højt output indikerer et godt match til templaten.
+7.3 Normalized Cross-Correlation
+	• Problem:
+		○ Uden normalisering kan områder med generelt høje pixelværdier give høje output, selvom mønsteret ikke passer.
+	• Løsning:
+		○ Ved at bruge normalized cross-correlation kompenseres for variationer i lysstyrke og kontrast, så det reelle match fremhæves.
+7.4 Udfordringer ved Template Matching
+	• Variabel belysning:
+		○ Ændringer i lys kan påvirke pixelværdier og dermed match-resultatet.
+	• Objektets rotation og bevægelse:
+		○ Hvis objektet (templaten) roterer eller ændrer udseende, kan den foruddefinerede template mislykkes.
+	• Statisk Natur:
+		○ Template matching virker bedst i kontrollerede, statiske miljøer, hvor forholdene (belysning, position, orientering) er konsistente.
+
+8. Sammenfatning og Perspektiver
+	• Billedrepræsentation:
+		○ Digitale billeder er diskrete, 2D-arrays af pixels, hvor hver pixel enten er gråskala (én værdi) eller farve (RGB-værdi).
+	• Feature Extraction:
+		○ Histogrammer, farve- og intensitetsfeatures samt geometriske egenskaber (blobs, center of mass, bounding box) er vigtige for at reducere den store mængde information i et billede til en featurevektor, som kan anvendes til klassifikation eller detektion.
+	• Filtreringsteknikker:
+		○ Point processing: Ændrer hver pixel uafhængigt.
+		○ Convolution: Udnytter nabopixels for at udføre operationer som blurring, kantdetektion og template matching.
+		○ Forskellige filtre (mean, Gaussian, median) har hver deres fordele afhængig af applikationen.
+	• Kantdetektion og Template Matching:
+		○ Ved at identificere kanter og ændringer i billedet kan man udtrække tekstur og forminformation, der er essentiel for objektgenkendelse.
+		○ Template matching kan lokalisere specifikke objekter, men kræver stabile forhold med hensyn til belysning og orientering.
+	• Fremtidige Emner:
+		○ De mere komplekse billedfeatures, som håndterer rotation, varierende belysning og andre real-world udfordringer, vil blive behandlet i de næste forelæsninger.
+
+9. Praktiske Eksempler og Anvendelser
+	• Vejskiltegenkendelse:
+		○ Udtrækning af farvefeatures (fx de røde farver i et vejskilt) ved hjælp af thresholding i RGB eller HSV.
+	• Støjreduktion:
+		○ Anvend medianfilter til at fjerne salt & pepper noise, fx ved overførsel af billeder via dårlige netværk.
+	• Kantdetektion i Objektgenkendelse:
+		○ Brug af lodrette og vandrette kernel’er (fx Sobel-filtre) til at fremhæve kanter, der hjælper med at segmentere objekter fra baggrunden.
+	• Template Matching i Industrielle Applikationer:
+		○ Identifikation af bestemte mønstre eller objekter i ensartede miljøer (fx produktinspektion i en fabrik).
+
+
+
+Introduktion
+Kursusoverblik
+	• Titel: "Design og Udvikling af AI-Systemer"
+	• Afholdt ved Aalborg Universitet, Danmark
+	• Fokus på praktisk og teoretisk tilgang til AI-systemudvikling
+Kursets Filosofiske Fundament
+Centrale citat af Arthur C. Clarke:
+	"Any sufficiently advanced technology is indistinguishable from magic."
+Fortolkning
+	• Teknologiens potentiale overskrider umiddelbar forståelse
+	• Opfordring til vedvarende nysgerrighed
+	• Minder os om teknologiens transformative kraft
+Kursusstruktur
+Samlet Struktur
+	• 20 lektioner totalt
+	• Fordeling: 
+		1. Design Thinking: 2 lektioner
+		2. Matematik: 6 lektioner
+		3. AI: 10 lektioner
+		4. Miniprojekt: 2 lektioner
+Eksamen
+	• 20 minutters mundtlig eksamen
+	• Baseret på miniprojekt
+	• Afleveringskrav: 
+		○ Kildekode
+		○ Rapport (maks 6 sider)
+		○ Deadline: 10. maj
+Undervisere
+	• Lea Becker Frahm
+	• Linda Nhu
+	• Morten Grud Rasmussen
+	• Andreas Møgelmose
+Litteratur
+Primære Lærebøger
+	1. Thomas B. Moeslund: "Introduction to Video and Image Processing" (2012)
+	2. Stuart Russell & Peter Norvig: "AI: A Modern Approach" (2022)
+	3. Deisenroth et al.: "Mathematics for Machine Learning" (2020)
+	4. Aurélien Géron: "Hands-on Machine Learning with Scikit-Learn, Keras & TensorFlow"
+Pixels og Koordinater
+Billedrepræsentation
+	• Billede som 2D-array/matrix
+	• Diskret funktion f(x,y)
+	• Koordinatbegrænsninger 
+		○ x og y kun inden for billedets grænser
+		○ Bredde = antal pixels i x-retning
+		○ Højde = antal pixels i y-retning
+Pixel-repræsentation
+	1. Gråtone-billeder: 
+		○ 8-bit (0-255)
+		○ 0 = sort
+		○ 255 = hvid
+		○ Mellemnuancer repræsenterer gråtoner
+	2. Binære billeder: 
+		○ 1-bit
+		○ Kun sort/hvid
+Farverum
+RGB Farverum
+	• Grundlæggende computerfarverum
+	• 3 primærfarver: Rød, Grøn, Blå
+	• Hver farve 256 intensitetsniveauer (0-255)
+	• Pixel som 3-dimensionel vektor
+	• Eksempel: [180, 219, 93]
+Egenskaber
+	• Menneskets visuelle system lignende
+	• Samme energi i R, G, B = gråtone
+Konvertering til Gråskala
+Metoder:
+	1. Simpelt gennemsnit: (R+G+B)/3
+	2. Vægtet gennemsnit: WRR + WGG + WB*B 
+		○ Tager hensyn til menneskets farveopfattelse
+Point Processing
+Karakteristika
+	• Kun én pixel påvirker outputtet
+	• Eksempler: 
+		○ Lysstyrke-ændring
+		○ Thresholding
+		○ Histogram-stretching
+Naboproces (Neighborhood Processing)
+Karakteristika
+	• Kilde-pixel og naboer påvirker output
+	• Bredere billedbehandlingsteknik
+Korrelation og Konvolution
+Matematisk Grundlag
+	• Billedfiltrering gennem matematisk operation
+	• Kernel (filter) bruges til transformation
+	• To primære metoder: 
+		1. Korrelation
+		2. Konvolution
+Forskelle
+	• Korrelation: Direkte sammenligning
+	• Konvolution: Inkluderer rotation/vending af kernel
+	• Ved symmetriske kernels: Næsten identiske resultater
+Kant-detektion
+Definition
+	• Lokale intensitetsændringer
+	• Stærke kanter = stejle områder i 3D-plot
+Kant-detektionsfaser
+	1. Støjreduktion
+	2. Kant-forbedring
+	3. Kant-kandidater beregnes
+	4. Kant-lokalisering
+	5. Afgøre signifikante kanter
+Sobel Operator
+	• Gradient-baseret kantdetektion
+	• Måler intensitetsændringer i x/y-retning
+	• Beregner gradientvektor og -magnitude
+Skabelonmatchning
+Princip
+	• Filter kaldet template/mask
+	• Korreleres med inputbillede
+	• Lysere værdi = bedre match
+	• Anbefales: Normaliseret cross-correlation
+Potentielle Udfordringer
+	• Følsom over for variationer
+	• Kræver præcise templates
+	• Afhængig af belysning/perspektiv
+Tekstur
+Grundlag
+	• Kanter som væsentlig teksturkarakteristik
+	• Analyse af lokale variationsmønstre
+Praktiske Anbefalinger
+Generelle Principper
+	• Forstå matematiske grundlag
+	• Eksperimentér med parametre
+	• Vær opmærksom på supportteknologier
+	• Iterate og test

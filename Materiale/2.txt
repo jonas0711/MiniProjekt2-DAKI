@@ -1,0 +1,759 @@
+Nedenfor finder du en omfattende og detaljeret gennemgang af de vigtigste begreber og metoder inden for farvebilledbehandling, som teksten omhandler. Noterne er opdelt i afsnit med tilhørende forklaringer, matematiske formler og praktiske eksempler – alt sammen formidlet på et letforståeligt sprog.
+
+1. Introduktion til Farvebilleder
+	• Baggrund:
+Indtil nu har vi ofte arbejdet med gråskalebilleder, hvor hvert pixel kun repræsenterer en intensitetsværdi (lysstyrke). Men i den virkelige verden er de fleste objekter farvede, og moderne kameraer optager derfor farvebilleder.
+	• Formål:
+Vi vil her gennemgå, hvordan farvebilleder opstår, hvordan vi opfatter farver, og hvordan de kan repræsenteres og behandles digitalt.
+
+2. Hvad Er en Farve?
+2.1 Lys, Sensorer og Synssansen
+	• Lys og bølgelængde:
+Et billede dannes ved at måle den energi, der rammer en sensor. Men sensoren måler kun energi inden for et bestemt bølgelængdeinterval – det, vi kalder det synlige spektrum.
+	• Øjets fotoreceptorer:
+		○ Stave (Rods): Følsomme over for lysstyrke og måler den samlede mængde energi. De giver os information om gråtoner (achromatiske farver).
+		○ Kegleceller (Cones): Der findes tre typer af kegleceller, som hver er følsomme over for forskellige bølgelængdeintervaller: 
+			§ Type L (Long): Mest følsom over for rødt lys.
+			§ Type M (Medium): Mest følsom over for grønt lys.
+			§ Type S (Short): Mest følsom over for blåt lys.
+Tabel over fotoreceptorer (sammenfatning):
+			Celletype	Bølgelængdeinterval	Toprespons (nm)	Tolkning i hjernen
+			Cones (L)	ca. 400–680 nm	564 nm	Rød
+			Cones (M)	ca. 400–650 nm	534 nm	Grøn
+			Cones (S)	ca. 370–530 nm	420 nm	Blå
+			Rods	ca. 400–600 nm	498 nm	Gråtoner
+	• Perception af lysstyrke:
+De tre typer kegleceller reagerer ikke ens; fx opfattes rød som ca. 2,6 gange så lys som blå, og grøn ca. 5,6 gange så lys som blå ved samme energimængde. Det betyder, at øjet er mest følsomt over for grøn og mindst følsomt over for blå.
+2.2 Hvordan Optræder Farver i Naturen?
+	• Materiale og lys:
+Farven på et objekt afhænger af to hovedfaktorer:
+		1. Lyskilden: Fx udsender solen lys med alle bølgelængder (hvidt lys).
+		2. Objektets materiale: Materialet absorberer visse bølgelængder og reflekterer andre. Fx: 
+			§ En grøn bil reflekterer primært de bølgelængder, som de M-følsomme kegleceller opfatter.
+			§ Et sort objekt absorberer stort set alt lys, hvilket ofte medfører, at det opvarmes mere end et hvidt objekt.
+	• Subtraktive vs. additive farver:
+		○ Subtraktive farver:
+Bruges ved farveblanding med fx maling. Du starter med hvidt (alle bølgelængder til stede) og "fjerner" (absorberer) visse farver ved at tilføje pigment. Eksempel: En hvid papirsfarve bliver grøn, hvis du tilføjer grøn maling, der absorberer andre farver.
+		○ Additive farver:
+Anvendes i skærme (computer, TV). Her skabes farver ved at tilføje lys. Fx: 
+			§ Sort = ingen lys udsendes.
+			§ Hvid = rød, grøn og blå udsendes i samme mængde.
+			§ Gul = rød og grøn udsendes, men ikke blå.
+
+3. Repræsentation af RGB-farvebilleder
+3.1 Den Fysiske Opbygning
+	• RGB-kameraer:
+Farvekameraer måler mængden af rødt, grønt og blåt lys for hvert pixel. Der er to hovedmetoder:
+		1. Tre-sensor-løsning: 
+			§ Hver sensor er udstyret med optiske filtre, der selektivt lader et bestemt farveområde passere.
+			§ Resultatet er tre separate billeder (én for hver farve), som kombineres til én farvebillede.
+		2. Bayer-mønster (én sensor): 
+			§ Her er sensoren opdelt i celler, hvor ca. 50 % måler grøn, og de resterende er fordelt ligeligt mellem rød og blå.
+			§ Eftersom hvert pixel kun måler én farve, skal de to manglende farver estimeres ud fra nabocellerne – dette kaldes demosaicing.
+Figur:
+		○ Fig. 3.4: Illustrerer et farvebillede som en kombination af tre lag (rød, grøn, blå).
+		○ Fig. 3.5: Viser layoutet af et Bayer-mønster med markeringer for, hvilke celler der måler hvilken farve.
+3.2 Digital Repræsentation
+	• RGB Pixel:
+Hvert pixel repræsenteres som en vektor med tre værdier:
+Color pixel=[R,G,B]\text{Color pixel} = [R, G, B] 
+Typisk anvendes 8-bit pr. farve, hvilket giver 256 mulige nuancer per farve og dermed 2563=16 777 216256^3 = 16\,777\,216 mulige farver.
+	• Programmeringseksempel (C-kode):
+// Sætter værdier for pixel ved position (2,4)
+f[2][4].R = 100;
+f[2][4].G = 42;
+f[2][4].B = 10;
+
+Eller via funktioner:
+SetPixel(image, 2, 4, R, 100);
+SetPixel(image, 2, 4, G, 42);
+SetPixel(image, 2, 4, B, 10);
+3.3 RGB Farverummet
+	• RGB Farvecube:
+Et RGB-pixel kan ses som et punkt i et 3D-rum, hvor akserne svarer til R, G og B.
+		○ Hjørnerne: Fx repræsenterer (0,0,0)(0,0,0) sort og (255,255,255)(255,255,255) hvid.
+		○ Gra-vektor: Linjen fra (0,0,0)(0,0,0) til (255,255,255)(255,255,255) indeholder alle gråtoner (achromatiske farver).
+	• Tabel 3.2:
+Giver eksempler på farver ved hjørnerne af RGB-kuben, fx:
+		○ (255,0,0)(255,0,0) = Rød
+		○ (0,255,0)(0,255,0) = Grøn
+		○ (0,0,255)(0,0,255) = Blå
+		○ (255,255,0)(255,255,0) = Gul osv.
+
+4. Konvertering fra RGB til Gråskala
+	• Formel:
+For at konvertere et farvebillede til et gråskalebillede anvendes en lineær kombination af de tre farvekomponenter:
+I=WR⋅R+WG⋅G+WB⋅BI = W_R \cdot R + W_G \cdot G + W_B \cdot B 
+Hvor II er intensiteten, og vægtfaktorerne WRW_R, WGW_G, WBW_B skal summere til 1.
+	• Anvendelse:
+		○ Standardværdier for visuel opfattelse:
+WR=0.299W_R = 0.299, WG=0.587W_G = 0.587, WB=0.114W_B = 0.114.
+Disse vægte afspejler øjets forskelligartede følsomhed for de tre farver og resulterer i en størrelse kaldet luminans (ofte betegnet YY).
+		○ Ændring af vægtene:
+Afhængig af applikationen kan det være nyttigt at vægte fx grønt højere ved behandling af vegetation eller blå ved behandling af metaloverflader.
+	• Bemærkning:
+Når et RGB-billede konverteres til gråskala, går den originale farveinformation tabt, og det er derfor ikke muligt at rekonstruere den fulde farveinformation ud fra gråskalaen.
+
+5. Normaliseret RGB Repræsentation
+5.1 Idéen bag Normalisering
+	• Motivation:
+Pixelværdier langs samme linje gennem RGB-rummet (samme retning fra origo) repræsenterer den samme farve, men med forskellig intensitet. For eksempel: 
+		○ (0,50,0)(0,50,0), (0,100,0)(0,100,0) og (0,223,0)(0,223,0) ligger alle på linjen mellem (0,0,0)(0,0,0) og (0,255,0)(0,255,0) – dvs. de er alle nuancer af grøn.
+5.2 Normaliserede RGB-Værdier
+	• Definition:
+For et RGB-pixel (R,G,B)(R, G, B) defineres de normaliserede værdier som:
+(r,g,b)=(RR+G+B,  GR+G+B,  BR+G+B)(r, g, b) = \left( \frac{R}{R+G+B},\; \frac{G}{R+G+B},\; \frac{B}{R+G+B} \right) 
+(Bemærk: Hvis R=G=B=0R = G = B = 0 sættes (r,g,b)=(0,0,0)(r, g, b) = (0,0,0) for at undgå division med 0.)
+	• Egenskaber:
+		○ Summen r+g+b=1r+g+b = 1.
+		○ Kun to af de tre værdier er uafhængige; den tredje kan udledes.
+5.3 Adskillelse af Farve og Intensitet
+	• Omdefinering:
+I stedet for at behandle et RGB-pixel som (R,G,B)(R, G, B) kan vi beskrive det med:
+		○ Den rigtige farve (uafhængig af intensitet): repræsenteret ved de normaliserede værdier (r,g)(r, g) (da b=1−r−gb = 1 - r - g).
+		○ Den samlede intensitet: I=R+G+BI = R+G+B.
+Dette kan skrives som:
+(R,G,B)  ⟺  (r,g,I)(R,G,B) \iff (r,g,I) 
+	• Eksempel med C-kode:
+Konvertering fra RGB til (r, g, I):
+for (y = 0; y < M; y = y + 1) {
+    for (x = 0; x < N; x = x + 1) {
+        temp = GetPixel(input, x, y, R) +
+               GetPixel(input, x, y, G) +
+               GetPixel(input, x, y, B);
+        value = GetPixel(input, x, y, R) / temp;
+        SetPixel(output, x, y, r, value);
+        value = GetPixel(input, x, y, G) / temp;
+        SetPixel(output, x, y, g, value);
+        value = temp / 3;
+        SetPixel(output, x, y, I, value);
+    }
+}
+
+Konvertering fra (r, g, I) tilbage til RGB:
+for (y = 0; y < M; y = y + 1) {
+    for (x = 0; x < N; x = x + 1) {
+        temp = 3 * GetPixel(input, x, y, I);
+        value = GetPixel(input, x, y, r) * temp;
+        SetPixel(output, x, y, R, value);
+        value = GetPixel(input, x, y, g) * temp;
+        SetPixel(output, x, y, G, value);
+        value = (1 - GetPixel(input, x, y, r) - GetPixel(input, x, y, g)) * temp;
+        SetPixel(output, x, y, B, value);
+    }
+}
+
+6. Farver Udtrykt i Andre Farverum
+I dag opfattes farver ofte ud fra begreberne hue (den dominerende farve) og saturation (farvens renhed). Disse begreber kan afledes ud fra den normaliserede RGB-repræsentation, men er ofte mere intuitive for mennesker.
+6.1 Hue og Saturation
+	• Hue (farvetone):
+		○ Angiver hvilken bølgelængde (og dermed hvilken ren farve) vi ser. Fx svarer en hue på 0° til rød, 120° til grøn osv.
+		○ Bestemmes som vinklen mellem en referencevektor (ofte fra centerpunktet CC i en trekant) og vektoren, der går fra CC til punktet PP (repræsenterer den observerede farve).
+	• Saturation (mætning):
+		○ Beskriver, hvor "ren" farven er – dvs. hvor stor en andel af farven, der er til stede i forhold til hvidt lys.
+		○ Hvis PP ligger direkte på trekantens kant (ren farve) er mætningen 1. Når PP bevæger sig mod midten CC (gråtoner) falder mætningen mod 0.
+Figur:
+		○ Fig. 3.10 og Fig. 3.11: Viser henholdsvis det normaliserede RGB-trekantsdiagram (chromaticity plane) og en cirkulær version, hvor center svarer til gråtoner og kanten til de rene farver.
+6.2 Forskellige Farverum
+Der findes adskillige farverum, der udtrykker farveinformation på forskellige måder. Nedenfor gennemgås de mest almindelige:
+6.2.1 HSI (Hue, Saturation, Intensity)
+	• Definition:
+		○ Intensity II: Typisk beregnet som (R+G+B)/3(R+G+B)/3.
+		○ Hue og Saturation: Udledes fra geometriske overvejelser ud fra det normaliserede farverum, så at hue svarer til vinklen og saturation til den relative afstand fra midten.
+	• Konvertering fra RGB til HSI:
+		○ For hue (H) gives en formel, der involverer: H={cos⁡−1(12(R−G)+(R−B)(R−G)2+(R−B)(G−B))hvis G≥B,360°−cos⁡−1(12(R−G)+(R−B)(R−G)2+(R−B)(G−B))ellers.H = \begin{cases} \cos^{-1}\left(\frac{1}{2}\frac{(R-G)+(R-B)}{\sqrt{(R-G)^2+(R-B)(G-B)}}\right) & \text{hvis } G \ge B, \\ 360° - \cos^{-1}\left(\frac{1}{2}\frac{(R-G)+(R-B)}{\sqrt{(R-G)^2+(R-B)(G-B)}}\right) & \text{ellers.} \end{cases} 
+		○ Saturation (S): S=1−3⋅min⁡{R,G,B}R+G+B(hvor R+G+B≠0)S = 1 - \frac{3 \cdot \min\{R, G, B\}}{R + G + B} \quad \text{(hvor } R+G+B \ne 0\text{)} 
+		○ Intensity (I): I=R+G+B3I = \frac{R+G+B}{3} 
+		○ Bemærk: Hue er udefineret for gråtoner (R=G=BR = G = B), og mætningen sættes til 0, hvis der ikke er nogen farveinformation.
+6.2.2 HSV (Hue, Saturation, Value)
+	• Definition:
+HSV er ofte betragtet som et "kunstnerisk" farverum:
+		○ Hue (H): Samme idé som i HSI.
+		○ Saturation (S): Mængden af farve vs. hvid.
+		○ Value (V): Ikke gennemsnitligt lysstyrke, men den maksimale værdi blandt RR, GG og BB; dvs. hvor "lys" den dominerende farve er.
+	• Konverteringsformler fra RGB til HSV:
+		○ Hue (H): Afhænger af, hvilken farvekomponent der er størst, og beregnes med formler som: H={(G−B)V−min⁡{R,G,B}⋅60°,hvis V=R og G≥B;(B−R)V−min⁡{R,G,B}⋅60°+2⋅60°,hvis V=G;(R−G)V−min⁡{R,G,B}⋅60°+4⋅60°,hvis V=B;H = \begin{cases} \frac{(G-B)}{V-\min\{R,G,B\}} \cdot 60°, & \text{hvis } V = R \text{ og } G \ge B; \\ \frac{(B-R)}{V-\min\{R,G,B\}} \cdot 60° + 2\cdot60°, & \text{hvis } V = G; \\ \frac{(R-G)}{V-\min\{R,G,B\}} \cdot 60° + 4\cdot60°, & \text{hvis } V = B; \\ \end{cases} (Her skal man huske, at H∈[0°,360°[H \in [0°, 360°[.)
+		○ Saturation (S): S=V−min⁡{R,G,B}V(hvis V≠0)S = \frac{V - \min\{R,G,B\}}{V} \quad \text{(hvis } V \ne 0\text{)} 
+		○ Value (V): V=max⁡{R,G,B}V = \max\{R,G,B\} 
+	• Konvertering fra HSV til RGB:
+Denne konvertering involverer først at beregne en variabel K=⌊H/60°⌋K = \lfloor H/60° \rfloor og herefter forskellige mellemregninger, så de endelige RR, GG og BB kan udledes via cases afhængigt af KK.
+6.2.3 YUV og YCbCr
+	• Formål:
+Disse farverum benyttes primært ved transmission, lagring og komprimering (fx TV og JPEG/MPEG). De adskiller luminans (Y) fra krominans (farveinformation).
+	• YUV Farverummet:
+		○ Luminans YY: Y=WR⋅R+WG⋅G+WB⋅BY = W_R \cdot R + W_G \cdot G + W_B \cdot B Med typiske vægte: WR=0.299W_R = 0.299, WG=0.587W_G = 0.587, WB=0.114W_B = 0.114.
+		○ Krominanskomponenter:
+Udtrykkes som forskelle (forskudte signaler) i forhold til YY: X1=WX1(B−Y)1−WB,X2=WX2(R−Y)1−WRX_1 = W_{X1}\frac{(B - Y)}{1 - W_B}, \quad X_2 = W_{X2}\frac{(R - Y)}{1 - W_R} Hvor WX1W_{X1} og WX2W_{X2} er fastlagte vægte.
+		○ RGB kan rekonstrueres fra Y,X1,X2Y, X_1, X_2 med simple ligninger, da farvekomponenterne er givet som lineære kombinationer af YY og forskelværdierne.
+	• YCbCr Farverummet:
+		○ Meget lig YUV, men med offset for at få værdier inden for et bestemt interval [0,255][0,255].
+		○ Konvertering til YCbCr: [YCbCr]=[0.2990.5870.114−0.169−0.3310.5000.500−0.419−0.081]⋅[RGB]+[0128128]\begin{bmatrix} Y \\ C_b \\ C_r \end{bmatrix} = \begin{bmatrix} 0.299 & 0.587 & 0.114 \\ -0.169 & -0.331 & 0.500 \\ 0.500 & -0.419 & -0.081 \end{bmatrix} \cdot \begin{bmatrix} R \\ G \\ B \end{bmatrix} + \begin{bmatrix} 0 \\ 128 \\ 128 \end{bmatrix} 
+		○ Rekonstruering af RGB fra YCbCr: [RGB]=[1.0000.0001.4031.000−0.344−0.7141.0001.7730.000]⋅[YCb−128Cr−128]\begin{bmatrix} R \\ G \\ B \end{bmatrix} = \begin{bmatrix} 1.000 & 0.000 & 1.403 \\ 1.000 & -0.344 & -0.714 \\ 1.000 & 1.773 & 0.000 \end{bmatrix} \cdot \begin{bmatrix} Y \\ C_b - 128 \\ C_r - 128 \end{bmatrix} 
+		○ Dette farverum benyttes fx i JPEG-komprimering.
+
+7. Yderligere Begreber og Terminologi
+Når man studerer farvebehandling, støder man på en række termer, som kan forveksles, men som her defineres kort:
+	• Chromatisk Farve:
+Farver, der ligger uden for gråskalaen i RGB-rummet (altså ikke på linjen mellem sort og hvid).
+	• Achromatisk Farve:
+Farver uden farvetone, dvs. gråtoner.
+	• Intensity:
+Den gennemsnitlige mængde energi – ofte beregnet som (R+G+B)/3(R+G+B)/3.
+	• Brightness/Lightness:
+Den lysstyrke, vi opfatter med øjet.
+	• Luminance:
+Den fysiske mængde lysenergi, ofte målt med specifikke vægte, der afspejler den menneskelige synsans følsomhed.
+	• Luma:
+Den gamma-korrigerede version af luminansen.
+	• Shade, Tint og Tone:
+		○ Shade: Mørkere nuancer opnået ved at blande en farve med sort.
+		○ Tint: Lysere nuancer opnået ved at blande en farve med hvid.
+		○ Tone: En kombination af både shade og tint (ofte med tilsætning af gråt).
+	• Pseudo Color Mapping:
+Teknik, hvor et gråskalebillede mappes til farve for at fremhæve bestemte egenskaber – dette er ikke en "ægte" farvegengivelse, da den originale farveinformation ikke genskabes.
+
+8. Praktiske Eksempler og Øvelser
+Til sidst indeholder teksten også en række øvelser, der hjælper med at forankre forståelsen:
+	1. Forklar begreberne: 
+		○ Rods, cones, achromatisk farve, chromaticity plane, additive farver, subtraktive farver og farverum.
+	2. Antal billeder: 
+		○ Hvor mange 512×512 farvebilleder (24-bit) kan der konstrueres? (Svar: 2563⋅(512×512)256^{3 \cdot (512 \times 512)} – enormt tal.)
+	3. Demosaicing: 
+		○ Givet et billede optaget med Bayer-mønster, hvordan rekonstrueres et fuldt RGB-billede?
+	4. Specifik vægtning: 
+		○ Hvis man ønsker at fremhæve cyan i en gråskalekonvertering, hvilke vægte skal der så bruges for R, G og B?
+	5. Gra-vektor: 
+		○ Er pixelværdien (42,42,42)(42,42,42) placeret på gra-vektoren? (Svar: Ja, da alle tre værdier er ens.)
+	6. Udregningseksempel: 
+		○ Ved en gråskalekonvertering med WB=0W_B = 0 og lige store vægte for R og G, og et givet gråt pixel med værdi 100, beregn den grønne komponent, når R=20R = 20.
+	7. Konverteringer: 
+		○ Konverter pixel (20,40,60)(20,40,60) til de forskellige farverum: (r, g, b), (r, g, I), (H, S, I), (H, S, V), (Y, U, V) og (Y, Cb, Cr).
+	8. Sammenhæng: 
+		○ Vis at r+g+b=1r+g+b = 1.
+Yderligere øvelser:
+	• Farver i HTML, red-eye effekten, white balance og farveblindhed.
+
+Sammenfatning
+I disse noter har vi:
+	• Gennemgået, hvordan farvebilleder dannes ud fra lys og øjets fysiologi (rods og cones).
+	• Beskrevet de to primære metoder til at optage farvebilleder (tre-sensor og Bayer-mønster med efterfølgende demosaicing).
+	• Introduceret RGB-farverummet og dets repræsentation som en 3D-kube, inklusive begrebet gra-vektor.
+	• Set på, hvordan RGB kan konverteres til gråskala ved hjælp af vægtede summer, og hvorfor vægtene ofte vælges ud fra menneskets synsfølsomhed.
+	• Uddybet den normaliserede RGB-repræsentation, hvor farve og intensitet adskilles, og vist eksempler med kode.
+	• Givet en indføring i andre farverum, herunder HSI og HSV, der udtrykker farver med hue og saturation, samt YUV/YCbCr, der anvendes i transmissions- og komprimeringssystemer.
+	• Afsluttet med en oversigt over vigtige terminologier og praktiske øvelser for at styrke forståelsen.
+
+
+Herunder finder du en meget detaljeret og trinvis gennemgang af kapitel 4.4 – Thresholding – samt de tilhørende underemner (farvetresholding, thresholding i video, automatiske globale og lokale thresholdingmetoder, logiske operationer på binære billeder og til sidst en kort introduktion til billedaritmetik). Noterne forklares i et letforståeligt sprog, og der gives ekstra sammenhænge og forklaringer, så du kan redegøre for de enkelte begreber og metoder på en klar og detaljeret måde.
+
+1. Introduktion til Thresholding
+1.1 Hvad er Thresholding?
+	• Definition og Formål:
+Thresholding er en grundlæggende billedbehandlingsoperation, hvor vi omdanner et inputbillede til et binært billede. Det betyder, at vi reducerer antallet af gråtoner til kun to værdier: typisk 0 (sort) og 255 (hvid).
+		○ Formlen i simpel thresholding:
+Hvis vi kalder den oprindelige billedfunktion f(x,y)f(x,y) og den nye (output) billedfunktion g(x,y)g(x,y), defineres thresholding (som et specialtilfælde af grå-niveau mapping) som: g(x,y)={0,hvis f(x,y)≤T,255,hvis f(x,y)>T,g(x,y) = \begin{cases} 0, & \text{hvis } f(x,y) \le T, \\ 255, & \text{hvis } f(x,y) > T, \end{cases} hvor TT er den valgte thresholdværdi.
+		○ Resultatet:
+Alle pixel under TT sættes til sort (0) og alle pixel over TT sættes til hvid (255). Det giver os en silhuet af det objekt, vi er interesserede i.
+	• Praktisk Anvendelse:
+Selvom vi ved, at vi mister detaljer (al information om nuancer mellem sort og hvid forsvinder), kan denne metode være meget effektiv, hvis formålet fx er at lokalisere et objekt (f.eks. en persons position i en videostrøm) og fjerne "støj" og irrelevant baggrundsinformation.
+1.2 Udfordringer og Forudsætninger
+	• Histogrammets Rolle:
+For at thresholding skal virke optimalt, er det ofte ønskeligt, at billedets histogram (fordelingen af pixelværdier) er bimodal. Det betyder:
+		○ Der skal forekomme to tydelige “bjerge” (modi) i histogrammet: 
+			§ Én modus svarer til baggrundens pixelværdier.
+			§ Den anden modus svarer til forgrundens (objektets) pixelværdier.
+		○ I en ideel situation er overgangen mellem de to klart defineret, som vist i en "ideal histogram" (se fx figur 4.17 i teksten).
+		○ Hvis histogrammet derimod ikke er tydeligt bimodalt, bliver valget af en god thresholdværdi vanskeligere.
+	• Billedoptagelse og Histogram:
+Det er vigtigt at tænke på histogrammet allerede i optagelsesfasen. Mange gange er målet med billedoptagelsen netop at sikre, at billedet får et histogram med to tydelige modi – således bliver efterfølgende thresholding enklere og mere robust.
+
+2. Farvetresholding
+2.1 Grundprincip for Farvetresholding
+	• Udvidelse til Farvebilleder:
+I stedet for kun at se på en gråskalaintensitet, kan vi også udføre thresholding på farvebilleder.
+		○ Ideen:
+Hvert pixel har tre værdier (R,G,B)(R, G, B). I farvetresholding sammenlignes hver af disse værdier med to grænseværdier: en nedre (Rmin⁡,Gmin⁡,Bmin⁡R_{\min}, G_{\min}, B_{\min}) og en øvre (Rmax⁡,Gmax⁡,Bmax⁡R_{\max}, G_{\max}, B_{\max}).
+		○ Algoritmen:
+For hvert pixel i billedet: Hvis Rmin⁡<R<Rmax⁡ og Gmin⁡<G<Gmax⁡ og Bmin⁡<B<Bmax⁡, sa˚ sæt g(x,y)=255;\text{Hvis } R_{\min} < R < R_{\max} \text{ og } G_{\min} < G < G_{\max} \text{ og } B_{\min} < B < B_{\max} \text{, så sæt } g(x,y) = 255; ellers sættes g(x,y)=0g(x,y)=0.
+(Se ligning 4.14.)
+	• Fortolkning i Farverummet:
+Denne metode svarer til at definere en “box” i RGB-farverummet – altså et område hvor de farveværdier, vi ønsker at beholde (f.eks. de farver, der kendetegner en persons handsker), ligger.
+		○ Illustration:
+Figur 4.18 viser, hvordan en sådan box i RGB-kuben afgrænser de pixel, som betragtes som objekt (de ligger inden for boxen), mens alle andre pixel klassificeres som baggrund.
+2.2 Udfordringer med Farvetresholding
+	• Lysforhold og Illumination:
+En central udfordring med farvetresholding er, at farvernes absolutte værdier kan ændre sig, når belysningen ændres. Eksempelvis:
+		○ Hvis lysstyrken stiger, vil intensiteten ændre sig, og selvom farven (den relative fordeling af R, G og B) kan være den samme, kan pixelværdierne komme ud af det definerede interval.
+		○ Det fører til, at thresholding kan inkludere for mange (eller for få) pixel – altså at “boxen” bliver for bred, hvilket øger risikoen for fejlagtig klassificering af baggrunds- og objektpixel.
+	• Løsning – Separat Farve og Intensitet:
+For at håndtere lysændringer er det en fordel at konvertere billedet til et farverum, hvor farve og intensitet er adskilt. Eksempler:
+		○ rg-repræsentation: Her normaliseres RGB-værdierne, så farven kommer frem uafhængigt af intensiteten.
+		○ hs-repræsentation: Her bruges hue (farvetone) og saturation (mætning) – som også er mindre følsomme over for ændringer i belysningen.
+		○ Figur 4.19 illustrerer, hvordan de områder (grænserne) hvor objektpixelne ligger kan blive mere præcise i disse farverum.
+	• LUT – Look-Up Table:
+I nogle situationer er objektets farver ikke let at beskrive med simple intervalgrænser (fx en “bananformet” region i farverummet).
+		○ Her kan man anvende en LUT, som er en tabel over de farveværdier, der hører til objektet.
+		○ LUT’en opbygges typisk i en træningsfase, hvor man manuelt udvælger de relevante pixelværdier og derefter bruger en morfologisk lukningsoperation (se kapitel 6) for at få en glat og sammenhængende form.
+		○ Ved runtime erstattes den simple thresholding-algoritme (ligning 4.14) af en funktion, der slår op i LUT’en og sætter pixel til hvid, hvis værdien findes i LUT’en, ellers sort.
+	• Intensitetstresholding:
+En ekstra overvejelse er at udføre thresholding på intensiteten (lysstyrken) af billedet:
+		○ Pixel med meget lav intensitet kan have upålidelige farveinformationer, og pixel med meget høj intensitet (nær hvid) kan være mættede (saturated), hvilket også forvrænger farveopfattelsen.
+		○ Det er ofte en god idé at udelukke sådanne pixel (eller behandle dem særskilt) for at undgå fejlagtig segmentering.
+
+3. Thresholding i Video
+3.1 Udfordringer ved Videosekvenser
+	• Dynamiske Forhold:
+Når du arbejder med video, er der yderligere udfordringer: 
+		○ Let bevægelse: Selv i en statisk scene kan små vibrationer (fx et bord, der bevæger sig let) eller små ændringer i lysforhold forårsaget af f.eks. et 50 Hz lys (som ofte ses indendørs) medføre variationer fra billede til billede.
+		○ Subtraktion af Billeder:
+Hvis du trækker to på hinanden følgende billeder fra hinanden, bør resultatet være et billede med alle pixelværdi 0 (helt sort), hvis scenen var uændret. I praksis vil små forskelle dog give ikke-nul værdier – en måde at måle “støj” eller usikkerheder i dit setup.
+		○ Histogramanalyse:
+En anden metode til at vurdere ændringer er at beregne og visualisere histogrammet for hvert billede. Dermed kan du følge med i, hvordan histogrammet (og derved fordelingen af pixelværdier) ændrer sig over tid.
+3.2 Tilpasning af Thresholdværdi i Video
+	• Læring og Dynamisk Justering:
+På grund af de ovennævnte faktorer (bevægelse, varierende lys) skal thresholdværdier ofte “læres” løbende: 
+		○ Du evaluerer, hvad den optimale thresholdværdi er i de forskellige situationer, og vælger derefter en repræsentativ værdi.
+		○ Hvis lysforholdene ændrer sig drastisk (f.eks. pludseligt sollys gennem et vindue), kan det være nødvendigt at ændre thresholdværdien markant.
+	• Histogram Stretching/Equalization:
+I visse tilfælde kan en histogramstrækning eller -equalization (se fx figur 4.15 og 4.20) hjælpe med at korrigere for forskydninger i histogrammet, før thresholding udføres. Dette virker dog kun, hvis histogrammets struktur (fordelingen af pixel over intensitetsniveauer) ikke ændres fundamentalt.
+
+4. Automatiske Thresholdingmetoder
+4.1 Global Automatic Thresholding – Otsu’s Metode
+	• Grundidé:
+Da et billede ideelt set består af to grupper af pixel – forgrund og baggrund – vil histogrammet have to "bjerge" (to modi). Målet er at finde en thresholdværdi TT, der adskiller disse to grupper på en optimal måde.
+	• Otsu’s Metode:
+Metoden går ud på at finde TT som minimerer en cost-funktion C(T)C(T), der måler de to gruppers interne varians (bredde). Formlen er:
+C(T)=M1(T)⋅σ12(T)+M2(T)⋅σ22(T)C(T) = M_1(T) \cdot \sigma_1^2(T) + M_2(T) \cdot \sigma_2^2(T) 
+hvor:
+		○ M1(T)M_1(T) er antallet af pixel (eller den samlede vægt) i gruppen med pixelværdier ≤T\le T,
+		○ M2(T)M_2(T) er antallet af pixel med værdier >T> T,
+		○ σ12(T)\sigma_1^2(T) og σ22(T)\sigma_2^2(T) er variansen (mål for spredningen) for de to grupper.
+	• Fortolkning:
+En lav varians indikerer, at pixelværdierne i gruppen er tæt på hinanden – dvs. at gruppen er “snæver”. Den ideelle thresholdværdi er den, der får begge grupper til at have lav varians, hvilket betyder, at forgrund og baggrund er klart adskilt.
+	• Resultater:
+Figur 4.21 viser et eksempel på, hvordan Otsu’s metode kan udvælge en thresholdværdi ud fra et inputbillede og dets histogram.
+4.2 Local Automatic Thresholding
+	• Motivering:
+I billeder med ujævn belysning kan et globalt threshold ikke skelne korrekt mellem forgrund og baggrund, fordi samme objekt kan have forskellige intensitetsværdier i forskellige dele af billedet (se fx figur 4.23).
+	• Løsninger:
+Der er to tilgange:
+		1. Lokal Histogramanalyse: 
+			§ Del billedet op i små områder (lokale regioner) og beregn et lokalt histogram.
+			§ Find en optimal thresholdværdi for hvert område, så de to modi i den lokale histogram er bedre adskilt.
+		2. Baggrundssubtraktion: 
+			§ Estimer baggrunden ved at beregne gennemsnittet (eller en glidende gennemsnitsværdi) af nabopixelværdierne.
+			§ Træk baggrundsbilledet fra det oprindelige billede. Resultatet er et billede med mere ensartet belysning, hvor en global threshold nu kan anvendes.
+	• Bemærkninger:
+		○ Ved baggrundssubtraktion kan både positive og negative værdier opstå. Typisk tages den absolutte værdi for at fokusere på forskellen.
+		○ Valget af størrelsen af det område (antal nabopixelværdier) der skal bruges til at beregne gennemsnittet, afhænger af, hvor stort baggrundsområdet er i forhold til forgrundsobjekterne.
+		○ Figur 4.22 illustrerer, hvordan en lokal tilgang kan få et ellers svært thresholdet billede til at vise en klar opdeling mellem forgrund og baggrund.
+
+5. Logiske Operationer på Binære Billeder (Kapitel 4.5)
+5.1 Introduktion
+	• Efter thresholding har vi et binært billede, hvor hver pixel kun kan have to værdier (0 eller 255). Det åbner op for brugen af logiske operationer til at kombinere eller ændre billederne.
+5.2 Grundlæggende Logiske Operationer
+	• NOT (Invertering):
+		○ Virkningen: Alle 0-værdier bliver 255 og omvendt.
+		○ Anvendes, når man ønsker at få billedet til at se “omvendt” ud.
+	• AND:
+		○ Kombinerer to binære billeder, så en pixel kun er hvid (255), hvis den er hvid i begge billeder.
+		○ Eksempel: 255 (hvid) AND 0 (sort) = 0 (sort).
+	• OR:
+		○ Pixel bliver hvid, hvis mindst én af de to billeder har en hvid pixel i den position.
+		○ Eksempel: 0 OR 255 = 255.
+	• XOR (Exclusive OR):
+		○ Pixel bliver hvid, hvis pixelværdierne i de to billeder er forskellige.
+		○ Eksempel: 255 XOR 0 = 255, men 255 XOR 255 = 0.
+	• Programmeringsovervejelse:
+Ofte repræsenteres hvid med 1 i programmering (i stedet for 255) for at spare hukommelse og øge hastigheden, da det kun kræver 1 byte pr. pixel.
+	• Visualisering:
+Figur 4.24 (som nævnes i teksten) viser eksempler på resultaterne af disse logiske operationer.
+
+6. Billedaritmetik (Kapitel 4.6)
+6.1 Kombinere Billeder med Skalarer og Andre Billeder
+	• Grundlæggende idé:
+Udover at kombinere et billede med en konstant (skalar) – som fx i en simpel lysstyrkekorrektion – kan vi også udføre aritmetiske operationer, hvor to billeder kombineres pixel-for-pixel.
+	• Addition af to billeder:
+Hvis du har to billeder f1(x,y)f_1(x,y) og f2(x,y)f_2(x,y) af samme størrelse, kan de kombineres som:
+g(x,y)=f1(x,y)+f2(x,y)g(x,y) = f_1(x,y) + f_2(x,y) 
+		○ Denne metode kan anvendes til fx at fremhæve ændringer eller til at udføre operationer som billedsubtraktion (hvor man trækker ét billede fra et andet).
+	• Anvendelsesmuligheder:
+Billedaritmetik anvendes ofte i forbindelse med andre billedbehandlingsoperationer, såsom baggrundssubtraktion i video (se ovenfor) eller i kombination med logiske operationer for at fremhæve bestemte features i billedet.
+
+Samlet Sammenfatning og Sammenhænge
+	1. Thresholding som Segmentationsteknik:
+		○ Ved at omdanne et billede til et binært billede (kun sort og hvid) isoleres det objekt, der er af interesse (silhuetten), og unødvendig information (baggrunden) fjernes.
+		○ Dette er særligt nyttigt, når det primære formål fx er at finde et objekts position eller konturer, selvom man mister detaljerede gråtoneinformationer.
+	2. Farvetresholding udvider konceptet til farvebilleder:
+		○ Ved at definere et område (en “box”) i RGB-farverummet kan man segmentere objekter baseret på deres farve.
+		○ Ændringer i belysning kan dog gøre dette sårbart – hvorfor det kan være en fordel at skifte til farverum, hvor farve og intensitet er adskilt (fx rg- eller hs-repræsentationer).
+	3. Global vs. Lokal Thresholding:
+		○ En global threshold antager, at hele billedet er belyst ensartet og derfor kan én enkelt thresholdværdi skelne mellem forgrund og baggrund.
+		○ I virkeligheden kan belysningen variere markant (fx i videooptagelser), og her skal der anvendes lokal thresholding eller baggrundssubtraktion, hvor thresholdværdien tilpasses lokalt.
+	4. Automatiske Thresholdingmetoder (Otsu’s metode):
+		○ Ved at analysere histogrammet for hele billedet (global metode) kan man automatisk finde den optimale thresholdværdi, som minimerer spredningen (variansen) inden for forgrund og baggrund.
+		○ Denne metode er effektiv, når histogrammet tydeligt opdeles i to modi, men kan også give acceptable resultater i sværere tilfælde.
+	5. Logiske Operationer og Billedaritmetik:
+		○ Når billedet er blevet thresholdet og er binært, åbner det sig for en række logiske operationer, der kan kombineres for at forbedre eller modificere segmenteringen.
+		○ Billedaritmetik gør det muligt at kombinere to billeder (eller et billede med en konstant) på pixel-niveau, hvilket er centralt i mange avancerede billedbehandlingsapplikationer, herunder baggrundsudtrækning og billedsammenlægning.
+
+Disse noter giver et solidt overblik over kapitel 4.4 og tilhørende afsnit med alle detaljer og sammenhænge med fokus på:
+	• Thresholding (binær segmentering) – både for gråskalebilleder og farvebilleder.
+	• Udfordringer ved valg af thresholdværdi, særligt i tilfælde med ujævn belysning eller varierende lysforhold (som i video).
+	• Metoder til at håndtere disse udfordringer, fx automatiske (global og lokal) thresholdingmetoder og brug af alternative farverum.
+	• Yderligere billedbehandlingsoperationer, såsom logiske operationer og billedaritmetik, som udgør fundamentet for videre avancerede behandlinger.
+
+
+Herunder finder du en omfattende, detaljeret gennemgang af alle emner i kapitel 5 – Neighborhood Processing – med forklaringer, matematiske formler, programmeringsmæssige overvejelser og ekstra sammenhænge. Noterne er formidlet i et letforståeligt sprog, så du kan redegøre for koncepterne både teoretisk og praktisk.
+
+1. Introduktion til Neighborhood Processing
+	• Baggrund:
+I tidligere kapitler har vi behandlet point processing, hvor outputværdien for hvert pixel udelukkende bestemmes af pixelværdien på samme position i inputbilledet. Denne metode er effektiv til visse formål, men den tager ikke hensyn til, hvad der sker i pixelens nærmeste nabolag.
+	• Formålet med Neighborhood Processing:
+Mange vigtige opgaver i billedbehandling (såsom støjreduktion, kantdetektion, skarphed og segmentering) kræver, at vi undersøger forholdet mellem en pixels værdi og dens nabopixelværdier. Det centrale princip er, at outputværdien g(x,y)g(x,y) for en given position afhænger af både f(x,y)f(x,y) (pixelværdien i inputbilledet) og dens omkringliggende naboer.
+	• Illustration:
+Forestil dig en lille del af et billede, hvor der pludselig forekommer et kraftigt fald eller stigning i intensitet (fx i nedre venstre hjørne af en forstørret sektion). Dette kan indikere en kant eller grænse mellem objekter – noget, vi kan finde ved at analysere naboskabet.
+
+2. Medianfilteret
+2.1 Støj og Salt- og Peberstøj
+	• Problemet:
+Billedet kan være "inficeret" med støj, fx salt- og peberstøj, hvor enkelte pixel har ekstreme værdier (0 for sort og 255 for hvid), som adskiller sig markant fra deres naboer.
+	• Målet:
+At fjerne disse støjende pixel ved at erstatte dem med en værdi, der bedre afspejler deres nærmiljø.
+2.2 Metoden – Udskiftning med Medianværdien
+	• Fremgangsmåde:
+I stedet for at beregne gennemsnitsværdien (mean) af naboerne, hvilket kan give et resultat, der stadig “stikker ud” (bliver for påvirket af ekstreme værdier), sorteres de omgivende pixelværdier, og den midterste (medianen) vælges.
+	• Eksempel (3×3 filter):
+Forestil dig en 3×3 blok med pixelværdier, hvor et støjpunkt har en unaturlig værdi. Hvis naboværdierne for et pixel (fx i position (1,1)) er:
+2052042042060208201199205\begin{array}{ccc} 205 & 204 & 204 \\ 206 & \mathbf{0} & 208 \\ 201 & 199 & 205 \\ \end{array} 
+		○ Mean:
+Summen af de 9 værdier: 205+204+204+206+0+208+201+199+205=1813205+204+204+206+0+208+201+199+205 = 1813 (eksempel fra teksten; faktisk division giver ca. 181)
+Men gennemsnittet (181) kan stadig afvige fra det omkringliggende “typiske” niveau.
+		○ Median:
+Ved at sortere værdierne: [0,199,201,204,204,205,205,206,208][0, 199, 201, 204, 204, 205, 205, 206, 208] er medianen den midterste værdi, nemlig 204.
+Dermed erstattes støjpixel med 204, som passer bedre til naboværdierne.
+2.3 Anvendelse og Filterstørrelse
+	• Filterstørrelse og radius:
+Filteret anvendes på hvert pixel i billedet ved at flytte en "vindue" (fx 3×3, 5×5, 7×7 osv.) hen over billedet.
+		○ Et 3×3 filter har en radius på 1 (da der er 1 pixel på hver side af centrum).
+		○ Jo større filteret er, desto flere naboer inkluderes, og dermed bliver den samlede filtrering stærkere – men billedet sløres også mere, og beregningsomkostningerne stiger.
+	• Border-problemet:
+Da filteret har et center, opstår der et problem ved billedets kanter, hvor der ikke er naboer uden for billedet. Løsninger kan være:
+		1. Udvide outputbilledet: Efter filteringen kan man kopiere de sidste rækker/kolonner.
+		2. Udvide inputbilledet: Pad billedet med kopier af kantværdier før filteringen.
+		3. Specielle filtre ved billedets kant: Anvende filtre med tilpassede størrelser i billedets kantområder.
+	• Implementering (eksempel i C-kode):
+for (y = Radius; y < (M - Radius); y++) {
+    for (x = Radius; x < (N - Radius); x++) {
+        // Hent pixelværdier for alle naboer
+        GetPixelValues(x, y);
+        // Sortér de indsamlede pixelværdier
+        SortPixelValues();
+        // Find medianen
+        value = FindMedian();
+        // Sæt output-pixelværdien
+        SetPixel(output, x, y, value);
+    }
+}
+
+Denne løkke anvender medianfilteret på alle de indvendige pixel (uden for kanten).
+
+3. Rank Filters
+	• Definition:
+Medianfilteret er et medlem af en bredere klasse kaldet rank filters. Forskellen mellem de forskellige rank filters ligger i, hvilken værdi der udvælges efter sortering af naboværdierne:
+		○ Minimumsværdi: Udvælges den mindste værdi – billedet bliver mørkere.
+		○ Maksimumsværdi: Udvælges den største værdi – billedet bliver lysere.
+		○ Forskellen: Udregnes som forskellen mellem maksimum og minimum – dette kan fremhæve kontrastforskelle og kan understrege kanter (transitioner).
+	• Anvendelse:
+Valget af rank filter afhænger af, hvilken effekt man ønsker. Medianfilteret fjerner støj uden at sløre billedet unødigt, mens et differensfilter kan anvendes til at forstærke kanter.
+
+4. Correlation
+4.1 Grundlæggende Princippet
+	• Definition:
+I correlation behandles billedet med en kernel (også kaldet filter eller maske). Kernel’en indeholder et sæt koefficienter, som multipliceres med de tilsvarende pixelværdier i et lokalt nabolag. Resultatet bliver summen af disse produkter, og denne sum bliver den nye pixelværdi i outputbilledet.
+	• Matematisk Udtryk:
+For en kernel med radius RR defineres correlationen som:
+g(x,y)=∑j=−RR∑i=−RRh(i,j)⋅f(x+i,y+j)g(x,y) = \sum_{j=-R}^{R} \sum_{i=-R}^{R} h(i,j) \cdot f(x+i, y+j) 
+Hvor:
+		○ f(x,y)f(x,y) er inputbilledet,
+		○ h(i,j)h(i,j) er kernel-koefficienten ved position (i,j)(i,j),
+		○ g(x,y)g(x,y) er outputpixelværdien.
+	• Eksempel:
+For en 3×3 kernel centreret på pixel (2,2)(2,2) beregnes:
+g(2,2)= h(−1,−1)⋅f(1,1)+h(0,−1)⋅f(2,1)+h(1,−1)⋅f(3,1)+h(−1,0)⋅f(1,2)+h(0,0)⋅f(2,2)+h(1,0)⋅f(3,2)+h(−1,1)⋅f(1,3)+h(0,1)⋅f(2,3)+h(1,1)⋅f(3,3)\begin{split} g(2,2) =\,& h(-1,-1)\cdot f(1,1) + h(0,-1)\cdot f(2,1) + h(1,-1)\cdot f(3,1) \\ &+ h(-1,0)\cdot f(1,2) + h(0,0)\cdot f(2,2) + h(1,0)\cdot f(3,2) \\ &+ h(-1,1)\cdot f(1,3) + h(0,1)\cdot f(2,3) + h(1,1)\cdot f(3,3) \end{split} 
+4.2 Normalisering af Kerneler
+	• Problem:
+Når man multiplicerer og summerer pixelværdier, kan outputværdierne overstige intervallet [0,255][0,255] (for 8-bit billeder).
+	• Løsning:
+Normaliser kernel-koefficienterne, så summen af alle koefficienterne (normaliseringsfaktoren) bliver 1. Fx en 3×3 mean filterkernel har summen 1+1+⋯+1=91+1+\cdots+1 = 9 og koefficienterne bliver derfor 1/91/9.
+4.3 Sammenhæng til Medianfilter og Smoothing
+	• Mean Filter (Glidende Gennemsnit):
+Den venstre kernel i en figur (fx Fig. 5.6) svarer til et mean filter, som udglatter billedet ved at tage gennemsnittet af naboværdier.
+	• Gaussian Filter:
+En variant af mean filteret, hvor pixelværdier tættere på centeret vægtes højere end de længere væk – koefficienterne udledes fra den gaussiske (bell-formede) fordeling.
+
+5. Template Matching
+5.1 Formålet
+	• Definition:
+Template matching bruges til at finde et bestemt objekt i et billede. Her defineres en template (en mindre billedeudsnit, som indeholder objektet af interesse) og denne "skabelon" bruges som kernel i en correlation-operation med hele billedet.
+5.2 Normal Cross-Correlation (NCC)
+	• Beregningsprincip:
+For hvert pixel (eller hver position) udregnes ligheden mellem template’en HH og en tilsvarende billedpatch FF i inputbilledet.
+		○ Først konverteres både HH og FF til vektorer (ved at "sammenkæde" rækker eller kolonner).
+		○ Den simple correlation svarer så til dot-produktet mellem disse vektorer.
+	• Normalisering:
+Dot-produktet normaliseres til at ligge i intervallet [0,1][0,1] ved at dividere med produktet af vektorlængderne:
+cos⁡θ=H⃗⋅F⃗∣H⃗∣⋅∣F⃗∣\cos \theta = \frac{\vec{H} \cdot \vec{F}}{|\vec{H}| \cdot |\vec{F}|} 
+Da alle pixelværdier er positive, ligger cos⁡θ\cos \theta i [0,1][0,1]. Denne normaliserede form kaldes normalized cross-correlation (NCC).
+	• Udvidelse – Zero-Mean NCC:
+En avanceret version trækker gennemsnitsværdien fra både template og patch, så forskelle i baggrundsbelysning fjernes. Dette kaldes zero-mean normalized cross-correlation og har output i [−1,1][-1,1].
+	• Anvendelsesudfordringer:
+Template matching er tidskrævende, især når template’en er stor eller der skal testes flere skalaer/rotationer for at imødekomme variationsrige objekter.
+
+6. Edge Detection
+6.1 Definition af Kanter
+	• Hvad er en kant?
+En kant i et billede er et sted, hvor der opstår en markant ændring i gråtoneværdier – svarende til en "hældning" i en 3D-overflade, hvor intensiteten tolkes som højde.
+6.2 Gradient og Kantdetektion
+	• Gradient:
+For en kontinuert kurve er gradienten hældningen (tangentens vinkel). I billeder defineres gradienten som forskellen mellem nabopixelværdier:
+		○ gx(x,y)≈f(x+1,y)−f(x−1,y)g_x(x,y) \approx f(x+1,y) - f(x-1,y)
+		○ gy(x,y)≈f(x,y+1)−f(x,y−1)g_y(x,y) \approx f(x,y+1) - f(x,y-1)
+Disse danner gradientvektoren:
+G⃗=(gx, gy)\vec{G} = (g_x,\, g_y) 
+	• Kanter og Hældninger:
+Stærke gradienter (høj gradientens størrelse) indikerer hurtige ændringer – dvs. kanter. Den præcise gradientstørrelse beregnes som:
+Magnitude=gx2+gy2\text{Magnitude} = \sqrt{g_x^2 + g_y^2} 
+Eller en hurtigere approksimation:
+Approksimeret magnitude=∣gx∣+∣gy∣\text{Approksimeret magnitude} = |g_x| + |g_y| 
+6.3 Prewitt og Sobel Kerneler
+	• Kerneeksempler:
+For at udregne gradienten i et billede bruges små 1×3 eller 3×3 kernels. 
+		○ Prewitt Kerneler: Relativt enkle, men ikke vægtet.
+		○ Sobel Kerneler: Vægter pixelværdier tættere på centeret højere, hvilket reducerer støjfølsomheden og giver glattere resultater.
+	• Implementering:
+Ved at correlere billedet med fx en Sobel kernel for gxg_x og en tilsvarende for gyg_y kan man udlede to kantbilleder (én for vandrette og én for lodrette kanter). 
+		○ Derefter kombineres de ved at summere de absolutte værdier for at danne et samlet edge-billede.
+		○ Resultatet binariseres (typisk med en threshold) for at få de endelige kanter i sort/hvid.
+
+7. Image Sharpening
+7.1 Formål og Metoder
+	• Formålet:
+At øge kontrasten mellem objekter og baggrund ved at fremhæve kanterne, så billedet fremstår skarpere.
+7.2 Metode 1 – Subtraktion af Et Glat Filtreret Billede
+	• Udtryk: g(x,y)=f(x,y)−(f(x,y)∘h(x,y))g(x,y) = f(x,y) - \left( f(x,y) \circ h(x,y) \right) Hvor: 
+		○ f(x,y)f(x,y) er originalbilledet.
+		○ h(x,y)h(x,y) er en stor mean filterkernel (et glat filter).
+		○ ∘\circ angiver correlation.
+Ved at trække den glatte version fra originalen fjernes de lave frekvenskomponenter, og højfrekvente detaljer (kanter) fremhæves.
+7.3 Metode 2 – Laplacian-baseret Skarphed
+	• Anden ordens Derivater:
+Den anden derivat i x- og y-retning approksimeres som:
+gxx(x,y)≈f(x−1,y)−2⋅f(x,y)+f(x+1,y)g_{xx}(x,y) \approx f(x-1,y) - 2 \cdot f(x,y) + f(x+1,y) gyy(x,y)≈f(x,y−1)−2⋅f(x,y)+f(x,y+1)g_{yy}(x,y) \approx f(x,y-1) - 2 \cdot f(x,y) + f(x,y+1) 
+	• Laplacian Kernel:
+Ved at kombinere de to ovenstående udtryk udledes en samlet Laplacian kernel h(x,y)h(x,y).
+Den skærpede version af billedet udregnes som:
+g(x,y)=f(x,y)−c⋅(f(x,y)∘h(x,y))g(x,y) = f(x,y) - c \cdot \left( f(x,y) \circ h(x,y) \right) 
+Hvor cc er en konstant, der styrer mængden af skarphed.
+	• Effekt:
+Denne metode gør kanterne "skarpere" ved at forstærke overgange mellem objekter og baggrund.
+
+8. Yderligere Information: Convolution vs. Correlation
+8.1 Definitioner og Forskelle
+	• Correlation:
+Som beskrevet tidligere, udregnes correlation ved at placere kernel’en over billedet og tage den vægtede sum af pixelværdierne:
+g(x,y)=∑j=−RR∑i=−RRh(i,j)⋅f(x+i,y+j)g(x,y) = \sum_{j=-R}^{R} \sum_{i=-R}^{R} h(i,j) \cdot f(x+i, y+j) 
+	• Convolution:
+Konvolution ligner correlation, men med én væsentlig forskel: kernel’en roteres 180° inden den anvendes. Matematisk defineres konvolution som:
+g(x,y)=∑j=−RR∑i=−RRh(i,j)⋅f(x−i,y−j)g(x,y) = \sum_{j=-R}^{R} \sum_{i=-R}^{R} h(i,j) \cdot f(x-i, y-j) 
+	• Sammenligning:
+		○ For symmetriske kernel’er (hvor h(i,j)=h(−i,−j)h(i,j) = h(-i,-j)) giver convolution og correlation samme resultat.
+		○ I praksis bruges ofte betegnelsen "convolution", selvom den implementeres som correlation, fx i smoothing og edge detection, fordi man herefter tager den absolutte værdi.
+8.2 Anvendelsesområder
+	• Smoothing og Kantdetektion:
+Mange metoder (fx Sobel, Prewitt, Gaussian smoothing) benytter konvolution/correlation, idet de er fundamentale operationer i signalbehandling.
+	• Template Matching:
+Her benyttes udtrykkeligt correlation for at måle ligheden mellem template og billede, og resultatet normaliseres (som i NCC).
+
+9. Sammenfatning og Overordnede Sammenhænge
+	• Neighborhood Processing:
+Handler om at beregne outputværdier baseret på både en pixels egen værdi og dens naboværdier. Denne metode er essentiel for at udføre støjreduktion (medianfilter), blurring (mean filter) og edge detection.
+	• Medianfilteret og Rank Filters:
+Medianfilteret udskifter støjende pixel med medianen af naboværdierne og er særligt effektivt mod salt- og peberstøj, idet det bevarer kantdetaljer bedre end et simpelt gennemsnit.
+	• Correlation og Kernel-baserede Metoder:
+Ved at anvende en kernel (med foruddefinerede koefficienter) kan vi udføre en lang række operationer såsom smoothing, kantdetektion og template matching.
+Normalisering er ofte nødvendig for at sikre, at outputværdierne holdes inden for det ønskede interval.
+	• Edge Detection og Image Sharpening:
+Ved at beregne første- og andenordens derivater (ved hjælp af kernels som Sobel og Laplacian) kan vi finde og forstærke kanter i billedet, hvilket er vigtigt for både objektgenkendelse og billedanalyse.
+	• Convolution vs. Correlation:
+Selvom de to operationer ligner hinanden, er den matematiske forskel (rotation af kernel’en) vigtig i teorien, men ofte ubetydelig i praktiske anvendelser, da vi oftest arbejder med absolutte værdier.
+
+10. Afsluttende Bemærkninger
+	• Implementering og Beregning:
+De beskrevne metoder implementeres typisk som en løkke, der bevæger sig pixel-for-pixel over billedet, hvor et lokalt vindue (kernel) anvendes.
+Vigtige overvejelser er valg af filterstørrelse, håndtering af billedkanter (border-problemet) og normalisering for at sikre, at outputværdierne ligger inden for det ønskede interval.
+	• Praktiske Anvendelser:
+		○ Medianfilteret fjerner effektivt isoleret støj uden at miste kantinformation.
+		○ Correlation anvendes bredt til både smoothing, template matching og edge detection.
+		○ Template matching med normal cross-correlation er et kraftfuldt værktøj til objektgenkendelse, dog med en høj beregningsomkostning, især ved variation i skala og rotation.
+		○ Edge detection med gradientbaserede metoder (Sobel, Prewitt, Laplacian) er afgørende for at identificere objekters konturer, hvilket igen er fundamentalt for opgaver som segmentering og måling.
+	• Øvelser og Videre Studier:
+Kapitlet afsluttes med en række øvelser, der skal hjælpe med at forankre forståelsen af begreberne – fra simpel filtrering til avanceret template matching og edge detection. Det anbefales at gennemgå øvelserne for at blive tryg ved både de matematiske beregninger og implementeringen i kode.
+
+
+Herunder finder du en meget detaljeret og trinvis gennemgang af alle emner i kapitel 7 – BLOB Analysis – med forklaringer af de enkelte begreber, metoder og matematiske udtryk. Noterne er skrevet i et letforståeligt sprog og indeholder ekstra sammenhænge, så du kan redegøre for processen fra ekstraktion af BLOBs til udtrækning af features og videre til klassificering af objekter.
+
+1. Introduktion til BLOB Analysis
+	• Hvad er en BLOB?
+BLOB står for Binary Large OBject og refererer til en sammenhængende gruppe af pixel i et binært billede, dvs. et billede hvor hver pixel kun kan have to værdier (ofte sort og hvid).
+		○ “Large” betyder, at vi kun er interesserede i objekter af en vis størrelse – små grupper af pixel (ofte støj) ignoreres.
+	• Problemstillinger eksemplificeret:
+		○ Eksempel 1: Bestem hvor mange cirkler (f.eks. tre) der findes i et billede.
+		○ Eksempel 2: Find placeringen af en person i et billede.
+Begge opgaver kræver først at udtrække de separate objekter (BLOB-ekstraktion) og derefter at evaluere (klassificere) hvilke af dem, der svarer til det ønskede objekt (f.eks. cirkler eller mennesker).
+	• Overordnet Proces:
+		1. BLOB Extraction: Identificer og isolér de sammenhængende objekter i det binære billede.
+		2. BLOB Feature Extraction: Udregn et sæt karakteristika (features) for hver BLOB, så den kan repræsenteres med en kompakt “featurevektor”.
+		3. BLOB Classification: Sammenlign BLOB’ernes features med en prototype (eller et træningssæt) for at afgøre, hvilke BLOBs der svarer til det ønskede objekt.
+
+2. BLOB Extraction
+2.1 Forbindelse (Connectivity)
+	• Connectivity Definering:
+For at vide, om to pixel tilhører samme BLOB, skal vi definere, hvilke pixel der anses for at være naboer. 
+		○ 4-Connectivity: Kun de fire direkte naboer (op, ned, venstre, højre) tælles. Denne metode er hurtigere (færre beregninger) men kan i visse tilfælde opdele objekter i to.
+		○ 8-Connectivity: Her medregnes også de diagonale naboer, hvilket ofte giver en mere “naturlig” sammenhængende opfattelse af objekter, men kræver flere beregninger.
+Illustration:
+– Figur 7.2 i bogen viser, hvordan 4- og 8-connectivity påvirker, om et objekt opdeles eller ej.
+2.2 Connected Component Analysis – Grass‑Fire Algorithm
+For at udtrække BLOBs anvendes algoritmer, der kaldes connected component analysis eller connected component labeling. En af de mest kendte er grass‑fire algoritmen.
+2.2.1 Den Recursive (Rekursivt Implementerede) Grass‑Fire Algorithm
+	• Princippet:
+Forestil dig, at du står midt i et tørt græsareal (objektpixel) med “fire” (flammer) der spredes i de retninger, som defineres af den valgte connectivity (her benyttes 4-connectivity).
+		○ Når et objektpixel findes (f.eks. ved scanning fra øverste venstre mod nederste højre), starter "ilden" ved den pixel. Alle sammenhængende pixel, der kan "brænde" (dvs. er objektpixel) ud fra denne pixel, får samme label (fx 1) og markeres som forarbejdede (“burned”, ofte ved at sætte dem til 0 i inputbilledet for at undgå gentagen behandling).
+	• Eksempel:
+– I Figur 7.3 ses et eksempel, hvor den første objektpixel (f.eks. koordinat (2,0)) sættes til label 1. Herefter undersøges alle dens 4 naboer (op, ned, venstre, højre).
+– Hvis en nabo også er en objektpixel, får den samme label og “brænder” videre i en rekursiv proces, indtil hele BLOB’en er udmærket.
+	• Bemærkninger ved rekursion:
+		○ Algoritmen kalder sig selv for hver ny fundet nabo, hvilket kan føre til mange funktionkald.
+		○ Der skal sikres korrekt terminering, og der skal tages hensyn til den begrænsede mængde hukommelse (stakplads) i programmet.
+2.2.2 Den Sequential (Sekventielle) Grass‑Fire Algorithm
+	• Princippet:
+Denne version scanner billedet fra øverste venstre til nederste højre. 
+		○ Når et objektpixel findes, bliver det straks mærket (f.eks. label 1) og “brændt” (sættes til 0 i inputbilledet).
+		○ I stedet for rekursive kald placeres alle fundne nabopixelkoordinater i en liste. Derefter behandles pixel for pixel i denne liste for at udvide den aktuelle BLOB.
+		○ Når listen er tømt, fortsætter scanningen, indtil der findes en ny ubehandlet objektpixel, der starter en ny “brand” (nyt label).
+	• Fordele: 
+		○ Denne metode undgår de problemer, der kan opstå med rekursion (f.eks. for mange samtidige funktionkald og risikoen for at løbe tør for stakplads).
+
+3. BLOB Feature Extraction
+Når BLOBs er udtrukket, skal de repræsenteres med karakteristiske mål – såkaldte features. Formålet er at fjerne irrelevant information og kun beholde de karakteristika, der er nyttige til at skelne mellem objekter.
+3.1 Almindelige Features
+	1. Area (Areal):
+		○ Antallet af pixel, der udgør BLOB’en.
+		○ Bruges til at fjerne støj (meget små objekter) eller irrelevante store objekter.
+	2. Bounding Box (Indramning):
+		○ Det mindste rektangel, der fuldstændigt omslutter BLOB’en.
+		○ Udregnes ved at finde minimum og maksimum for x- og y-koordinaterne.
+		○ Bredden = xmax−xminx_{\text{max}} - x_{\text{min}}; højden = ymax−yminy_{\text{max}} - y_{\text{min}}.
+		○ Kan bruges som en region-of-interest (ROI).
+	3. Bounding Circle (Omsluttende Cirkel):
+		○ Den mindste cirkel, der fuldstændig indeholder BLOB’en.
+		○ Findes ved at bestemme BLOB’ens center (se nedenfor) og måle afstanden til kanten i alle retninger (fx med en given vinkelopløsning).
+		○ Den maksimale afstand udgør cirklens radius.
+	4. Convex Hull (Konveks Skrog):
+		○ Den mindste konvekse polygon, der omslutter BLOB’en – svarende til at strække et elastikbånd rundt om objektet.
+		○ Kan beregnes ved at starte fra et yderpunkt og “følge” BLOB’ens ydre grænse.
+	5. Bounding Box Ratio (Forhold mellem højde og bredde):
+		○ Udtrykker, hvor langstrakt BLOB’en er.
+		○ Beregnes som: Box Ratio=HøjdeBredde\text{Box Ratio} = \frac{\text{Højde}}{\text{Bredde}} 
+		○ Kan indikere, om objektet er langt, højt eller relativt kvadratisk.
+	6. Compactness:
+		○ Måler, hvor “kompakt” BLOB’en er.
+		○ Defineres ofte som forholdet mellem BLOB’ens areal og arealet af dens bounding box: Compactness=Areal af BLOBBredde×Højde\text{Compactness} = \frac{\text{Areal af BLOB}}{\text{Bredde} \times \text{Højde}} 
+		○ Hjælper med at skelne fx en sammenpresset form (som en knytnæve) fra en mere spredt form (som en hånd med udstrakte fingre).
+	7. Center of Mass (Centrum af Tyngdepunkt):
+		○ Beregnes som gennemsnittet af x- og y-koordinaterne for alle pixel i BLOB’en: xc=1N∑i=1Nxi,yc=1N∑i=1Nyix_c = \frac{1}{N}\sum_{i=1}^{N} x_i,\quad y_c = \frac{1}{N}\sum_{i=1}^{N} y_i hvor NN er antallet af pixel i BLOB’en.
+		○ Giver et præcist mål for BLOB’ens “centrum”.
+		○ I tilfælde af “sammensatte” objekter kan medianen bruges som alternativ, da den er mindre følsom over for ekstreme værdier.
+	8. Center of the Bounding Box:
+		○ Et simpelt og hurtigt estimat for centrum: xbb=xmin+xmax2,ybb=ymin+ymax2x_{bb} = \frac{x_{\text{min}} + x_{\text{max}}}{2},\quad y_{bb} = \frac{y_{\text{min}} + y_{\text{max}}}{2} 
+	9. Perimeter (Omkreds):
+		○ Længden af BLOB’ens kontur.
+		○ Kan beregnes ved at følge kanten (fx ved hjælp af en kantdetekteringsmetode) og tælle antallet af pixel eller ved en approksimering.
+	10. Circularity:
+		○ Måler, hvor rund en BLOB er.
+		○ En definition (Heywoods cirkularitetsfaktor) er: Circularity=Perimeter of BLOB2π⋅Area of BLOB\text{Circularity} = \frac{\text{Perimeter of BLOB}}{2\sqrt{\pi \cdot \text{Area of BLOB}}} 
+		○ En perfekt cirkel har cirkularitetsværdi tæt på 1; større afvigelser indikerer en mindre cirkulær form.
+		○ Alternativt kan man bruge variansen af de forskellige radier (målt fra center til kanten) – jo mindre varians, desto mere cirkulært.
+3.2 Featurevektorer
+	• Formålet med Featurevektorer:
+Når hver BLOB er beskrevet ved et sæt features (fx area, cirkularitet, bounding box ratio, m.v.), samles disse værdier i en featurevektor (fx f⃗i\vec{f}_i for BLOB ii). 
+		○ Hvis der er pp features, har vi en pp-dimensionel vektor for hver BLOB.
+	• Brug i Klassifikation:
+Disse featurevektorer danner grundlag for at adskille objekter fra baggrund eller til at skelne mellem forskellige typer objekter.
+
+4. BLOB Classification
+4.1 Formålet
+	• Efter at have ekstraheret BLOBs og udregnet deres features, skal vi afgøre, hvilke BLOBs der repræsenterer de objekter, vi er interesserede i (fx cirkler eller mennesker).
+4.2 Prototype Modeller og Beslutningsregioner
+	• Prototype:
+Definér et sæt ideelle featureværdier for det ønskede objekt. Eksempelvis kan en perfekt cirkel have en cirkularitet på 1, og vi kan acceptere BLOBs med cirkularitet i intervallet [0.85,1.15][0.85, 1.15].
+	• Tilføjelse af Flere Features:
+Når der skal skelnes på baggrund af fx både cirkularitet og areal (hvis vi kun leder efter store cirkler), udvides featurevektoren til at blive todimensional (eller højere).
+		○ I en 2D feature space defineres en beslutningsregion (fx en rektangel eller en ellipse), hvor BLOBs med featureværdier inden for denne region klassificeres som det ønskede objekt.
+4.3 Klassifikationsmetoder
+	1. Box Classifier: 
+		○ Beslutningsregionen defineres ved at angive minimums- og maksimumsværdier for hver feature.
+		○ Hvis en BLOB’s featurevektor ligger inden for denne “boks”, klassificeres den som et objekt.
+	2. Euclidean Distance (ED) Classifier: 
+		○ Mål afstanden mellem en BLOB’s featurevektor og prototype-vektoren.
+		○ Hvis afstanden er under en forudbestemt grænse, klassificeres BLOB’en som objekt.
+	3. Weighted Euclidean Distance (WED) Classifier: 
+		○ Når de enkelte features har forskellig skala (fx er arealet i tusinder og cirkulariteten tæt på 1), kan hver components bidrag vægtes med den respektive varians: WED(f⃗i,prototype)=∑j=1p(fi(mj)−mean(mj))2variance(mj)WED(\vec{f}_i, \text{prototype}) = \sqrt{\sum_{j=1}^{p} \frac{(f_{i}(m_j) - \text{mean}(m_j))^2}{\text{variance}(m_j)}} 
+		○ Denne metode sikrer, at features med stor varians ikke dominerer klassifikationen.
+	4. Mahalanobis Distance Classifier: 
+		○ Når der er afhængighed mellem features (dvs. de er korrelerede), kan den almindelige eller vægtede Euclidean distance fejle.
+		○ Mahalanobis-afstanden tager højde for korrelationer og skalerer efter varians-covariansmatricen.
+		○ Denne metode generaliserer de to forrige og kan ses som den mest præcise statistiske distance, idet den giver en “roteret” beslutningsregion (typisk en ellipse).
+	• Normalisering af Features:
+Det er ofte nødvendigt at normalisere features, så de kommer i samme interval (fx [0,1]). For eksempel kan: 
+		○ Area feature: Area_norm=Area of BLOB−min Area of ModelArea of Model\text{Area\_norm} = \frac{\text{Area of BLOB} - \text{min Area of Model}}{\text{Area of Model}} 
+		○ Circularity feature: normaliseres tilsvarende, så de to features ikke påvirkes uforholdsmæssigt af hinanden.
+
+5. Yderligere Information om Region Growing og Udvidelser
+	• Region Growing:
+		○ Grass‑fire algoritmen kan modificeres til at arbejde med gråtone- eller farvebilleder, ikke kun binære billeder.
+		○ I denne version starter man fra et seed point (ofte brugervalgt) og “vokser” regionen udad ved at inkludere nabopixelværdier inden for en bestemt gråtone- eller farveinterval.
+		○ Denne metode ses som en kombination af thresholding og connected component analysis og kan fx bruges til at fjerne red-eye effekten i fotografier.
+	• Kombination med Feature Extraction:
+		○ For at spare tid og beregningskraft kan processen med at udtrække BLOBs og beregne features ofte kombineres, så man behandler hver BLOB kun én gang.
+	• Andre Avancerede Features:
+Udover de ovennævnte kan man overveje avancerede formbaserede features (fx Hu-momenter) eller teksturbaserede features, alt efter applikationens behov.
+	• Valg af Klassifikator:
+Valget af hvilken klassifikator der skal anvendes, afhænger af, hvor adskilte de forskellige objekters featurevektorer er i feature space. Hvis forskellene er store, kan en simpel box classifier være tilstrækkelig, men hvis de er tæt på hinanden, er statistiske metoder som den vægtede Euclidean eller Mahalanobis distance ofte bedre.
+
+6. Sammenfatning
+	• Overordnet Proces:
+		1. Ekstraktion af BLOBs: Ved hjælp af connected component analysis (fx grass‑fire algoritmen) opdeles billedet i sammenhængende objekter.
+		2. Feature Extraction: For hver BLOB udregnes en række målbare karakteristika (area, bounding box, cirkularitet, center of mass osv.), som danner en featurevektor.
+		3. Klassifikation: Featurevektorerne sammenlignes med en prototype eller træningsdata ved hjælp af en valgt klassifikationsmetode (box classifier, Euclidean, weighted Euclidean eller Mahalanobis distance) for at afgøre, hvilke BLOBs der repræsenterer de ønskede objekter.
+	• Vigtige Overvejelser:
+		○ Valg af connectivity (4- vs. 8-connectivity) kan have indflydelse på, hvordan objekter opdeles.
+		○ Håndtering af BLOBs, der rører billedets kant, er ofte nødvendig, da man ikke har fuld information om objekter, der er afskåret.
+		○ Når objekter klassificeres, er det ofte en god idé at indsamle træningsdata og se fordelingen af featurevektorer i et p-dimensionalt rum, så man kan bestemme den mest passende beslutningsregion.
+		○ Normalisering af features er afgørende, hvis de enkelte mål er målt i forskellige enheder eller skalaer.
+	• Eksempler og Anvendelser:
+		○ Bestemmelse af antallet af cirkler i et billede, hvor cirkularitet og area er vigtige features.
+		○ Lokalisering af mennesker i billeder ved at udtrække BLOBs og analysere deres form og placering (fx center of mass).
+		○ Region growing kan benyttes, hvis man ønsker at segmentere en region ud fra et seed point – en metode, der ligner grass‑fire, men anvendes til gråtone- eller farvebilleder.
+
+7. Afsluttende Bemærkninger og Øvelser
+	• Praktiske Implementeringer:
+De beskrevne algoritmer (rekursiv og sekventiel grass‑fire) kan implementeres med henholdsvis rekursive funktionskald eller ved at bruge en liste/kø til at gemme og iterere over nabo-pixelpositioner.
+		○ Vær opmærksom på “border-problemet” og hvordan du håndterer BLOBs, der rører billedets kant.
+	• Featurevalg og Klassifikationsmetoder:
+Valg af features og klassifikationsmetode afhænger af applikationen – derfor er det en god idé at teste på store datasæt og visualisere fordelingen af featurevektorer i f.eks. 2D eller 3D for at vælge den bedste tilgang.
+	• Øvelserne i kapitlet (se slutningen af kapitlet) opfordrer til at:
+		○ Beskrive og illustrere begreber som BLOB, connectivity, grass‑fire algoritmen (både rekursiv og sekventiel), feature space og klassifikation.
+		○ Udregne specifikke features for givne BLOBs (area, bounding box ratio, compactness, center of mass m.v.).
+		○ Overveje forskelle og fordele mellem de forskellige metoder (f.eks. box classifier versus statistiske klassifikatorer).
