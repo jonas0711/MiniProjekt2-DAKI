@@ -17,7 +17,7 @@ King Domino har specifikke regler for pointberegning:
 For detaljerede regler, se de officielle spilleregler eller se videoen om pointgivning.
 
 ## Projektformat
-Miniprojektet laves i tomandsgrupper. Tast grupperne ind [her](https://link-til-gruppetilmelding) efter første kursusgang.
+Miniprojektet laves i tomandsgrupper.
 
 ### Krav til projektet
 1. Systemet skal kunne identificere forskellige terræntyper på billedet.
