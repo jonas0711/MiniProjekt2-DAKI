@@ -1,0 +1,113 @@
+StatQuest K-means Clustering - Omfattende Noter
+1. Introduktion til K-means Clustering
+K-means clustering er en usuperviseret læringsalgoritme, der bruges til at gruppere datapunkter i foruddefinerede antal clusters (klynger). Algoritmen søger at minimere variationen inden for hver klynge.
+Anvendelsesområder:
+	• Gruppering af forskellige typer tumorer
+	• Identificering af forskellige celletyper
+	• Andre situationer hvor data naturligt falder i distinkte grupper
+Clustering kan udføres visuelt ved hjælp af menneskets øje, men computere kan hjælpe med at objektivt identificere klynger i data.
+Nøglebegreber:
+	• Clustering: Gruppering af datapunkter baseret på ligheder
+	• K: Antallet af ønskede klynger i datasættet
+2. K-means Clustering Algoritmen
+K-means clustering følger en iterativ proces bestående af følgende trin:
+Trin 1: Vælg antal klynger (K)
+	• Dette er brugerspecificeret
+	• I eksemplet bruges K=3
+Trin 2: Vælg tilfældige startpunkter
+	• Algoritmen vælger tilfældigt K datapunkter fra datasættet
+	• Disse punkter fungerer som de initielle klyngecentre
+Trin 3: Beregn afstande
+	• For hvert datapunkt beregnes afstanden til alle klyngecentre
+	• Afstanden måles typisk som euklidisk afstand
+Trin 4: Tildel punkter til nærmeste klynge
+	• Hvert datapunkt tildeles til den klynge, hvis center er nærmest
+Trin 5: Beregn middelværdi (mean) for hver klynge
+	• For hver klynge beregnes gennemsnitspositionen af alle punkter
+	• Disse gennemsnitspositioner bliver de nye klyngecentre
+Trin 6: Gentag trin 3-5
+	• Processen gentages indtil klyngerne ikke længere ændrer sig
+	• Algoritmen er konvergeret når der ikke sker flere ændringer i tildelingen
+Opsummering: K-means er en iterativ algoritme, der starter med tilfældige klyngecentre og gentagne gange tildeler punkter til nærmeste klynge og opdaterer klyngecentrene baseret på middelværdier.
+3. Evaluering af Clustering Kvalitet
+Variation inden for klynger
+	• Kvaliteten af clustering måles ved at beregne den samlede variation inden for hver klynge
+	• Mindre variation indikerer bedre clustering
+Gentagelse med forskellige startpunkter
+	• K-means kan resultere i suboptimale løsninger afhængigt af de tilfældige startpunkter
+	• Algoritmen køres derfor flere gange med forskellige startpunkter
+	• Den løsning med mindst samlet variation vælges som den bedste
+Konkret fremgangsmåde:
+	1. Kør algoritmen med tilfældige startpunkter
+	2. Beregn den samlede variation inden for klyngerne
+	3. Gentag med nye tilfældige startpunkter
+	4. Sammenlign variationen og vælg den bedste løsning
+Opsummering: For at finde den optimale clustering, gentages K-means flere gange, og den løsning, der giver mindst samlet variation inden for klyngerne, vælges.
+4. Bestemmelse af Optimal K-værdi
+Et centralt spørgsmål er: "Hvordan bestemmer man den bedste værdi for K?"
+Afprøvning af forskellige K-værdier
+	• Start med K=1 (worst case scenario)
+	• Øg K trinvist (K=2, K=3, K=4, osv.)
+	• Beregn den samlede variation for hver K-værdi
+Elbow-metoden
+	• Plot den samlede variation mod K-værdien
+	• Find "albuen" (elbow) i plottet - det punkt hvor reduktionen i variation aftager markant
+	• Dette punkt indikerer den optimale K-værdi
+Eksempel:
+	• Med K=1: Høj variation (alle punkter i én klynge)
+	• Med K=2: Lavere variation
+	• Med K=3: Markant lavere variation
+	• Med K=4: Kun lidt lavere variation end K=3
+Dette indikerer at K=3 er den optimale værdi, da den giver en betydelig reduktion i variation, mens yderligere forøgelse af K kun giver marginale forbedringer.
+Opsummering: Elbow-metoden er en teknik til at bestemme det optimale antal klynger ved at analysere, hvor forøgelse af K ikke længere giver betydelig reduktion i variation.
+5. Sammenligning med Hierarkisk Clustering
+Væsentlige forskelle:
+	• K-means clustering:
+		○ Kræver forudbestemmelse af antallet af klynger (K)
+		○ Forsøger specifikt at inddele data i præcis K klynger
+	• Hierarkisk clustering:
+		○ Behøver ikke forudbestemmelse af antallet af klynger
+		○ Viser parvis hvilke elementer der er mest ens
+		○ Bygger et hierarki af klynger
+Opsummering: Mens K-means kræver en forudbestemt K-værdi og skaber præcis K klynger, er hierarkisk clustering mere fleksibel og viser relationerne mellem elementer uden at kræve et specifikt antal klynger.
+6. Anvendelse af K-means på Forskellige Datatyper
+Endimensionelle data (punkter på en linje)
+	• Enkleste form for K-means clustering
+	• Afstande måles direkte langs linjen
+Todimensionelle data (punkter i et koordinatsystem)
+	• Punkter plottes i et XY-koordinatsystem
+	• Afstande beregnes ved hjælp af euklidisk afstand (Pythagoras' sætning)
+	• Samme grundlæggende fremgangsmåde som med endimensionelle data
+Heatmap data
+	• Heatmaps kan konverteres til koordinater
+	• Hver prøve kan repræsenteres som en dimension
+	• Med to prøver: Data kan plottes i et XY-koordinatsystem
+	• Med flere prøver: Multidimensionel afstandsberegning anvendes
+Opsummering: K-means kan anvendes på data med forskellig dimensionalitet, fra simple endimensionelle data til komplekse multidimensionelle heatmaps.
+7. Beregning af Euklidisk Afstand
+Euklidisk afstand er den grundlæggende metrik for at måle afstande i K-means clustering:
+To dimensioner (XY-koordinatsystem)
+	• Formel: √(x² + y²)
+	• Dette er den klassiske Pythagoras' sætning
+Tre dimensioner (XYZ-koordinatsystem)
+	• Formel: √(x² + y² + z²)
+Fire eller flere dimensioner
+	• Formel: √(x² + y² + z² + a² + ...)
+	• Formlen udvides med et led for hver ekstra dimension
+Opsummering: Euklidisk afstand generaliseres let til højere dimensioner ved at tilføje kvadratet af forskellen for hver dimension under kvadratroden.
+Overordnet Opsummering
+K-means clustering er en kraftfuld algoritme til at gruppere data i et forudbestemt antal klynger. Algoritmen fungerer ved iterativt at tildele punkter til den nærmeste klynge og opdatere klyngecentrene. Kvaliteten af clustering afhænger af:
+	1. Valg af K-værdi (kan bestemmes ved hjælp af elbow-metoden)
+	2. De tilfældige startpunkter (løses ved at køre algoritmen flere gange)
+K-means kan anvendes på data af enhver dimensionalitet, fra endimensionelle punkter til komplekse multidimensionelle datasæt, ved hjælp af euklidisk afstand som afstandsmål.
+Nøglefordele:
+	• Simpel og let at implementere
+	• Effektiv til store datasæt
+	• Kan anvendes på data med forskellige dimensioner
+Begrænsninger:
+	• Kræver forudbestemmelse af K
+	• Kan konvergere til lokale optima afhængigt af startpunkterne
+	• Antager at klynger er cirkulære/sfæriske og af omtrent samme størrelse
+
+Fra <https://claude.ai/chat/b6a057ce-7b2e-45e4-937a-3153a0881db6> 
+

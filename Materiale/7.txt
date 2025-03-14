@@ -1,0 +1,337 @@
+Clustering i Scikit-learn
+1. Grundlæggende om clustering i Scikit-learn
+1.1 Introduktion
+	• Clustering implementeres i Scikit-learn modulet sklearn.cluster
+	• Clustering bruges til uovervåget læring af data uden labels
+	• Hver clustering-algoritme findes i to varianter: 
+		○ En klasse med fit-metode til at lære clusters på træningsdata
+		○ En funktion der returnerer et array af heltal-labels for de forskellige clusters
+		○ Labels for træningsdata kan findes i labels_-attributten
+1.2 Input data
+	• Algoritmer i modulet kan tage forskellige typer matricer som input: 
+		○ Standard datamatricer med form (n_samples, n_features)
+		○ Similaritetsmatricer med form (n_samples, n_samples) for visse algoritmer: 
+			§ AffinityPropagation
+			§ SpectralClustering
+			§ DBSCAN
+	• Similaritetsmatricer kan genereres med funktioner fra sklearn.metrics.pairwise
+2. Oversigt over clustering-metoder
+2.1 Sammenligning af algoritmer
+Scikit-learn tilbyder flere forskellige clustering-algoritmer med forskellige egenskaber:
+Metode	Parametre	Skalerbarhed	Anvendelsesområde	Geometri (metrik)
+K-Means	antal clusters	Meget stor n_samples, medium n_clusters med MiniBatch	Generel, jævn clusterstørrelse, flad geometri, induktiv	Afstande mellem punkter
+Affinity Propagation	dæmpning, sample preference	Ikke skalerbar med n_samples	Mange clusters, ujævn clusterstørrelse, ikke-flad geometri, induktiv	Graf-afstand
+Mean-shift	båndbredde	Ikke skalerbar med n_samples	Mange clusters, ujævn clusterstørrelse, ikke-flad geometri, induktiv	Afstande mellem punkter
+Spectral Clustering	antal clusters	Medium n_samples, lille n_clusters	Få clusters, jævn clusterstørrelse, ikke-flad geometri, transduktiv	Graf-afstand
+Ward hierarkisk	antal clusters eller tærskel	Stor n_samples og n_clusters	Mange clusters, connectivity constraints, transduktiv	Afstande mellem punkter
+Agglomerative	antal clusters, linkage type, afstand	Stor n_samples og n_clusters	Mange clusters, connectivity constraints, ikke-euklidiske afstande, transduktiv	Vilkårlig parvis afstand
+DBSCAN	neighborhood størrelse	Meget stor n_samples, medium n_clusters	Ikke-flad geometri, ujævn clusterstørrelse, outlier fjernelse, transduktiv	Afstande mellem nærmeste punkter
+HDBSCAN	minimum cluster medlemskab	Stor n_samples, medium n_clusters	Ikke-flad geometri, ujævn clusterstørrelse, outlier fjernelse, transduktiv, hierarkisk, variabel cluster densitet	Afstande mellem nærmeste punkter
+OPTICS	minimum cluster medlemskab	Meget stor n_samples, stor n_clusters	Ikke-flad geometri, ujævn clusterstørrelse, variabel cluster densitet, outlier fjernelse, transduktiv	Afstande mellem punkter
+Gaussian Mixtures	mange	Ikke skalerbar	Flad geometri, god til densitetsestimering, induktiv	Mahalanobis afstande til centre
+BIRCH	forgreningsfaktor, tærskel	Stor n_clusters og n_samples	Stort datasæt, outlier fjernelse, datareduktion, induktiv	Euklidisk afstand mellem punkter
+Bisecting K-Means	antal clusters	Meget stor n_samples, medium n_clusters	Generel, jævn clusterstørrelse, flad geometri, ingen tomme clusters, induktiv, hierarkisk	Afstande mellem punkter
+2.2 Vigtige begreber
+	• Ikke-flad geometri clustering: Nyttig når clusters har specifik form (ikke-flad manifold)
+	• Induktiv vs. transduktiv clustering: 
+		○ Induktiv: Kan anvendes på nye, usete data
+		○ Transduktiv: Ikke designet til at blive anvendt på nye data
+3. K-means
+3.1 Grundlæggende principper
+	• K-means algoritmen grupperer data ved at prøve at adskille samples i n grupper med lige stor varians
+	• Inertia (within-cluster sum-of-squares) minimeres
+	• Kræver at antal clusters specificeres på forhånd
+	• Skalerer godt til store antal samples og bruges på tværs af mange anvendelsesområder
+3.2 Algoritmeegenskaber
+	• K-means inddeler et sæt samples i disjunkte clusters
+	• Hver cluster beskrives ved middelværdien af samples i clusteren (centroids)
+	• Centroids er ikke nødvendigvis punkter fra datasættet, men lever i samme rum
+	• K-means minimerer inertia (sum af kvadrerede afstande inden for hver cluster)
+3.3 Begrænsninger ved inertia
+	• Inertia antager at clusters er konvekse og isotropiske 
+		○ Fungerer dårligt med langstrakte clusters eller manifolds med uregelmæssige former
+	• Inertia er ikke en normaliseret metrik: 
+		○ Lavere værdier er bedre, nul er optimalt
+		○ I højdimensionale rum bliver euklidiske afstande "oppustede" (curse of dimensionality)
+		○ Dimensionalitetsreduktion (f.eks. PCA) kan afhjælpe dette problem
+3.4 Lloyd's algoritme
+K-means refereres ofte til som Lloyd's algoritme med tre trin:
+	1. Initialisering: Vælg initiale centroids (typisk ved at vælge samples fra datasættet)
+	2. Assignment step: Tildel hvert sample til nærmeste centroid
+	3. Update step: Opdater centroids ved at beregne middelværdien af alle samples tildelt til centroiden
+	• Gentag trin 2-3 indtil centroids ikke længere flytter sig væsentligt
+3.5 Relation til andre metoder
+	• K-means er ækvivalent til expectation-maximization algoritmen med lille, ens, diagonal kovariansmatrix
+	• Algoritmen kan forstås gennem Voronoi-diagrammer: 
+		1. Beregn Voronoi-diagram for punkterne med nuværende centroids
+		2. Hvert segment i Voronoi-diagrammet bliver en separat cluster
+		3. Opdater centroids til middelværdien af hvert segment
+		4. Gentag indtil stoppekriterie opfyldes (typisk når centroids flytter sig mindre end en tolerance)
+3.6 Initialisering og konvergens
+	• K-means vil altid konvergere, men kan konvergere til et lokalt minimum
+	• K-means++ initialisering: 
+		○ Implementeret i scikit-learn (brug init='k-means++' parameter)
+		○ Initialiserer centroids så de generelt er langt fra hinanden
+		○ Giver typisk bedre resultater end tilfældig initialisering
+		○ Kan også bruges selvstændigt til at vælge seeds for andre clustering-algoritmer
+3.7 Sample weights
+	• Algoritmen understøtter sample weights (via sample_weight parameter)
+	• Tillader at give større vægt til visse samples ved beregning af cluster centres
+	• Eksempel: vægt 2 til et sample svarer til at tilføje en dublet af samplet til datasættet
+3.8 Parallelisme
+	• KMeans implementationen drager fordel af OpenMP-baseret parallelisme via Cython
+	• Små blokke af data (256 samples) behandles parallelt, hvilket giver lavt memory footprint
+4. Mini Batch K-Means
+4.1 Grundlæggende principper
+	• MiniBatchKMeans er en variant af K-means der bruger mini-batches til at reducere beregningstiden
+	• Forsøger at optimere samme objektiv-funktion som standard K-means
+	• Mini-batches er delmængder af input data, tilfældigt udvalgt i hver træningsiteration
+4.2 Algoritmeegenskaber
+	• Algoritmen veksler mellem to hovedtrin: 
+		1. Assignment step: Samples trækkes tilfældigt fra datasættet til at danne en mini-batch, derefter tildeles de til nærmeste centroid
+		2. Update step: Centroids opdateres per-sample (i modsætning til K-means) 
+			§ For hvert sample i mini-batch opdateres den tildelte centroid ved at tage det løbende gennemsnit
+			§ Mindsker hastigheden af ændringer for en centroid over tid
+	• MiniBatchKMeans konvergerer hurtigere end K-means, men kvaliteten af resultaterne er lidt reduceret
+	• I praksis kan forskellen i kvalitet være ganske lille
+5. Affinity Propagation
+5.1 Grundlæggende principper
+	• AffinityPropagation skaber clusters ved at sende meddelelser mellem par af samples indtil konvergens
+	• Et datasæt beskrives med et lille antal exemplars (mest repræsentative samples)
+	• Meddelelser mellem par repræsenterer egnethed for at et sample kan være exemplar for et andet
+	• Opdateres iterativt indtil konvergens, hvorefter de endelige exemplars vælges
+5.2 Parametre og egenskaber
+	• Vælger selv antal clusters baseret på data
+	• Vigtige parametre: 
+		○ preference: Kontrollerer hvor mange exemplars der bruges
+		○ damping factor: Dæmper meddelelser for at undgå numeriske oscillationer
+	• Kompleksitet: 
+		○ Tidskompleksitet O(n²T) hvor n er antal samples og T antal iterationer
+		○ Pladskompleksitet O(n²) med tæt similaritetsmatrix, men kan reduceres med sparse matrix
+	• Mest velegnet til små til mellemstore datasæt
+6. Mean Shift
+6.1 Grundlæggende principper
+	• MeanShift søger at opdage "blobs" i en jævn fordeling af samples
+	• En centroid-baseret algoritme der fungerer ved at opdatere kandidater til at være middelværdien af punkter inden for en given region
+	• Algoritmen sætter automatisk antallet af clusters
+6.2 Parametre og egenskaber
+	• Bruger parameter bandwidth der bestemmer størrelsen af regionen at søge igennem 
+		○ Kan sættes manuelt eller estimeres med funktionen estimate_bandwidth
+	• Ikke meget skalerbar, da den kræver flere nearest-neighbor søgninger
+	• Garanterer konvergens, men stopper når ændringen i centroids er lille
+	• Labeling af nye samples udføres ved at finde nærmeste centroid
+7. Spectral Clustering
+7.1 Grundlæggende principper
+	• SpectralClustering udfører en lav-dimensional indlejring af affinitetsmatricen mellem samples
+	• Derefter udføres clustering (f.eks. med KMeans) af komponenterne fra egenvektorerne i det lavdimensionelle rum
+	• Særligt beregningsmæssigt effektiv hvis affinitetsmatricen er sparse
+7.2 Parametre og egenskaber
+	• Nuværende version kræver at antal clusters specificeres på forhånd
+	• Fungerer godt for få clusters, men er ikke velegnet til mange clusters
+	• Ved to clusters løser SpectralClustering en konveks afslappelse af normalized cuts problem
+	• Forskellige label assignment strategier kan bruges: 
+		○ kmeans: Kan matche finere detaljer, men kan være ustabil
+		○ discretize: 100% reproducerbar, men skaber typisk felter af jævn geometrisk form
+		○ cluster_qr: Deterministisk alternativ der giver visuelt gode partitioner
+7.3 Bemærkninger om similarity-matrix
+	• Hvis værdier i similaritetsmatricen ikke er veldistribuerede, kan det spektrale problem blive singulært
+	• I dette tilfælde anbefales at anvende en transformation (f.eks. heat kernel for afstandsmatrice): 
+similarity = np.exp(-beta * distance / distance.std())
+8. Hierarchical Clustering
+8.1 Grundlæggende om hierarkisk clustering
+	• Hierarkisk clustering bygger nestede clusters ved at fusionere eller splitte dem successivt
+	• Hierarkiet af clusters repræsenteres som et træ (dendrogram)
+	• Roden er det unikke cluster der samler alle samples, bladene er clusters med kun ét sample
+8.2 Agglomerative Clustering
+	• AgglomerativeClustering bruger en bottom-up tilgang: 
+		○ Hver observation starter i sin egen cluster
+		○ Clusters fusioneres successivt
+	• Linkage kriterie bestemmer metrikken for fusioneringsstrategi: 
+		○ Ward: Minimerer sum af kvadrerede forskelle inden for alle clusters (varians-minimerende)
+		○ Maximum/complete linkage: Minimerer maksimal afstand mellem observationer fra par af clusters
+		○ Average linkage: Minimerer gennemsnitlig afstand mellem alle observationer fra par af clusters
+		○ Single linkage: Minimerer afstanden mellem de nærmeste observationer fra par af clusters
+8.3 Connectivity constraints
+	• Connectivity constraints kan tilføjes til algoritmen (kun tilstødende clusters kan fusioneres)
+	• Defineres via connectivity matrix (sparse scipy matrix)
+	• Giver hurtigere algoritme og kan tvinge lokale strukturer
+	• Kan konstrueres fra a-priori information eller læres fra data (f.eks. med kneighbors_graph)
+8.4 Variation af metrik
+	• Single, average og complete linkage kan bruges med forskellige afstande: 
+		○ Euklidisk afstand (l2)
+		○ Manhattan afstand (cityblock, l1) - god til sparse features
+		○ Cosine afstand - invariant over for global skalering
+	• Valg af metrik bør maksimere afstand mellem samples i forskellige klasser og minimere inden for klasser
+8.5 Feature Agglomeration
+	• FeatureAgglomeration bruger agglomerativ clustering til at gruppere lignende features
+	• Reducerer antal features (dimensionalitetsreduktion)
+8.6 Bisecting K-Means
+	• BisectingKMeans er en iterativ variant af KMeans med divisiv hierarkisk clustering
+	• I stedet for at oprette alle centroids på én gang, vælges de progressivt: 
+		○ Et cluster splittes i to nye clusters gentagende gange indtil målantallet af clusters nås
+	• Strategier for valg af cluster at splitte: 
+		○ largest_cluster: Vælg cluster med flest punkter
+		○ biggest_inertia: Vælg cluster med største inertia
+	• Fordele: 
+		○ Mere effektiv end KMeans for stort antal clusters
+		○ Producerer ikke tomme clusters
+		○ Skaber clusters af mere ensartet størrelse end KMeans
+		○ Clusters er velordnede og skaber synlig hierarki
+9. DBSCAN
+9.1 Grundlæggende principper
+	• DBSCAN ser clusters som områder med høj densitet adskilt af områder med lav densitet
+	• Kan finde clusters af vilkårlig form, i modsætning til k-means der antager konvekse clusters
+	• Centralt koncept er core samples: samples i områder med høj densitet
+9.2 Algoritmedetaljer
+	• To parametre til algoritmen: 
+		○ min_samples: Antal samples inden for eps afstand for at definere et core sample
+		○ eps: Maksimal afstand mellem to samples for at være naboer
+	• Et core sample har mindst min_samples andre samples inden for en afstand af eps
+	• En cluster består af core samples og deres naboer (ikke-core samples på kanten af clusteret)
+	• Samples der ikke er core samples og er mindst eps afstand fra ethvert core sample betragtes som outliers
+9.3 Valg af parametre
+	• min_samples: Kontrollerer robusthed over for støj (højere værdi = mindre følsom for støj)
+	• eps: Crucial parameter der kontrollerer lokal neighborhood 
+		○ For lille værdi: De fleste data unclustered (noise)
+		○ For stor værdi: Clusters fusioneres og kan returnere et enkelt cluster
+		○ Heuristikker baseret på "knæ" i nearest neighbor distances plot kan hjælpe
+10. HDBSCAN
+10.1 Grundlæggende principper
+	• HDBSCAN er en udvidelse af DBSCAN og OPTICS
+	• DBSCAN antager at clustering-kriteriet (densitetskrav) er globalt homogent
+	• HDBSCAN afhjælper denne antagelse og udforsker alle mulige densitetsskalaer
+10.2 Mutual Reachability Graph
+	• Definerer core distance af et sample som afstanden til dets min_samples'te nærmeste nabo
+	• Mutual reachability distance mellem to punkter er maksimum af: 
+		○ Core distance for første punkt
+		○ Core distance for andet punkt
+		○ Almindelig afstand mellem punkterne
+	• Konstruerer en mutual reachability graph ved at associere hver sample med en vertex
+10.3 Hierarkisk Clustering
+	• HDBSCAN udfører DBSCAN* clustering på tværs af alle værdier af epsilon
+	• Algoritme: 
+		1. Udtrækker Minimum Spanning Tree (MST) af mutual reachability graph
+		2. Udvider MST ved at tilføje "self edge" for hver vertex
+		3. Initialiserer et enkelt cluster for MST
+		4. Fjerner kanten med størst vægt fra MST
+		5. Tildeler cluster labels til forbundne komponenter
+		6. Gentager 4-5 indtil der ikke er flere forbundne komponenter
+10.4 Fordele
+	• Kan opnå alle mulige partitioner opnåelige med DBSCAN* for et fast valg af min_samples
+	• Behøver ikke epsilon som hyperparameter (kun min_samples)
+	• min_samples er en mere robust hyperparameter
+	• Kan smoothes med min_cluster_size parameter
+11. OPTICS
+11.1 Grundlæggende principper
+	• OPTICS deler mange ligheder med DBSCAN
+	• Kan betragtes som generalisering af DBSCAN der slækker krav om fast epsilon værdi
+	• Bygger en reachability graph som tildeler hvert sample både en reachability_distance og cluster ordering_
+11.2 Anvendelse
+	• Med default værdi af max_eps=inf kan DBSCAN-stil cluster ekstraktion udføres gentagne gange
+	• Reachability distances tillader variabel densitetsekstraktion af clusters inden for et enkelt datasæt
+	• Standard cluster ekstraktion kigger på stejle hældninger i grafen for at finde clusters
+12. BIRCH
+12.1 Grundlæggende principper
+	• BIRCH (Balanced Iterative Reducing and Clustering using Hierarchies) bygger et træ kaldet Clustering Feature Tree (CFT)
+	• Data komprimeres til et sæt Clustering Feature nodes (CF Nodes)
+	• CF Nodes indeholder CF Subclusters som indeholder nødvendig information til clustering
+12.2 Algoritmedetaljer
+	• CF Subclusters gemmer: 
+		○ Antal samples i en subcluster
+		○ Linear Sum - n-dimensional vektor med summen af alle samples
+		○ Squared Sum - Sum af kvadrerede L2 norm af alle samples
+		○ Centroids - For at undgå genberegning (linear sum / n_samples)
+		○ Squared norm af centroids
+	• To parametre: 
+		○ threshold: Begrænser afstanden mellem nye samples og eksisterende subclusters
+		○ branching_factor: Begrænser antal subclusters i en node
+	• Kan betragtes som en datareduktionsmetode, da den reducerer input data til subclusters
+	• Reduceret data kan viderebehandles af global clusterer (styres af n_clusters parameter)
+13. Evaluering af clustering performance
+13.1 Rand index
+	• Rand index måler lighed mellem to cluster-assignments, ignorerer permutationer
+	• Adjusted Rand index korrigerer for tilfældighed og giver baseline omkring 0
+	• Fordele: 
+		○ Fortolkbarhed: Proportional med antal sample-par der har samme labels eller er forskellige i begge
+		○ Tilfældig label-assignment giver score tæt på 0
+		○ Begrænset område: [-0.5, 1] for adjusted, [0, 1] for unadjusted
+		○ Ingen antagelse om clusterstruktur
+	• Ulemper: 
+		○ Kræver kendskab til ground truth classes (sjældent tilgængeligt i praksis)
+13.2 Mutual Information baserede scores
+	• Mutual Information måler enighed mellem to assignments
+	• To normaliserede versioner: Normalized Mutual Information (NMI) og Adjusted Mutual Information (AMI)
+	• AMI normaliseres mod tilfældighed
+	• Fordele: 
+		○ Tilfældig label-assignment har score tæt på 0 (for AMI)
+		○ Øvre grænse på 1: Værdier tæt på 0 indikerer uafhængige label-assignments
+	• Ulemper: 
+		○ Kræver kendskab til ground truth classes
+13.3 Homogeneity, completeness og V-measure
+	• To ønskelige mål for cluster assignment: 
+		○ homogeneity: hvert cluster indeholder kun medlemmer af en enkelt klasse
+		○ completeness: alle medlemmer af en given klasse tildeles samme cluster
+	• V-measure er det harmoniske gennemsnit af homogeneity og completeness
+	• Begrænsninger: 
+		○ Ikke normaliseret ift. tilfældig labeling (afhænger af antal samples, clusters og ground truth classes)
+		○ For mindre sample sizes eller større antal clusters kan det være bedre at bruge ARI
+13.4 Fowlkes-Mallows scores
+	• Fowlkes-Mallows index (FMI) måler lighed mellem to clustering resultater
+	• Defineret som geometrisk gennemsnit af pairwise precision og recall
+	• Score fra 0 til 1, hvor høj værdi indikerer god lighed mellem to clusters
+13.5 Silhouette Coefficient
+	• Bruges når ground truth labels ikke er kendt
+	• Silhouette Coefficient måler hvor godt clustre er defineret
+	• For hvert sample: 
+		○ a: Gennemsnitlig afstand til alle andre punkter i samme klasse
+		○ b: Gennemsnitlig afstand til alle punkter i nærmeste cluster
+		○ Silhouette Coefficient s = (b - a) / max(a, b)
+	• Fordele: 
+		○ Score begrænset mellem -1 (forkert clustering) og +1 (meget tæt clustering)
+		○ Højere når clusters er tætte og veladskilte
+	• Ulemper: 
+		○ Generelt højere for konvekse clusters end andre clusterkoncepter (som DBSCAN)
+13.6 Calinski-Harabasz Index
+	• Også kendt som Variance Ratio Criterion
+	• Højere score relaterer til model med bedre definerede clusters
+	• Beregnes som forholdet mellem sum af between-clusters spredning og within-cluster spredning
+13.7 Davies-Bouldin Index
+	• Lavere Davies-Bouldin index relaterer til model med bedre separation mellem clusters
+	• Repræsenterer gennemsnitlig "lighed" mellem clusters, hvor lighed sammenligner afstand med størrelse
+13.8 Contingency Matrix
+	• Rapporterer krydsfelterne for hvert sandt/forudsagt cluster-par
+	• Giver tilstrækkelig statistik for alle clustering-metrikker hvor samples er uafhængige
+	• Fordele: 
+		○ Tillader undersøgelse af spredning af hver sand cluster på tværs af forudsagte clusters
+	• Ulemper: 
+		○ Svær at fortolke for stort antal clusters
+		○ Giver ikke enkelt metrik til brug som mål for clustering-optimering
+13.9 Pair Confusion Matrix
+	• 2x2 similaritetsmatrix mellem to clusterings
+	• Beregnes ved at betragte alle par af samples og tælle par der er tildelt til samme/forskellige clusters
+Nøglepunkter og opsummering
+Generelle principper
+	• Clustering er en uovervåget læringsopgave til at finde struktur i data uden labels
+	• Scikit-learn tilbyder et bredt udvalg af algoritmer med forskellige styrker/svagheder
+	• Valg af algoritme afhænger af: 
+		○ Datasætstørrelse og skalerbarhed
+		○ Forventet clusterform (konveks, ikke-konveks)
+		○ Outlier håndtering
+		○ Behov for induktiv vs. transduktiv læring
+Algoritmevalg
+	• K-means: Effektiv til store datasæt, men antager konvekse clusters
+	• Hierarchical clustering: Fleksibel mht. afstandsmål, god til at forstå hierarkiske relationer
+	• DBSCAN/HDBSCAN/OPTICS: Gode til variabel densitet og ikke-konvekse clusters, kan identificere outliers
+	• Spectral Clustering: God til ikke-konvekse clusters, men mindre skalerbar
+	• Affinity Propagation: Finder automatisk antal clusters, men ikke skalerbar til store datasæt
+	• BIRCH: Velegnet til meget store datasæt
+Evaluering
+	• Ved kendte ground truth labels: ARI, NMI, AMI, homogeneity, completeness
+	• Ved ukendte ground truth labels: Silhouette coefficient, Calinski-Harabasz, Davies-Bouldin
+	• Forskellige metrikker har forskellige styrker/svagheder og antagelser om clusterstruktur
+Praktiske overvejelser
+	• Overvej forbehandling af data (normalisering, PCA) før clustering
+	• Eksperimenter med forskellige algoritmer og parametre
+	• Visualisering af resultater kan hjælpe med at vurdere kvaliteten af clustering
+	• Cluster-størrelse og -form varierer mellem algoritmer
+

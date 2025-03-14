@@ -1,0 +1,122 @@
+Histogram Features
+Disse noter dækker konceptet Histogram Features og demonstrerer, hvordan histogrammer kan anvendes som featuretransformationer for forskellige datatyper: kategoriske data, tekstdata, billeddata og audiodata.
+
+1. Introduktion
+	• Definition:
+Histogram features er en enkel, men effektiv metode til at opsummere og repræsentere indholdet i et datasæt ved at tælle forekomster af bestemte karakteristika.
+	• Anvendelsesområder:
+Anvendes til at omdanne rå data til numeriske vektorer for forskellige datatyper, herunder:
+		○ Kategoriske data
+		○ Tekstdata
+		○ Billeddata
+		○ Audiodata
+	• Formål:
+At udtrække og repræsentere de vigtigste karakteristika i dataene på en måde, der er egnet til maskinlæringsalgoritmer.
+Opsummering:
+Histogram features omdanner rå data til strukturerede numeriske vektorer, hvilket muliggør effektiv anvendelse af maskinlæringsmetoder på tværs af forskellige domæner.
+
+2. Histogram Features for Kategoriske Data
+	• Udfordringen med direkte talrepræsentation:
+		○ Maskinlæringsalgoritmer kræver numeriske data.
+		○ Direkte tildeling af tal til kategorier (f.eks. O = 0, A = 1, B = 2, AB = 3) kan utilsigtet introducere en ordentlighed (ordinalitet).
+			§ Eksempel: Ved at tildele AB = 3, vil AB fejlagtigt blive betragtet som tættere på B (2) end på A (1).
+	• Løsningen – One-Hot Encoding:
+		○ Metode:
+I stedet for at tildele enkelte tal, repræsenteres hver kategori som en histogram-vektor med én aktiv (1) position og resten inaktive (0).
+		○ Eksempel (blodtype):
+			§ Blodtype O: ∗∗1∗∗,0,0,0**1**, 0, 0, 0∗∗1∗∗,0,0,0
+			§ Blodtype A: 0,∗∗1∗∗,0,00, **1**, 0, 00,∗∗1∗∗,0,0
+			§ Blodtype B: 0,0,∗∗1∗∗,00, 0, **1**, 00,0,∗∗1∗∗,0
+			§ Blodtype AB: 0,0,0,∗∗1∗∗0, 0, 0, **1**0,0,0,∗∗1∗∗
+	• Fordele:
+		○ Ingen implicit antagelse om numerisk rækkefølge eller afstand mellem kategorier.
+		○ Skaber en geometrisk equidistant repræsentation af kategorierne.
+Nøglebegreb: One-hot encoding
+Opsummering:
+One-hot encoding for kategoriske data skaber en binær vektor for hver kategori, hvilket undgår fejlagtige antagelser om ordinalitet og sikrer en korrekt numerisk repræsentation til maskinlæring.
+
+3. Histogram Features for Tekstdata
+	• Baggrund:
+		○ Tekstdata kræver omfattende forbehandling, før de kan anvendes i maskinlæring.
+		○ Rå dokumenter skal omdannes til en form, der kan fanges numerisk.
+	• Bag-of-Words (BoW) Model:
+		○ Proces:
+			1. Tokenisering: Opdeling af teksten i enkelte ord.
+			2. Fjernelse af stopord: Ord som "er", "the" osv. udelades, da de er uinformerende.
+			3. Stemming: Reducering af ord til deres rod (f.eks. "learn", "learning", "learned" → "learn").
+			4. Histogram: Tælling af, hvor mange gange hvert ord optræder i dokumentet, hvilket resulterer i en featurevektor.
+			5. Normalisering: Vektoren gøres til en enhedslængde, så innerproduktet mellem to BoW-vektorer altid ligger mellem 0 og 1.
+		○ Eksempel:
+			§ Dokument 1: "dogs are the best"
+			§ Dokument 2: "cats are the worst"
+Efter forbehandling og tælling oprettes to histogrammer, der viser forekomsten af unikke ord.
+	• Styrker og Begrænsninger:
+		○ Styrker:
+			§ Simpel og effektiv opsummering af et dokuments indhold.
+			§ Giver en målbar geometrisk afstand (via innerprodukt) for at vurdere lighed mellem dokumenter.
+		○ Begrænsninger:
+			§ Ignorerer rækkefølge, kontekst og syntaks.
+				□ Eksempel: "dogs are better than cats" og "cats are better than dogs" vil få samme BoW-repræsentation, selvom de har modsatte betydninger.
+Nøglebegreb: Bag-of-Words (BoW)
+Opsummering:
+BoW-modellen transformerer tekst til en normaliseret histogram-vektor, der opsummerer ordforekomster. Selvom den er enkel, kan den miste vigtige kontekstuelle oplysninger såsom ordrækkefølge og syntaktiske relationer.
+3.1 Eksempler
+	• Sentimentanalyse:
+		○ BoW kan anvendes til at skelne mellem positive og negative anmeldelser.
+		○ To anmeldelser med modsatrettede følelser vil ofte have lave eller nul korrelation, hvis de deler få karakteristiske ord.
+	• Spamdetection:
+		○ Udvidet BoW: Ved siden af ordtællinger inddrages også karakterfrekvenser (f.eks. antal udråbstegn, længden af store bogstavsekvenser) samt spam-specifikke nøgleord.
+		○ Resultat: Kombinationen af disse features forbedrer klassifikationen markant.
+
+4. Histogram Features for Billeddata
+	• Rå Billeddata:
+		○ Billeder består af pixelværdier (f.eks. 8-bit gråtone med værdier fra 0 til 255 eller farvekanaler for RGB).
+		○ Udfordring:
+			§ Rå pixelværdier fanger ikke nødvendigvis de strukturelle detaljer, da de kan variere på grund af position, størrelse og kontrast.
+	• Edge Detection & Histogrammer:
+		○ Edge Detection:
+			§ Skifter fokus fra rå pixelværdier til kantindhold.
+			§ Anvender en filteroperation for at identificere kanter, som f.eks. kanter med bestemte orienteringer.
+		○ Histogram over Kantorienteringer:
+			§ Billedet analyseres for forekomsten af kanter i foruddefinerede retninger (f.eks. 8 orienteringer: 0°, 22,5°, 45°, …, 90°).
+			§ Resultatet er en normaliseret histogram-vektor, der opsummerer billedets kantstruktur.
+	• Lokal vs. Global Repræsentation:
+		○ Ved at opdele billedet i mindre patches (lokale områder) beregnes separate histogrammer, som efterfølgende konkateneres.
+		○ Denne metode fanger lokal information og minder om teknikker som Histogram of Oriented Gradients (HOG).
+	• Biologisk Inspiration:
+		○ Mange dyr (f.eks. frøer, katte, primater) har neuroner, der fungerer som små kantdetektorer, hvilket understøtter denne tilgang.
+Nøglebegreb: Edge histogram, lokale patch-baserede histogrammer
+Opsummering:
+Histogram features for billeder udnytter edge detection til at fokusere på strukturelle elementer i stedet for rå pixelværdier. Ved at beregne histogrammer for kantorienteringer, eventuelt på lokalt niveau, opnås en mere diskriminerende og robust feature-repræsentation.
+4.1 Eksempel: Håndskrevet Ciffergenkendelse
+	• Problemstilling:
+Sammenligning mellem anvendelsen af rå pixelværdier og edge histogram features på MNIST-datasættet.
+	• Observationsresultat:
+		○ Ved brug af edge histogram features reduceres antallet af fejlagtige klassifikationer signifikant sammenlignet med modellen, der anvender rå data.
+Opsummering:
+Edge histogram features forbedrer præcisionen i billedklassificering ved at udtrække de mest karakteristiske strukturelle træk.
+
+5. Histogram Features for Audiodata
+	• Rå Audiodata:
+		○ Audiosignaler består af tidsvarierende amplituder, som i deres rå form ofte ikke er tilstrækkeligt diskriminerende for klassifikation.
+	• Frekvensspektrum og Histogrammer:
+		○ Frekvensdekomponering:
+			§ Lydsignalet dekomponeres ved hjælp af en Fourier-transformation, der repræsenterer signalet som en lineær kombination af sinuskurver med forskellige frekvenser.
+		○ Histogram over Frekvenser:
+			§ Et histogram oprettes, som tæller styrken (amplituden) af de enkelte frekvenskomponenter.
+			§ Denne frekvens-histogram-vektor giver et robust overblik over signalets indhold.
+		○ Lokal Tidsinformation:
+			§ Ved at beregne spektrogrammer (histogrammer over frekvenser i overlappende vinduer) bevares også lokal tidsinformation, hvilket er essentielt i talegenkendelse.
+	• Anvendelse:
+		○ Denne metode anvendes bl.a. i talegenkendelse, hvor visse frekvenser kan vægtes højere baseret på den menneskelige høres følsomhed.
+Nøglebegreb: Frekvens histogram, spektrogram, Fourier-transformation
+Opsummering:
+Histogram features for audiodata omdanner rå lydsignaler til frekvensdomænet, hvor et spektrogram giver et tidslokalt overblik over signalets frekvensindhold. Dette muliggør en effektiv featurerepræsentation for opgaver som talegenkendelse.
+
+Samlet Oversigt
+	• Histogram Features er en universel metode til at konvertere rå data til normaliserede, numeriske featurevektorer.
+	• Kategoriske data: Brug af one-hot encoding for at undgå fejlagtige antagelser om orden.
+	• Tekstdata: Bag-of-Words metoden konstruerer histogrammer baseret på ordtællinger, med nødvendige forbehandlingstrin som tokenisering, fjernelse af stopord og stemming.
+	• Billeddata: Ved at anvende edge detection og opbygge histogrammer over kantorienteringer, opnås en robust og diskriminerende billedrepræsentation, der kan udvides til lokale patch-baserede metoder.
+	• Audiodata: Frekvens histogrammer og spektrogrammer udtrækker de vigtigste akustiske træk ved at dekomponere signalet i dets frekvenskomponenter.
+Disse noter giver et detaljeret overblik over, hvordan histogram features fungerer som en effektiv feature transformationsteknik i forskellige domæner inden for kunstig intelligens.

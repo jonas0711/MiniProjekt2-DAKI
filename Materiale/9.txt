@@ -1,0 +1,113 @@
+Clustering
+Clustering er en fundamental teknik inden for unsupervised machine learning, som identificerer grupper (clusters) af lignende datapunkter baseret på deres karakteristika uden forudgående kendskab til gruppestrukturen.
+Formål med clustering:
+	• Opdage naturlige grupperinger i data
+	• Identificere mønstre og strukturer
+	• Reducere datakompleksitet ved at gruppere lignende elementer
+Hovedmetoder inden for clustering:
+	1. K-means - den mest klassiske clustering-algoritme:
+		○ Kræver forhåndsdefinition af antal clusters (k)
+		○ Algoritme: 
+			§ Vælg k tilfældige punkter som initiale centroider
+			§ Tildel hvert punkt til nærmeste centroide
+			§ Opdater centroider til at være gennemsnittet af punkterne i hver cluster
+			§ Gentag indtil konvergens
+		○ Fordele: Enkel, effektiv, let at forstå
+		○ Ulemper: Følsom over for initial placering af centroider, forudsætter kugleformede clusters, kræver at k er kendt på forhånd
+	2. DBSCAN (Density-Based Spatial Clustering of Applications with Noise):
+		○ Baseret på tæthed af punkter snarere end afstand til en centroide
+		○ Kræver ikke forhåndsdefinition af antal clusters
+		○ Algoritme: 
+			§ Definér et punkt som et kernepunkt hvis der er mindst minPts punkter inden for afstanden ε
+			§ Forbind kernepunkter der er inden for afstanden ε af hinanden
+			§ Identificér punkter, der er inden for afstanden ε af et kernepunkt, som grænsepunkter
+			§ Betragt resterende punkter som støj
+		○ Fordele: Kan finde clusters af vilkårlig form, kan identificere støj, behøver ikke vide antal clusters på forhånd
+		○ Ulemper: Følsom over for parametervalg (ε og minPts), håndterer ikke godt clusters med varierende tæthed
+Evaluering af clustering: To primære metrikker bruges til at vurdere clustering-kvalitet:
+	1. Inertia (også kaldet Within-Cluster Sum of Squares):
+		○ Summen af kvadrerede afstande mellem hvert punkt og dets cluster-centroide
+		○ Lavere værdier indikerer mere kompakte clusters
+		○ Ofte brugt til at bestemme det optimale antal clusters (k) i k-means
+	2. Silhouette score:
+		○ Måler hvor godt hvert punkt er placeret i sin cluster sammenlignet med andre clusters
+		○ For hvert punkt: 
+			§ a = gennemsnitlig afstand til andre punkter i samme cluster
+			§ b = gennemsnitlig afstand til nærmeste cluster punktet ikke er en del af
+			§ Silhouette koefficient = (b-a)/max(a,b)
+		○ Værdien spænder fra -1 til 1, hvor: 
+			§ Værdier tæt på 1 indikerer god clustering
+			§ Værdier tæt på 0 indikerer overlappende clusters
+			§ Negative værdier indikerer fejlplacerede punkter
+Andre clustering-metoder: Der findes en række andre metoder til forskellige formål og datatyper:
+	• Spectral Clustering: God til ikke-konvekse clusters
+	• Agglomerative Clustering: Hierarkisk bottom-up tilgang
+	• HDBSCAN: En forbedret version af DBSCAN
+	• Gaussian Mixture Models: Probabilistisk tilgang der antager Gaussian fordeling
+	• BIRCH: Effektiv for store datasæt
+Nøgleelementer og sammenhæng
+De centrale elementer, der binder disse to emner sammen, er:
+	1. Optimering: Både CSPs og clustering handler om at finde optimale løsninger - enten opfyldelse af begrænsninger eller optimal gruppering.
+	2. Repræsentation af problemer: Begge områder kræver veldefinerede repræsentationer af problemrummet:
+		○ I CSPs: Variabler, domæner og begrænsninger
+		○ I clustering: Datapunkter, afstandsmål og gruppestrukturer
+	3. Søgemetoder: Begge områder anvender sofistikerede søge- og optimeringstekniker:
+		○ CSPs bruger primært backtracking og constraint propagation
+		○ Clustering bruger iterative metoder (k-means) eller tæthedsbaserede metoder (DBSCAN)
+	4. Anvendelsesområder:
+		○ CSPs anvendes til planlægning, skemaplanlægning, ressourceallokering og konfigurationsproblemer
+		○ Clustering anvendes til kundesegmentering, billedkompression, anomalidetektion og mønstergenkendelse
+	5. Implementering i Python:
+		○ For CSPs: python-constraint og PyCSP3
+		○ For clustering: scikit-learn biblioteker med implementationer af k-means, DBSCAN og andre metoder
+Disse to områder repræsenterer fundamentale tekniker inden for AI og maskinlæring og kan kombineres for at løse komplekse problemer, hvor både begrænsninger og naturlige grupperinger i data er relevante.
+
+Clustering
+Introduktion til Clustering
+Clustering er en unsupervised learning-teknik, der grupperer lignende datapunkter:
+	• Slides viser et visuelt eksempel på oprindelige data (spredte punkter), der grupperes i clusters
+	• Hver cluster indeholder punkter, der ligner hinanden og er forskellige fra punkter i andre clusters
+Hovedmetoder til Clustering
+K-means Clustering
+	• Bruges når du ved, hvor mange clusters du ønsker
+	• Algoritme: 
+		1. Vælg k tilfældige punkter som initiale cluster-centre
+		2. Gentag: 
+			§ Tildel hver observation til det nærmeste center
+			§ Opdater cluster-centre til gennemsnittet af tildelte observationer
+	• Vigtige overvejelser: 
+		○ Følsom over for dårlig initialisering; kør flere gange og behold det bedste resultat
+		○ Forskellige optimeringer findes (refereret i HOML - Hands-On Machine Learning)
+DBSCAN (Density-Based Spatial Clustering of Applications with Noise)
+	• Bruges når du ikke ved, hvor mange clusters du ønsker, men kender til rimelige afstande
+	• Algoritme: 
+		1. Tag et hvilket som helst punkt som udgangspunkt
+		2. Find alle tætte naboer (inden for en specificeret afstand ε)
+		3. Hvis et punkt har flere end minPts tætte naboer, er det et kernepunkt
+		4. Forbind tilstødende kernepunkter
+		5. Forbind punkter tilstødende til kernepunkter (men ikke kernepunkter selv) som grænsepunkter
+		6. Punkter, der ikke er forbundet til nogen cluster, betragtes som støj
+Evaluering af Clustering
+Inertia
+	• Sum af kvadrerede afstande mellem alle punkter og deres cluster-centroid
+	• Lavere værdier indikerer tættere, mere kompakte clusters
+Silhouette Score
+	• Gennemsnitlig silhouettekoefficient på tværs af alle clusters
+	• Silhouettekoefficient for et punkt: (b - a) / max(a, b) hvor: 
+		○ a = gennemsnitlig afstand til andre punkter i samme cluster
+		○ b = gennemsnitlig afstand til nærmeste punkter fra andre clusters
+	• Værdier varierer fra -1 til 1, hvor højere værdier indikerer bedre clustering
+Yderligere Clustering-metoder
+Slides viser en sammenligning af forskellige clustering-metoder og deres ydeevne på forskellige datasæt:
+	• MiniBatch KMeans
+	• Affinity Propagation
+	• MeanShift
+	• Spectral Clustering
+	• Ward
+	• Agglomerative Clustering
+	• DBSCAN
+	• HDBSCAN
+	• OPTICS
+	• BIRCH
+	• Gaussian Mixture
+Den visuelle sammenligning demonstrerer, hvordan forskellige metoder præsterer på diverse dataformer og -fordelinger.

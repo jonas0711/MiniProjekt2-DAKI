@@ -1,0 +1,131 @@
+25.3 Simple Image Features
+Nedenfor er omfattende noter, der dækker alle centrale aspekter af forelæsningsmaterialet om simple billedeegenskaber. Noterne er opdelt i sektioner med overskrifter, underoverskrifter, punktopstillinger og korte opsummeringer for at fremhæve de vigtigste pointer.
+
+1. Introduktion til Billedeegenskaber
+	• Billeddannelse:
+Et billede består af millioner af pixels (fx 12 mio. pixels med 3 byte hver), som opsamler lys reflekteret fra objekter.
+	• Udfordringer: 
+		○ Støj: Uundgåelige variationer fra sensorens målinger og eksterne forstyrrelser.
+		○ Store datamængder: Direkte behandling af rå billeddata er ofte upraktisk.
+	• Løsning:
+Udvikling af forenklede repræsentationer, der fremhæver vigtige informationer, men reducerer detaljegraden.
+	• Fire centrale egenskaber: 
+		○ Kanter
+		○ Tekstur
+		○ Optisk flow
+		○ Segmentering
+	Opsummering:
+	Det primære mål er at udtrække meningsfulde og reducerede repræsentationer fra store og støjfyldte billeddata ved at fokusere på kanter, tekstur, optisk flow og segmentering.
+
+2. Kanter
+2.1 Definition og Årsager til Kanter
+	• Definition:
+Kanter er linjer eller kurver i et billede, hvor der sker en markant ændring i pixelintensitet.
+	• Årsager til kanter: 
+		○ Dybsforskel (depth discontinuities): Skift i farve, når man krydser fra et objekt til et andet.
+		○ Ændring i overfladeorientering: Ændring af overfladens normal fører til intensitetsændringer.
+		○ Ændring i overfladens reflektans: Forskelle i materialets egenskaber.
+		○ Skygger (illumination discontinuities): Ændringer i lysforhold, selvom objektets struktur ikke ændres.
+2.2 Metode til Kantdetektion
+	• Lokal operation:
+Kantdetektion udføres ofte ved at sammenligne et pixel med nærliggende pixels.
+	• Differentiering: 
+		○ Man kan beregne den afledte I′(x)I'(x) af en intensitetsprofil for at finde store ændringer (peaks) ved kanter.
+		○ Problem: Støj fører til falske peaks.
+	• Glatning med Gaussisk Filter: 
+		○ Formål: Undertrykke støj ved at beregne et vægtet gennemsnit af nærliggende pixels.
+		○ Gaussisk funktion: 
+			§ 1D: Gσ(x)=12πσe−x22σ2G_\sigma(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{x^2}{2\sigma^2}} 
+			§ 2D: Gσ(x,y)=12πσ2e−x2+y22σ2G_\sigma(x,y) = \frac{1}{2\pi\sigma^2} e^{-\frac{x^2+y^2}{2\sigma^2}} 
+		○ Konvolution:
+Udskift intensiteten I(x0,y0)I(x_0,y_0) med summen af nærliggende pixels vægtet af Gaussisk funktion. Notationen I∗GσI \ast G_\sigma benyttes.
+	• Kombination af Glatning og Differentiering: 
+		○ Ved hjælp af sætningen om, at den afledte af en konvolution er lig med konvolutionen med den afledte, kan man beregne kanter ved at konvolvere billedet med den afledte af den Gaussiske funktion Gσ′G'_\sigma.
+	• I 2D-billeder: 
+		○ Gradient: ∇I=(∂I∂x∂I∂y)\nabla I = \begin{pmatrix} \frac{\partial I}{\partial x} \\[4mm] \frac{\partial I}{\partial y} \end{pmatrix} 
+		○ Gradientens størrelse:
+Et stort ∥∇I∥\| \nabla I \| indikerer en kant.
+		○ Kantorientering:
+Retningen af gradienten ∇I∥∇I∥\frac{\nabla I}{\|\nabla I\|} giver kantens retning.
+		○ Ikke-maksimumsundertrykkelse:
+Kantpunkter defineres som de punkter, hvor gradientens størrelse er et lokalt maksimum langs gradientens retning.
+		○ Sammenkædning:
+Til sidst linkes tilstødende kantpixels med konsistente orienteringer for at danne sammenhængende kantkurver.
+	Opsummering:
+	Kantdetektion anvender glatning (ved hjælp af et Gaussisk filter) efterfulgt af differentiering for at identificere punkter med store intensitetsændringer. Processen inkluderer udregning af gradient, bestemmelse af kantorientering og sammenkædning af kantpixels for at opnå en kompakt repræsentation af de vigtige billedkanter.
+
+3. Tekstur
+3.1 Definition af Tekstur
+	• Tekstur:
+Refererer til det visuelle mønster, der giver en idé om, hvordan en overflade føles, fx blød, ru, stribet eller prikket.
+	• Eksempler: 
+		○ Striber: Som på en trøje eller et zebra-mønster.
+		○ Pletter: Som på en leopard.
+		○ Periodiske mønstre: Fx vinduesarrangementer på en bygning.
+3.2 Repræsentation af Tekstur
+	• Lokal egenskab:
+Tekstur beskrives for et billedepatch (et sammenhængende område), ikke for enkelte pixels.
+	• Gradientorientering: 
+		○ For hvert pixel i et patch beregnes gradientens orientering.
+		○ Histogram over orienteringer:
+Opsummerer fordelingen af gradientretninger i patchen.
+		○ Fordele: 
+			§ Invarians overfor belysningsændringer: Ændringer i lysstyrke påvirker længden af gradientvektoren, men ikke retningen.
+			§ Skalering: Ved at beskrive patchen over forskellige skalaer kan man fange både finere og grovere mønstre.
+	• Modellering:
+Mange teksturrepræsentationer antager, at et billedepatch består af gentagne elementer (texels). Moderne metoder anvender ofte konvolutionelle neurale netværk til at lære disse repræsentationer automatisk.
+	Opsummering:
+	Tekstur beskrives som et mønster over et billedepatch, typisk opsummeret ved et histogram af gradientorienteringer. Dette gør det muligt at skelne objekter, der kan have samme form men forskellig overfladestruktur.
+
+4. Optisk Flow
+4.1 Definition af Optisk Flow
+	• Optisk flow:
+Det visuelle indtryk af bevægelse i en sekvens af billeder, som opstår ved relativ bevægelse mellem kameraet og objekterne i scenen.
+	• Anvendelser: 
+		○ At skelne bevægende objekter fra stationær baggrund.
+		○ At estimere afstandsforhold (når nærliggende objekter bevæger sig hurtigere end fjerne objekter).
+4.2 Metoder til Måling af Optisk Flow
+	• Block Matching: 
+		○ Tag et blok af pixels centreret omkring et punkt p=(x0,y0)p=(x_0, y_0) i et billede ved tid tt.
+		○ Sammenlign denne blok med blokke i det efterfølgende billede ved t+Δtt + \Delta t for at finde den bedste overensstemmelse.
+	• Måling med Sum of Squared Differences (SSD): SSD(Δx,Δy)=∑(x,y)∈blok(I(x,y,t)−I(x+Δx,y+Δy,t+Δt))2SSD(\Delta x, \Delta y) = \sum_{(x,y) \in \text{blok}} \Big(I(x,y,t) - I(x+\Delta x, y+\Delta y, t+\Delta t)\Big)^2 
+		○ Det par (Δx,Δy)(\Delta x, \Delta y) der minimerer SSD’en, definerer bevægelsen, dvs. den optiske flow vektor (vx,vy)(v_x, v_y).
+	• Vigtigt: 
+		○ Metoden virker bedst, når billedet indeholder tekstur – uden variation (fx en ensfarvet væg) vil SSD’en ikke give en entydig løsning.
+	Opsummering:
+	Optisk flow estimeres ved at finde tilsvarende områder i to på hinanden følgende billeder. Ved at minimere SSD for et blok af pixels kan man bestemme retningen og hastigheden af bevægelse, hvilket er centralt for at forstå scenens dynamik.
+
+5. Segmentering af Naturlige Billeder
+5.1 Hvad er Segmentering?
+	• Segmentering:
+Processen med at opdele et billede i grupper af pixels, der deler lignende visuelle egenskaber (fx intensitet, farve, tekstur).
+	• Formål:
+At identificere og adskille objekter eller regioner i et billede, hvor der er markante ændringer mellem objekterne.
+5.2 Tilgange til Segmentering
+	• Kantbaseret tilgang: 
+		○ Boundary Detection:
+Klassificeringsbaseret metode, hvor man ved hjælp af maskinlæring estimerer sandsynligheden Pb(x,y,θ)P_b(x,y,\theta) for, at der findes en grænse ved et pixel med orientering θ\theta.
+		○ Udfordringer: 
+			§ De detekterede kanter danner ikke altid lukkede kurver, hvilket betyder, at man ikke direkte får definerede regioner.
+			§ Anvender kun lokal kontekst, uden globale sammenhængsregler.
+	• Regionbaseret tilgang: 
+		○ Clustering:
+Pixels grupperes sammen ud fra ligheder i brightness, farve og tekstur.
+		○ Graph Partitioning: 
+			§ Eksempel: Metoden af Shi og Malik (2000), hvor pixels ses som noder i en graf med vægte baseret på lighed.
+			§ Målet er at minimere vægtene på tværs af grupper (cut) og maksimere vægtene inden for grupper.
+	• Oversegmentering og Superpixels: 
+		○ Første skridt kan være at lave en oversegmentering, hvor man sikrer, at alle rigtige kanter er med, selvom der opstår ekstra (falske) kanter.
+		○ Disse mindre regioner kaldes superpixels og reducerer den beregningsmæssige kompleksitet, da der er langt færre superpixels end pixels i originalbilledet.
+	Opsummering:
+	Segmentering handler om at opdele et billede i meningsfulde regioner. Dette kan gøres via direkte kantdetektion eller ved at gruppere pixels med lignende visuelle egenskaber. Oversegmentering med superpixels anvendes ofte for at lette den efterfølgende objektgenkendelse.
+
+Samlet Oversigt af Nøglebegreber
+	• Billedrepræsentation: Forenklede modeller af store, støjfyldte billeddata.
+	• Kanter: Markante ændringer i intensitet; funderet i lokal differentiering og glatning (Gaussisk filter, konvolution).
+	• Gradient og Kantorientering: Beregnes for at bestemme både styrke og retning af kanter.
+	• Tekstur: Visuelle mønstre, ofte beskrevet via histogrammer af gradientorienteringer.
+	• Optisk Flow: Vektorfelt, der beskriver bevægelse i en billedsekvens; beregnet med metoder som SSD.
+	• Segmentering: Opdeling af et billede i regioner baseret på visuelle attributter, med metoder som boundary detection og graph partitioning.
+
+Disse noter giver et detaljeret overblik over de grundlæggende metoder og koncepter i simple billedeegenskaber, som er fundamentale for videre behandling og analyse inden for computervision og anvendelse af kunstig intelligens. Hver sektion indeholder både teoretiske forklaringer og praktiske metoder, der tilsammen bidrager til en dybere forståelse af, hvordan komplekse billeddata kan analyseres og forenkles til meningsfulde repræsentationer.
