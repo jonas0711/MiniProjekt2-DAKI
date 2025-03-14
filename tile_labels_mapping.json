@@ -229,12 +229,12 @@
     },
     "4_0": {
       "filename": "11_tile_4_0.png",
-      "terrain": "Unknown",
+      "terrain": "Table",
       "crowns": 0
     },
     "4_1": {
       "filename": "11_tile_4_1.png",
-      "terrain": "Unknown",
+      "terrain": "Table",
       "crowns": 0
     },
     "4_2": {
@@ -911,7 +911,7 @@
     },
     "0_4": {
       "filename": "17_tile_0_4.png",
-      "terrain": "Grassland",
+      "terrain": "Forest",
       "crowns": 0
     },
     "1_0": {
@@ -6021,7 +6021,7 @@
     },
     "2_0": {
       "filename": "53_tile_2_0.png",
-      "terrain": "Mine",
+      "terrain": "Swamp",
       "crowns": 1
     },
     "2_1": {
@@ -6554,7 +6554,7 @@
     },
     "3_0": {
       "filename": "57_tile_3_0.png",
-      "terrain": "Field",
+      "terrain": "Grassland",
       "crowns": 0
     },
     "3_1": {
