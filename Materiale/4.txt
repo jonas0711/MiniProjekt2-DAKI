@@ -1,0 +1,209 @@
+Dimensionsreduktion: Omfattende Sammenfatning
+Kernekonceptet
+Dimensionsreduktion er en fundamental teknik inden for maskinlæring og AI-systemer, der sigter mod at transformere højdimensionelle data til en laveredimensionel repræsentation, samtidig med at den vigtigste information bevares. Hovedidéen er at reducere kompleksiteten uden at miste den essentielle varians eller mønstre i dataene. Denne proces adresserer flere udfordringer ved arbejde med højdimensionelle data, herunder beregningseffektivitet, overfitting og begrænsninger i visualisering.
+Motivationer for Dimensionsreduktion
+	1. Undgå Overfitting: Modeller trænet på højdimensionelle data med relativt få samples har tendens til at overfitte. Reduktion af dimensioner kan forbedre generalisering.
+	2. Reducere Beregningsmæssige Omkostninger: Færre dimensioner betyder færre beregningsressourcer til behandling, lagring og analyse af data.
+	3. Fjerne Støj: Eliminere uinformative eller redundante dimensioner, der primært indeholder støj.
+	4. Muliggøre Visualisering: Konvertere højdimensionelle data til 2D- eller 3D-repræsentationer, som mennesker kan visualisere og fortolke.
+Principal Component Analysis (PCA)
+PCA er en ikke-superviseret dimensionsreduktionsteknik, der transformerer data til et nyt koordinatsystem, hvor akserne (principal components) er justeret med retningerne for maksimal varians.
+Sådan fungerer PCA:
+	1. Standardisér Data: 
+		○ Normalisér features til sammenlignelige skalaer (ofte ved at dividere med standardafvigelsen)
+		○ Centrér dataene ved at trække gennemsnittet fra (resulterer i nul-centrerede data)
+	2. Beregn Kovariansmatricen: 
+		○ Mål hvordan features varierer sammen
+		○ En positiv kovarians indikerer en positiv korrelation mellem features
+		○ En negativ kovarians indikerer en negativ korrelation
+	3. Find Egenvektorer og Egenværdier: 
+		○ Egenvektorer bestemmer retningerne for maksimal varians
+		○ Egenværdier indikerer mængden af varians forklaret af hver egenvektor
+		○ Egenvektoren med den største egenværdi bliver den første principal component
+	4. Vælg Principal Components: 
+		○ Sortér egenvektorer efter faldende egenværdier
+		○ Vælg de øverste n egenvektorer for at skabe et n-dimensionelt underrum
+		○ Antallet af komponenter, der skal beholdes, kan bestemmes ved hjælp af et scree plot eller en ønsket varianstærskel
+	5. Projektér Data: 
+		○ Transformér de originale data til det nye underrum defineret af de valgte egenvektorer
+Matematisk Repræsentation:
+	• Kovariansmatricen (Σ) indfanger relationerne mellem features
+	• Diagonalisering af denne matrix gennem egendekomposition giver os principal components
+	• Den resulterende diagonale matrix indeholder egenværdier, der repræsenterer varians langs hver principal component
+PCA-begrænsninger:
+	• Som en ikke-superviseret metode tager PCA ikke højde for klasselabels
+	• Den maksimerer overordnet varians, hvilket muligvis ikke er optimalt for klassifikationsopgaver
+	• Principal components vil måske ikke være justeret med klassegrænser, hvilket potentielt kan føre til tab af diskriminerende information
+Linear Discriminant Analysis (LDA)
+LDA er en superviseret dimensionsreduktionsteknik, der fokuserer på at maksimere klasseseparation. I modsætning til PCA bruger LDA eksplicit klasselabels til at finde de mest diskriminerende projektionsretninger.
+Sådan fungerer LDA:
+	1. Beregn Gennemsnitsvektorer for Hver Klasse: 
+		○ Beregn centroiden for hver klasse i feature-rummet
+	2. Beregn Scatter-Matricer: 
+		○ Within-Class Scatter Matrix (Sw): Måler spredningen af samples omkring deres respektive klassemidler
+		○ Between-Class Scatter Matrix (Sb): Måler afstanden mellem forskellige klassemidler
+	3. Løs det Generaliserede Egenværdiproblem: 
+		○ Find egenvektorer af Sw⁻¹Sb
+		○ Disse egenvektorer repræsenterer retninger, der maksimerer separation mellem klasser, mens de minimerer spredning inden for klasser
+	4. Vælg Diskriminantvektorer: 
+		○ Vælg egenvektorer med højeste egenværdier
+		○ Disse giver den bedste separation mellem klasser
+	5. Projektér Data: 
+		○ Transformér de originale data til de nye diskriminantakser
+LDA-optimeringsobjektiv:
+	• Maksimér forholdet mellem varians mellem klasser og varians inden for klasser
+	• Matematisk udtrykt som maksimering af d²/(s₁² + s₂²), hvor: 
+		○ d² repræsenterer den kvadrerede afstand mellem klassemidler
+		○ s₁² og s₂² repræsenterer varianserne inden for hver klasse
+LDA-karakteristika:
+	• Fungerer særligt godt med Naive Bayes-klassifikatorer
+	• Kan reducere dimensioner til højst (c-1) dimensioner, hvor c er antallet af klasser
+	• Antager at klasser har ens kovariansmatricer og følger Gaussiske fordelinger
+Andre Dimensionsreduktionsmetoder
+Ud over PCA og LDA eksisterer der flere andre teknikker, herunder:
+	• ISOMAP: Bevarer geodætiske afstande mellem punkter
+	• Multidimensional Scaling: Bevarer parvis afstande mellem punkter
+	• t-SNE: Særligt effektiv til visualisering ved at bevare lokale nabolagsstrukturer
+Praktisk Implementering
+Både PCA og LDA kan implementeres ved hjælp af:
+	• Native implementeringer med lineær algebra-biblioteker (numpy)
+	• Specialiserede maskinlæringsbiblioteker (sklearn.decomposition.PCA, sklearn.discriminant_analysis.LinearDiscriminantAnalysis)
+Anvendelse i AI-systemer
+Dimensionsreduktion tjener flere formål i udviklingen af AI-systemer:
+	1. Forbehandling: Rengør og simplificér data før modeltræning
+	2. Feature Engineering: Udtrækker meningsfulde features fra komplekse data
+	3. Visualisering: Genererer fortolkelige repræsentationer af komplekse data
+	4. Ydelseoptimering: Forbedrer modeleffektivitet og -effektivitet
+Centrale Forskelle Mellem PCA og LDA
+	• Supervision: PCA er ikke-superviseret; LDA er superviseret
+	• Optimeringmål: PCA maksimerer varians; LDA maksimerer klasseseparation
+	• Anvendelse: PCA er generel; LDA er specifikt designet til klassifikationsproblemer
+	• Begrænsninger: PCA kan reducere til enhver dimension; LDA er begrænset til c-1 dimensioner (c = antal klasser)
+Udvælgelseskriterier for Komponenter
+	• Scree Plot: Visualiserer egenværdier (varians) for at identificere, hvor aftagende afkast begynder
+	• Kumulativ Varians: Vælg tilstrækkeligt med komponenter til at forklare en målprocent af varians (f.eks. 95%)
+	• Domæneviden: Inkorporér opgavespecifikke krav i udvælgelsesprocessen
+Denne dimensionsreduktionsramme spiller en afgørende rolle i moderne AI-systemer ved at adressere problemet med "dimensionalitetens forbandelse". Ved at destillere komplekse højdimensionelle data til deres mest essentielle komponenter muliggør disse teknikker mere effektiv analyse, bedre visualisering og forbedret modelydeevne på tværs af en bred vifte af applikationer fra computer vision til naturlig sprogbehandling.
+
+
+Dimensionsreduktion: Omfattende Noter
+Introduktion til Dimensionsreduktion
+Denne forelæsning fokuserer på dimensionsreduktionsteknikker i AI-systemer. Præsentationen er fra Aalborg Universitet i Danmark og dækker konceptet, metoderne og anvendelserne af dimensionsreduktion.
+Slide 1: Titelslide
+Titelsliden introducerer "Dimensionsreduktion" som en del af et kursus om "Design og udvikling af AI-systemer". Baggrunden viser Aalborg Universitets campus med studerende, der slapper af på en græsplæne.
+Slide 2: Årets Underviser 2024
+Dette er en informationsslide om Årets Underviser 2024, der opfordrer studerende til at nominere ekstraordinære undervisere, vejledere eller projektlektorer. Nomineringer skulle indsendes inden 18. april, med chance for at vinde 500 DKK til boghandlen.
+Slide 3: Dagens Agenda
+Agendaen skitserer tre hovedemner:
+	1. Hvad er dimensionsreduktion
+	2. Principal Component Analysis (PCA)
+	3. Linear Discriminant Analysis (LDA)
+Denne struktur indikerer, at vi starter med det grundlæggende koncept, før vi dykker ned i to specifikke teknikker.
+Slide 4: Feature-rum
+Denne slide viser to visualiseringer af feature-rum:
+	• Venstre: Et 2D-scatterplot med farvede klynger, der repræsenterer forskellige klasser eller kategorier
+	• Højre: En 3D-visualisering af datapunkter med labels (R-L, S-L, SR-L, R-R, S-R, SR-R)
+Det store spørgsmålstegn til højre antyder, at vi vil adressere, hvordan man forstår og arbejder med disse multidimensionelle rum.
+Slide 5: Dimensionsreduktion
+Sliden præsenterer målet med dimensionsreduktion: "Reducer antallet af dimensioner (af en feature-vektor) og bevar stadig variansen i dataene."
+Den viser et visuelt eksempel på reduktion af 3D-data (venstre) til 2D-data (højre), mens separationen mellem forskellige klynger opretholdes. Dette illustrerer, hvordan dimensionsreduktion bevarer vigtig information (varians), samtidig med at repræsentationen forenkles.
+Slide 6: Hvorfor?
+Denne slide forklarer motivationerne for dimensionsreduktion:
+	1. Undgå overfitting - Færre dimensioner hjælper modeller med at generalisere bedre
+	2. Reducer beregningsmæssige omkostninger - Behandling af færre dimensioner er hurtigere og kræver mindre hukommelse
+	3. Fjern støj fra uvigtige dimensioner - Fokuser på signifikante mønstre ved at eliminere støj
+	4. Lettere visualisering - Mennesker kan visualisere 2D- og 3D-data, men har svært ved højere dimensioner
+Slide 7: Metoder
+Metoderne er opdelt i to kategorier:
+Metoder præsenteret i dag:
+	• Principal Component Analysis (PCA)
+	• Linear Discriminant Analysis (LDA)
+Andre metoder:
+	• ISOMAP
+	• Multidimensional scaling
+	• t-SNE
+	• Og flere...
+Dette fremhæver, at vi dækker de mest grundlæggende teknikker, men at der findes mange andre specialiserede metoder.
+Slide 8-9: Principal Component Analysis
+Disse slides forklarer PCA som en metode, der "transformerer dataene og beholder kun den/de dimension(er) med højest varians."
+Slide 8 viser et visuelt eksempel med tre paneler: originale data med korrelation, data med identificerede principal components, og data reduceret til én dimension.
+Slide 9 demonstrerer, hvordan 3D-data kan reduceres til enten 2D- eller 1D-repræsentationer gennem PCA, hvilket viser det progressive tab af information, men bevarelse af nøglemønstre.
+Slide 10-11: PCA og Kovariansmatricen
+Disse slides introducerer, hvordan PCA er baseret på kovariansmatricen.
+Slide 11 giver en fortolkning af kovariansmatricen:
+	• Når kovariansværdier (σ₁,₂, σ₂,₁) er positive, er der en positiv korrelation mellem features (øverste plot)
+	• Når de er negative, er der en negativ korrelation (nederste plot)
+Dette hjælper med at forstå, hvordan PCA identificerer relationer mellem features.
+Slide 12: Principal Component Analysis - Egenvektorer
+Denne slide viser den matematiske transformation i PCA:
+	• Original kovariansmatrix Σ = [16.87 14.94; 14.94 17.27]
+	• Transformeret matrix Σ' = [1.06 0.0; 0.0 16.0]
+Visualiseringen viser, hvordan egenvektorer reorienterer dataene for at tilpasse sig retningerne for maksimal varians. Den diagonale matrix til højre indikerer, at vi har elimineret korrelation, samtidig med at variansinformation bevares.
+Slide 13: Egenværdier og Varians
+Denne slide forklarer, hvordan egenværdier svarer til mængden af varians forklaret af hver principal component. Højre side viser et søjlediagram over variansprocenten på tværs af komponenter, hvor den første komponent typisk forklarer den største del af variansen.
+Slides 14-22: Trin-for-Trin PCA Eksempel
+Disse slides giver en detaljeret, visuel gennemgang af PCA-processen ved hjælp af et genetik-eksempel:
+	1. Start med datapunkter i et 2D-rum (Gen 1 vs. Gen 2)
+	2. Beregn centrum (gennemsnit) af dataene og skift data til at centrere omkring origo
+	3. Find retningen for maksimal varians (PC1)
+	4. Find en vinkelret retning (PC2)
+	5. Projektér alle datapunkter på disse principal component-akser
+	6. Rotér koordinatsystemet for at tilpasse med principal components
+	7. Rekonstruér data ved hjælp af reducerede dimensioner
+Eksemplet viser, hvordan vi kan repræsentere de originale data ved kun at bruge principal components, potentielt ved at droppe mindre vigtige dimensioner.
+Slide 23: PCA Metode - Algoritmetrin
+Denne slide detaljerer de algoritmiske trin i PCA:
+	1. Standardisér data: 
+		○ Normalisér skalaer (divider med standardafvigelse)
+		○ Centrér data omkring 0 (subtrahér gennemsnit)
+	2. Beregn kovariansmatrix: np.cov()
+	3. Find egenvektorer/egenværdier: np.linalg.eig()
+	4. Transformér data ved hjælp af n egenvektorer med største egenværdier: np.dot() 
+		○ n bestemmer dimensionaliteten af transformerede data
+Sliden nævner også sklearn.decomposition.PCA som en praktisk implementering.
+Slide 24: Scree Plot
+Denne slide viser et scree plot, som visualiserer mængden af varians forklaret af hver principal component. Det hjælper med at beslutte, hvor mange komponenter der skal beholdes (f.eks. når kurven flader ud).
+Slide 25: PCA Begrænsninger
+Denne slide fremhæver, at PCA er en ikke-superviseret metode, der søger dimensioner med den største overordnede varians. Det visuelle eksempel viser et tilfælde, hvor PCA muligvis ikke er optimal for klassifikation:
+	• Venstre: Originale data med to klasser (rød og blå)
+	• Midten: PCA finder principal components, der maksimerer varians, men de adskiller måske ikke klasser godt
+	• Højre: En situation, hvor PCA er justeret med klasseseparation, hvilket ikke altid er tilfældet
+Slide 26: Linear Discriminant Analysis (LDA)
+Denne slide introducerer LDA som et superviseret alternativ til PCA:
+	• Den bruger labeled data
+	• Den søger retninger, der er effektive til diskrimination mellem klasser
+	• Begreberne Linear Discriminant Analysis (LDA) og Fisher's Linear Discriminant bruges ofte som synonymer
+	• Bemærk: "Super god med Naive Bayes!" antyder, at LDA fungerer godt, når den kombineres med Naive Bayes-klassifikatorer
+Slide 27: LDA Principper
+Denne slide forklarer LDA's kerneprincipper med en visualisering:
+	1. Maksimér afstanden mellem klassemidler
+	2. Minimér variationen (spredningen) inden for hver kategori
+Formlen vist repræsenterer optimeringsmålet:
+	• d² (afstand mellem midler) skal være stor
+	• s² + s² (sum af variansen inden for klasser) skal være lille
+Slide 28: LDA Algoritme
+Denne slide præsenterer de matematiske trin i LDA:
+	1. Beregn middelværdivektorer for hver klasse
+	2. Beregn Within-Class Scatter Matrix
+	3. Beregn Between-Class Scatter Matrix
+	4. Beregn Egenvektorer/Egenværdier for Sw⁻¹Sb
+	5. Vælg ny basis ved at vælge egenvektorer med højeste egenværdier (ligesom i PCA)
+	6. Projektér data til nyt underrum: Y = X × W
+Sliden inkluderer de relevante formler for hvert trin og et link til yderligere information.
+Slide 29: Øvelsestid
+Den sidste slide indikerer en overgang til praktiske øvelser, hvor de studerende vil anvende de lærte koncepter.
+Nøglepunkter
+	1. Formål med Dimensionsreduktion: Reducér dimensioner, samtidig med at vigtig varians bevares, for at undgå overfitting, reducere beregning, fjerne støj og muliggøre visualisering.
+	2. PCA (Ikke-superviseret): 
+		○ Finder retninger med maksimal varians uanset klasselabels
+		○ Bruger kovariansmatrix og egenvektorer
+		○ Transformerer data til at tilpasse sig disse principal components
+		○ Nyttig til visualisering og forbehandling
+	3. LDA (Superviseret): 
+		○ Bruger klasselabels til at finde retninger, der maksimerer separation mellem klasser
+		○ Maksimerer varians mellem klasser og minimerer varians inden for klasser
+		○ Særligt nyttig til klassifikationsopgaver
+		○ Komplementerer metoder som Naive Bayes
+	4. Implementering: Begge metoder kan implementeres ved hjælp af lineær algebra-operationer eller gennem færdiglavede implementeringer i biblioteker som scikit-learn.
+	5. Udvælgelseskriterier: Antallet af dimensioner, der skal beholdes, kan bestemmes ved hjælp af værktøjer som scree plots (for PCA) eller ved at overveje den totale forklarede varians.
+
