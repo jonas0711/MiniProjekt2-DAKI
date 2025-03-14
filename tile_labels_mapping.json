@@ -1,0 +1,9400 @@
+{
+  "10": {
+    "0_0": {
+      "filename": "10_tile_0_0.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "0_1": {
+      "filename": "10_tile_0_1.png",
+      "terrain": "Mine",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "10_tile_0_2.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "0_3": {
+      "filename": "10_tile_0_3.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "0_4": {
+      "filename": "10_tile_0_4.png",
+      "terrain": "Table",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "10_tile_1_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "10_tile_1_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "10_tile_1_2.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "10_tile_1_3.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "10_tile_1_4.png",
+      "terrain": "Table",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "10_tile_2_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "10_tile_2_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "10_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "10_tile_2_3.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "2_4": {
+      "filename": "10_tile_2_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "10_tile_3_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "10_tile_3_1.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "10_tile_3_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "10_tile_3_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "10_tile_3_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "10_tile_4_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "10_tile_4_1.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "4_2": {
+      "filename": "10_tile_4_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "10_tile_4_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "4_4": {
+      "filename": "10_tile_4_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    }
+  },
+  "11": {
+    "0_0": {
+      "filename": "11_tile_0_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "11_tile_0_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "0_2": {
+      "filename": "11_tile_0_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "11_tile_0_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "11_tile_0_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "11_tile_1_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "1_1": {
+      "filename": "11_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "11_tile_1_2.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "1_3": {
+      "filename": "11_tile_1_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "11_tile_1_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "11_tile_2_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "2_1": {
+      "filename": "11_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "11_tile_2_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "11_tile_2_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "2_4": {
+      "filename": "11_tile_2_4.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "11_tile_3_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "11_tile_3_1.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "11_tile_3_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "11_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "11_tile_3_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "11_tile_4_0.png",
+      "terrain": "Unknown",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "11_tile_4_1.png",
+      "terrain": "Unknown",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "11_tile_4_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "11_tile_4_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "11_tile_4_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    }
+  },
+  "12": {
+    "0_0": {
+      "filename": "12_tile_0_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "12_tile_0_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "12_tile_0_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "12_tile_0_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "12_tile_0_4.png",
+      "terrain": "Table",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "12_tile_1_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "12_tile_1_1.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "12_tile_1_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "12_tile_1_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "12_tile_1_4.png",
+      "terrain": "Table",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "12_tile_2_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "12_tile_2_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "12_tile_2_2.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "2_3": {
+      "filename": "12_tile_2_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "12_tile_2_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "12_tile_3_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "12_tile_3_1.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "3_2": {
+      "filename": "12_tile_3_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "12_tile_3_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "12_tile_3_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "12_tile_4_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "12_tile_4_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "12_tile_4_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "12_tile_4_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "12_tile_4_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    }
+  },
+  "13": {
+    "0_0": {
+      "filename": "13_tile_0_0.png",
+      "terrain": "Table",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "13_tile_0_1.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "0_2": {
+      "filename": "13_tile_0_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "13_tile_0_3.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "0_4": {
+      "filename": "13_tile_0_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "13_tile_1_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "13_tile_1_1.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "13_tile_1_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "13_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "1_4": {
+      "filename": "13_tile_1_4.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "2_0": {
+      "filename": "13_tile_2_0.png",
+      "terrain": "Table",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "13_tile_2_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "13_tile_2_2.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "2_3": {
+      "filename": "13_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "13_tile_2_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "13_tile_3_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "13_tile_3_1.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "13_tile_3_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "13_tile_3_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "13_tile_3_4.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "13_tile_4_0.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "4_1": {
+      "filename": "13_tile_4_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "13_tile_4_2.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "4_3": {
+      "filename": "13_tile_4_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "13_tile_4_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    }
+  },
+  "14": {
+    "0_0": {
+      "filename": "14_tile_0_0.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "0_1": {
+      "filename": "14_tile_0_1.png",
+      "terrain": "Mine",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "14_tile_0_2.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "0_3": {
+      "filename": "14_tile_0_3.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "0_4": {
+      "filename": "14_tile_0_4.png",
+      "terrain": "Table",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "14_tile_1_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "14_tile_1_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "14_tile_1_2.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "14_tile_1_3.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "14_tile_1_4.png",
+      "terrain": "Table",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "14_tile_2_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "14_tile_2_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "14_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "14_tile_2_3.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "2_4": {
+      "filename": "14_tile_2_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "14_tile_3_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "14_tile_3_1.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "14_tile_3_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "14_tile_3_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "14_tile_3_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "14_tile_4_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "14_tile_4_1.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "4_2": {
+      "filename": "14_tile_4_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "14_tile_4_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "4_4": {
+      "filename": "14_tile_4_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    }
+  },
+  "15": {
+    "0_0": {
+      "filename": "15_tile_0_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "15_tile_0_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "0_2": {
+      "filename": "15_tile_0_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "15_tile_0_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "15_tile_0_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "15_tile_1_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "1_1": {
+      "filename": "15_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "15_tile_1_2.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "1_3": {
+      "filename": "15_tile_1_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "15_tile_1_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "15_tile_2_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "2_1": {
+      "filename": "15_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "15_tile_2_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "15_tile_2_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "2_4": {
+      "filename": "15_tile_2_4.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "15_tile_3_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "15_tile_3_1.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "15_tile_3_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "15_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "15_tile_3_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "15_tile_4_0.png",
+      "terrain": "Table",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "15_tile_4_1.png",
+      "terrain": "Table",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "15_tile_4_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "15_tile_4_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "15_tile_4_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    }
+  },
+  "16": {
+    "0_0": {
+      "filename": "16_tile_0_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "16_tile_0_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "16_tile_0_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "16_tile_0_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "16_tile_0_4.png",
+      "terrain": "Table",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "16_tile_1_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "16_tile_1_1.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "16_tile_1_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "16_tile_1_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "16_tile_1_4.png",
+      "terrain": "Table",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "16_tile_2_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "16_tile_2_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "16_tile_2_2.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "2_3": {
+      "filename": "16_tile_2_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "16_tile_2_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "16_tile_3_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "16_tile_3_1.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "3_2": {
+      "filename": "16_tile_3_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "16_tile_3_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "16_tile_3_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "16_tile_4_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "16_tile_4_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "16_tile_4_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "16_tile_4_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "16_tile_4_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    }
+  },
+  "17": {
+    "0_0": {
+      "filename": "17_tile_0_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "17_tile_0_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "17_tile_0_2.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "0_3": {
+      "filename": "17_tile_0_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "17_tile_0_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "17_tile_1_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "17_tile_1_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "17_tile_1_2.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "17_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "17_tile_1_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "17_tile_2_0.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "2_1": {
+      "filename": "17_tile_2_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "17_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "17_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "17_tile_2_4.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_0": {
+      "filename": "17_tile_3_0.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "3_1": {
+      "filename": "17_tile_3_1.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "17_tile_3_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "17_tile_3_3.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "17_tile_3_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "17_tile_4_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "17_tile_4_1.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "4_2": {
+      "filename": "17_tile_4_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "17_tile_4_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "17_tile_4_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    }
+  },
+  "18": {
+    "0_0": {
+      "filename": "18_tile_0_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "18_tile_0_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "0_2": {
+      "filename": "18_tile_0_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "18_tile_0_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "18_tile_0_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "18_tile_1_0.png",
+      "terrain": "Table",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "18_tile_1_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "18_tile_1_2.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "1_3": {
+      "filename": "18_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "18_tile_1_4.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_0": {
+      "filename": "18_tile_2_0.png",
+      "terrain": "Table",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "18_tile_2_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "18_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "18_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_4": {
+      "filename": "18_tile_2_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "18_tile_3_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "18_tile_3_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "18_tile_3_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "18_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "18_tile_3_4.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "4_0": {
+      "filename": "18_tile_4_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "18_tile_4_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "18_tile_4_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "18_tile_4_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "18_tile_4_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    }
+  },
+  "19": {
+    "0_0": {
+      "filename": "19_tile_0_0.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "0_1": {
+      "filename": "19_tile_0_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "19_tile_0_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "19_tile_0_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "19_tile_0_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "19_tile_1_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "19_tile_1_1.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "19_tile_1_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "19_tile_1_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "19_tile_1_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "19_tile_2_0.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "2_1": {
+      "filename": "19_tile_2_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "19_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "19_tile_2_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "19_tile_2_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "19_tile_3_0.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "3_1": {
+      "filename": "19_tile_3_1.png",
+      "terrain": "Mine",
+      "crowns": 3
+    },
+    "3_2": {
+      "filename": "19_tile_3_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "19_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "19_tile_3_4.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "19_tile_4_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "19_tile_4_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "19_tile_4_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "19_tile_4_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "19_tile_4_4.png",
+      "terrain": "Field",
+      "crowns": 1
+    }
+  },
+  "1": {
+    "0_0": {
+      "filename": "1_tile_0_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "1_tile_0_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "1_tile_0_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "1_tile_0_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "1_tile_0_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "1_tile_1_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "1_tile_1_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "1_tile_1_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "1_tile_1_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "1_4": {
+      "filename": "1_tile_1_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "1_tile_2_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "1_tile_2_1.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "2_2": {
+      "filename": "1_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "1_tile_2_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "1_tile_2_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "1_tile_3_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "1_tile_3_1.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "3_2": {
+      "filename": "1_tile_3_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "1_tile_3_3.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "3_4": {
+      "filename": "1_tile_3_4.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "4_0": {
+      "filename": "1_tile_4_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "1_tile_4_1.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "4_2": {
+      "filename": "1_tile_4_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "1_tile_4_3.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "4_4": {
+      "filename": "1_tile_4_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    }
+  },
+  "20": {
+    "0_0": {
+      "filename": "20_tile_0_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "0_1": {
+      "filename": "20_tile_0_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "20_tile_0_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "20_tile_0_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "20_tile_0_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "20_tile_1_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "20_tile_1_1.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "20_tile_1_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "20_tile_1_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "20_tile_1_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "2_0": {
+      "filename": "20_tile_2_0.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "2_1": {
+      "filename": "20_tile_2_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "20_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "20_tile_2_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "20_tile_2_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "3_0": {
+      "filename": "20_tile_3_0.png",
+      "terrain": "Mine",
+      "crowns": 1
+    },
+    "3_1": {
+      "filename": "20_tile_3_1.png",
+      "terrain": "Mine",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "20_tile_3_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "20_tile_3_3.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "3_4": {
+      "filename": "20_tile_3_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "4_0": {
+      "filename": "20_tile_4_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "20_tile_4_1.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "4_2": {
+      "filename": "20_tile_4_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "20_tile_4_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "20_tile_4_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    }
+  },
+  "21": {
+    "0_0": {
+      "filename": "21_tile_0_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "21_tile_0_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "21_tile_0_2.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "0_3": {
+      "filename": "21_tile_0_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "21_tile_0_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "21_tile_1_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "21_tile_1_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "21_tile_1_2.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "21_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "21_tile_1_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "21_tile_2_0.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "2_1": {
+      "filename": "21_tile_2_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "21_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "21_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "21_tile_2_4.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_0": {
+      "filename": "21_tile_3_0.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "3_1": {
+      "filename": "21_tile_3_1.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "21_tile_3_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "21_tile_3_3.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "21_tile_3_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "21_tile_4_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "21_tile_4_1.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "4_2": {
+      "filename": "21_tile_4_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "21_tile_4_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "21_tile_4_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    }
+  },
+  "22": {
+    "0_0": {
+      "filename": "22_tile_0_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "22_tile_0_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "0_2": {
+      "filename": "22_tile_0_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "22_tile_0_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "22_tile_0_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "22_tile_1_0.png",
+      "terrain": "Table",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "22_tile_1_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "22_tile_1_2.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "1_3": {
+      "filename": "22_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "22_tile_1_4.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_0": {
+      "filename": "22_tile_2_0.png",
+      "terrain": "Table",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "22_tile_2_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "22_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "22_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_4": {
+      "filename": "22_tile_2_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "22_tile_3_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "22_tile_3_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "22_tile_3_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "22_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "22_tile_3_4.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "4_0": {
+      "filename": "22_tile_4_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "22_tile_4_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "22_tile_4_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "22_tile_4_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "22_tile_4_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    }
+  },
+  "23": {
+    "0_0": {
+      "filename": "23_tile_0_0.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "0_1": {
+      "filename": "23_tile_0_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "23_tile_0_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "23_tile_0_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "23_tile_0_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "23_tile_1_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "23_tile_1_1.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "23_tile_1_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "23_tile_1_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "23_tile_1_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "23_tile_2_0.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "2_1": {
+      "filename": "23_tile_2_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "23_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "23_tile_2_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "23_tile_2_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "23_tile_3_0.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "3_1": {
+      "filename": "23_tile_3_1.png",
+      "terrain": "Mine",
+      "crowns": 3
+    },
+    "3_2": {
+      "filename": "23_tile_3_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "23_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "23_tile_3_4.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "23_tile_4_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "23_tile_4_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "23_tile_4_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "23_tile_4_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "23_tile_4_4.png",
+      "terrain": "Field",
+      "crowns": 1
+    }
+  },
+  "24": {
+    "0_0": {
+      "filename": "24_tile_0_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "0_1": {
+      "filename": "24_tile_0_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "24_tile_0_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "24_tile_0_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "24_tile_0_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "24_tile_1_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "24_tile_1_1.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "24_tile_1_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "24_tile_1_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "24_tile_1_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "2_0": {
+      "filename": "24_tile_2_0.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "2_1": {
+      "filename": "24_tile_2_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "24_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "24_tile_2_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "24_tile_2_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "3_0": {
+      "filename": "24_tile_3_0.png",
+      "terrain": "Mine",
+      "crowns": 1
+    },
+    "3_1": {
+      "filename": "24_tile_3_1.png",
+      "terrain": "Mine",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "24_tile_3_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "24_tile_3_3.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "3_4": {
+      "filename": "24_tile_3_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "4_0": {
+      "filename": "24_tile_4_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "24_tile_4_1.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "4_2": {
+      "filename": "24_tile_4_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "24_tile_4_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "24_tile_4_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    }
+  },
+  "25": {
+    "0_0": {
+      "filename": "25_tile_0_0.png",
+      "terrain": "Table",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "25_tile_0_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "25_tile_0_2.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "0_3": {
+      "filename": "25_tile_0_3.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "0_4": {
+      "filename": "25_tile_0_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "25_tile_1_0.png",
+      "terrain": "Table",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "25_tile_1_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "25_tile_1_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "25_tile_1_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "25_tile_1_4.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_0": {
+      "filename": "25_tile_2_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "25_tile_2_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "2_2": {
+      "filename": "25_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "25_tile_2_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "25_tile_2_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "25_tile_3_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "3_1": {
+      "filename": "25_tile_3_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "25_tile_3_2.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "25_tile_3_3.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "3_4": {
+      "filename": "25_tile_3_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "25_tile_4_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "25_tile_4_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "4_2": {
+      "filename": "25_tile_4_2.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "4_3": {
+      "filename": "25_tile_4_3.png",
+      "terrain": "Mine",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "25_tile_4_4.png",
+      "terrain": "Field",
+      "crowns": 1
+    }
+  },
+  "26": {
+    "0_0": {
+      "filename": "26_tile_0_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "26_tile_0_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "26_tile_0_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "26_tile_0_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "26_tile_0_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "26_tile_1_0.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "1_1": {
+      "filename": "26_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "26_tile_1_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "26_tile_1_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "26_tile_1_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "26_tile_2_0.png",
+      "terrain": "Mine",
+      "crowns": 1
+    },
+    "2_1": {
+      "filename": "26_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "26_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "26_tile_2_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "26_tile_2_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "3_0": {
+      "filename": "26_tile_3_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "26_tile_3_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "26_tile_3_2.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_3": {
+      "filename": "26_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "26_tile_3_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "4_0": {
+      "filename": "26_tile_4_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "4_1": {
+      "filename": "26_tile_4_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "26_tile_4_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "26_tile_4_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "26_tile_4_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    }
+  },
+  "27": {
+    "0_0": {
+      "filename": "27_tile_0_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "27_tile_0_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "27_tile_0_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "27_tile_0_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "27_tile_0_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "27_tile_1_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "27_tile_1_1.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "27_tile_1_2.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "1_3": {
+      "filename": "27_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "27_tile_1_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "27_tile_2_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "27_tile_2_1.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "2_2": {
+      "filename": "27_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "27_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "27_tile_2_4.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_0": {
+      "filename": "27_tile_3_0.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "3_1": {
+      "filename": "27_tile_3_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "27_tile_3_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "27_tile_3_3.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "27_tile_3_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "27_tile_4_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "27_tile_4_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "27_tile_4_2.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "4_3": {
+      "filename": "27_tile_4_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "27_tile_4_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    }
+  },
+  "28": {
+    "0_0": {
+      "filename": "28_tile_0_0.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "0_1": {
+      "filename": "28_tile_0_1.png",
+      "terrain": "Mine",
+      "crowns": 3
+    },
+    "0_2": {
+      "filename": "28_tile_0_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "28_tile_0_3.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "0_4": {
+      "filename": "28_tile_0_4.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "28_tile_1_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "28_tile_1_1.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "1_2": {
+      "filename": "28_tile_1_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "28_tile_1_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "28_tile_1_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "28_tile_2_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "28_tile_2_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "28_tile_2_2.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "2_3": {
+      "filename": "28_tile_2_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "28_tile_2_4.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "28_tile_3_0.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "3_1": {
+      "filename": "28_tile_3_1.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "28_tile_3_2.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "28_tile_3_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "28_tile_3_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "28_tile_4_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "28_tile_4_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "28_tile_4_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "28_tile_4_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "28_tile_4_4.png",
+      "terrain": "Field",
+      "crowns": 1
+    }
+  },
+  "29": {
+    "0_0": {
+      "filename": "29_tile_0_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "29_tile_0_1.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "0_2": {
+      "filename": "29_tile_0_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "29_tile_0_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "29_tile_0_4.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "1_0": {
+      "filename": "29_tile_1_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "1_1": {
+      "filename": "29_tile_1_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "29_tile_1_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "29_tile_1_3.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "1_4": {
+      "filename": "29_tile_1_4.png",
+      "terrain": "Mine",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "29_tile_2_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "2_1": {
+      "filename": "29_tile_2_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "29_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "29_tile_2_3.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "29_tile_2_4.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "3_0": {
+      "filename": "29_tile_3_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "29_tile_3_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "29_tile_3_2.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_3": {
+      "filename": "29_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "29_tile_3_4.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "4_0": {
+      "filename": "29_tile_4_0.png",
+      "terrain": "Table",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "29_tile_4_1.png",
+      "terrain": "Table",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "29_tile_4_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "29_tile_4_3.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "4_4": {
+      "filename": "29_tile_4_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    }
+  },
+  "2": {
+    "0_0": {
+      "filename": "2_tile_0_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "2_tile_0_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "2_tile_0_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "2_tile_0_3.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "0_4": {
+      "filename": "2_tile_0_4.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "2_tile_1_0.png",
+      "terrain": "Mine",
+      "crowns": 1
+    },
+    "1_1": {
+      "filename": "2_tile_1_1.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "2_tile_1_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "2_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "2_tile_1_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "2_tile_2_0.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "2_1": {
+      "filename": "2_tile_2_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "2_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "2_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "2_tile_2_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "2_tile_3_0.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "3_1": {
+      "filename": "2_tile_3_1.png",
+      "terrain": "Mine",
+      "crowns": 3
+    },
+    "3_2": {
+      "filename": "2_tile_3_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "2_tile_3_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "2_tile_3_4.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "4_0": {
+      "filename": "2_tile_4_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "2_tile_4_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "2_tile_4_2.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "2_tile_4_3.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "2_tile_4_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    }
+  },
+  "30": {
+    "0_0": {
+      "filename": "30_tile_0_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "30_tile_0_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "30_tile_0_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "30_tile_0_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "30_tile_0_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "30_tile_1_0.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "1_1": {
+      "filename": "30_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "30_tile_1_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "30_tile_1_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "30_tile_1_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "30_tile_2_0.png",
+      "terrain": "Mine",
+      "crowns": 1
+    },
+    "2_1": {
+      "filename": "30_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "30_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "30_tile_2_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "30_tile_2_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "3_0": {
+      "filename": "30_tile_3_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "30_tile_3_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "30_tile_3_2.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_3": {
+      "filename": "30_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "30_tile_3_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "4_0": {
+      "filename": "30_tile_4_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "4_1": {
+      "filename": "30_tile_4_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "30_tile_4_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "30_tile_4_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "30_tile_4_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    }
+  },
+  "31": {
+    "0_0": {
+      "filename": "31_tile_0_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "31_tile_0_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "31_tile_0_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "31_tile_0_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "31_tile_0_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "31_tile_1_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "31_tile_1_1.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "31_tile_1_2.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "1_3": {
+      "filename": "31_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "31_tile_1_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "31_tile_2_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "31_tile_2_1.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "2_2": {
+      "filename": "31_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "31_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "31_tile_2_4.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_0": {
+      "filename": "31_tile_3_0.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "3_1": {
+      "filename": "31_tile_3_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "31_tile_3_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "31_tile_3_3.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "31_tile_3_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "31_tile_4_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "31_tile_4_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "31_tile_4_2.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "4_3": {
+      "filename": "31_tile_4_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "31_tile_4_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    }
+  },
+  "32": {
+    "0_0": {
+      "filename": "32_tile_0_0.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "0_1": {
+      "filename": "32_tile_0_1.png",
+      "terrain": "Mine",
+      "crowns": 3
+    },
+    "0_2": {
+      "filename": "32_tile_0_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "32_tile_0_3.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "0_4": {
+      "filename": "32_tile_0_4.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "32_tile_1_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "32_tile_1_1.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "1_2": {
+      "filename": "32_tile_1_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "32_tile_1_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "32_tile_1_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "32_tile_2_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "32_tile_2_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "32_tile_2_2.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "2_3": {
+      "filename": "32_tile_2_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "32_tile_2_4.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "32_tile_3_0.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "3_1": {
+      "filename": "32_tile_3_1.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "32_tile_3_2.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "32_tile_3_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "32_tile_3_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "32_tile_4_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "32_tile_4_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "32_tile_4_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "32_tile_4_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "32_tile_4_4.png",
+      "terrain": "Field",
+      "crowns": 1
+    }
+  },
+  "33": {
+    "0_0": {
+      "filename": "33_tile_0_0.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "0_1": {
+      "filename": "33_tile_0_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "33_tile_0_2.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "0_3": {
+      "filename": "33_tile_0_3.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "0_4": {
+      "filename": "33_tile_0_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "1_0": {
+      "filename": "33_tile_1_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "33_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "33_tile_1_2.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "33_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "33_tile_1_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "33_tile_2_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "2_1": {
+      "filename": "33_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "33_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "33_tile_2_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "33_tile_2_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "33_tile_3_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "3_1": {
+      "filename": "33_tile_3_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "33_tile_3_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "33_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "33_tile_3_4.png",
+      "terrain": "Table",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "33_tile_4_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "4_1": {
+      "filename": "33_tile_4_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "33_tile_4_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "33_tile_4_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "33_tile_4_4.png",
+      "terrain": "Table",
+      "crowns": 0
+    }
+  },
+  "34": {
+    "0_0": {
+      "filename": "34_tile_0_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "34_tile_0_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "34_tile_0_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "34_tile_0_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "34_tile_0_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "34_tile_1_0.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "1_1": {
+      "filename": "34_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "34_tile_1_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "34_tile_1_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "34_tile_1_4.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "2_0": {
+      "filename": "34_tile_2_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "34_tile_2_1.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "2_2": {
+      "filename": "34_tile_2_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "34_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "34_tile_2_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "34_tile_3_0.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "3_1": {
+      "filename": "34_tile_3_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "34_tile_3_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "34_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "34_tile_3_4.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "4_0": {
+      "filename": "34_tile_4_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "34_tile_4_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "34_tile_4_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "34_tile_4_3.png",
+      "terrain": "Mine",
+      "crowns": 1
+    },
+    "4_4": {
+      "filename": "34_tile_4_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    }
+  },
+  "35": {
+    "0_0": {
+      "filename": "35_tile_0_0.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "0_1": {
+      "filename": "35_tile_0_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "35_tile_0_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "35_tile_0_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "35_tile_0_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "35_tile_1_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "35_tile_1_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "35_tile_1_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "35_tile_1_3.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "1_4": {
+      "filename": "35_tile_1_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "35_tile_2_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "35_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "35_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "35_tile_2_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "35_tile_2_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "35_tile_3_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "35_tile_3_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "35_tile_3_2.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "3_3": {
+      "filename": "35_tile_3_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "35_tile_3_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "35_tile_4_0.png",
+      "terrain": "Mine",
+      "crowns": 3
+    },
+    "4_1": {
+      "filename": "35_tile_4_1.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "4_2": {
+      "filename": "35_tile_4_2.png",
+      "terrain": "Mine",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "35_tile_4_3.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "4_4": {
+      "filename": "35_tile_4_4.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    }
+  },
+  "36": {
+    "0_0": {
+      "filename": "36_tile_0_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "36_tile_0_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "0_2": {
+      "filename": "36_tile_0_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "36_tile_0_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "36_tile_0_4.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "1_0": {
+      "filename": "36_tile_1_0.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "1_1": {
+      "filename": "36_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "36_tile_1_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "36_tile_1_3.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "36_tile_1_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "36_tile_2_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "36_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_2": {
+      "filename": "36_tile_2_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "36_tile_2_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "2_4": {
+      "filename": "36_tile_2_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "36_tile_3_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "36_tile_3_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "36_tile_3_2.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_3": {
+      "filename": "36_tile_3_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "36_tile_3_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "36_tile_4_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "36_tile_4_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "36_tile_4_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "36_tile_4_3.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "4_4": {
+      "filename": "36_tile_4_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    }
+  },
+  "37": {
+    "0_0": {
+      "filename": "37_tile_0_0.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "0_1": {
+      "filename": "37_tile_0_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "37_tile_0_2.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "0_3": {
+      "filename": "37_tile_0_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "37_tile_0_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "1_0": {
+      "filename": "37_tile_1_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "37_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "37_tile_1_2.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "37_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "37_tile_1_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "37_tile_2_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "2_1": {
+      "filename": "37_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "37_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "37_tile_2_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "37_tile_2_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "37_tile_3_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "3_1": {
+      "filename": "37_tile_3_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "37_tile_3_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "37_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "37_tile_3_4.png",
+      "terrain": "Table",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "37_tile_4_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "4_1": {
+      "filename": "37_tile_4_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "37_tile_4_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "37_tile_4_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "37_tile_4_4.png",
+      "terrain": "Table",
+      "crowns": 0
+    }
+  },
+  "38": {
+    "0_0": {
+      "filename": "38_tile_0_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "38_tile_0_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "38_tile_0_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "38_tile_0_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "38_tile_0_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "38_tile_1_0.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "1_1": {
+      "filename": "38_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "38_tile_1_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "38_tile_1_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "38_tile_1_4.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "2_0": {
+      "filename": "38_tile_2_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "38_tile_2_1.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "2_2": {
+      "filename": "38_tile_2_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "38_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "38_tile_2_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "38_tile_3_0.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "3_1": {
+      "filename": "38_tile_3_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "38_tile_3_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "38_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "38_tile_3_4.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "4_0": {
+      "filename": "38_tile_4_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "38_tile_4_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "38_tile_4_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "38_tile_4_3.png",
+      "terrain": "Mine",
+      "crowns": 1
+    },
+    "4_4": {
+      "filename": "38_tile_4_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    }
+  },
+  "39": {
+    "0_0": {
+      "filename": "39_tile_0_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "39_tile_0_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "39_tile_0_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "39_tile_0_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "39_tile_0_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "39_tile_1_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "39_tile_1_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "39_tile_1_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "39_tile_1_3.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "1_4": {
+      "filename": "39_tile_1_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "39_tile_2_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "39_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "39_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "39_tile_2_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "39_tile_2_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "39_tile_3_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "39_tile_3_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "39_tile_3_2.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "3_3": {
+      "filename": "39_tile_3_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "39_tile_3_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "39_tile_4_0.png",
+      "terrain": "Mine",
+      "crowns": 3
+    },
+    "4_1": {
+      "filename": "39_tile_4_1.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "4_2": {
+      "filename": "39_tile_4_2.png",
+      "terrain": "Mine",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "39_tile_4_3.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "4_4": {
+      "filename": "39_tile_4_4.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    }
+  },
+  "3": {
+    "0_0": {
+      "filename": "3_tile_0_0.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "0_1": {
+      "filename": "3_tile_0_1.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "0_2": {
+      "filename": "3_tile_0_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "3_tile_0_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "3_tile_0_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "3_tile_1_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "3_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "3_tile_1_2.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "1_3": {
+      "filename": "3_tile_1_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "3_tile_1_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "3_tile_2_0.png",
+      "terrain": "Mine",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "3_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_2": {
+      "filename": "3_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "3_tile_2_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "2_4": {
+      "filename": "3_tile_2_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "3_0": {
+      "filename": "3_tile_3_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "3_tile_3_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "3_tile_3_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "3_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "3_tile_3_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "3_tile_4_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "3_tile_4_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "3_tile_4_2.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "4_3": {
+      "filename": "3_tile_4_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "3_tile_4_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    }
+  },
+  "40": {
+    "0_0": {
+      "filename": "40_tile_0_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "40_tile_0_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "0_2": {
+      "filename": "40_tile_0_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "40_tile_0_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "40_tile_0_4.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "1_0": {
+      "filename": "40_tile_1_0.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "1_1": {
+      "filename": "40_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "40_tile_1_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "40_tile_1_3.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "40_tile_1_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "40_tile_2_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "40_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_2": {
+      "filename": "40_tile_2_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "40_tile_2_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "2_4": {
+      "filename": "40_tile_2_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "40_tile_3_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "40_tile_3_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "40_tile_3_2.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_3": {
+      "filename": "40_tile_3_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "40_tile_3_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "40_tile_4_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "40_tile_4_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "40_tile_4_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "40_tile_4_3.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "4_4": {
+      "filename": "40_tile_4_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    }
+  },
+  "41": {
+    "0_0": {
+      "filename": "41_tile_0_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "41_tile_0_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "41_tile_0_2.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "0_3": {
+      "filename": "41_tile_0_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "41_tile_0_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "1_0": {
+      "filename": "41_tile_1_0.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "1_1": {
+      "filename": "41_tile_1_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "41_tile_1_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "41_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "41_tile_1_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "41_tile_2_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "41_tile_2_1.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "2_2": {
+      "filename": "41_tile_2_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "41_tile_2_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "41_tile_2_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "41_tile_3_0.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "3_1": {
+      "filename": "41_tile_3_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "41_tile_3_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "41_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "41_tile_3_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "41_tile_4_0.png",
+      "terrain": "Mine",
+      "crowns": 3
+    },
+    "4_1": {
+      "filename": "41_tile_4_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "41_tile_4_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "41_tile_4_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "41_tile_4_4.png",
+      "terrain": "Home",
+      "crowns": 0
+    }
+  },
+  "42": {
+    "0_0": {
+      "filename": "42_tile_0_0.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "0_1": {
+      "filename": "42_tile_0_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "42_tile_0_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "42_tile_0_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "42_tile_0_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "42_tile_1_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "42_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "42_tile_1_2.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "1_3": {
+      "filename": "42_tile_1_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "42_tile_1_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "42_tile_2_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "42_tile_2_1.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "2_2": {
+      "filename": "42_tile_2_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "42_tile_2_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "42_tile_2_4.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "42_tile_3_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "42_tile_3_1.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "42_tile_3_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "42_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "42_tile_3_4.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "4_0": {
+      "filename": "42_tile_4_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "42_tile_4_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "42_tile_4_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "42_tile_4_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "4_4": {
+      "filename": "42_tile_4_4.png",
+      "terrain": "Home",
+      "crowns": 0
+    }
+  },
+  "43": {
+    "0_0": {
+      "filename": "43_tile_0_0.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "0_1": {
+      "filename": "43_tile_0_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "43_tile_0_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "43_tile_0_3.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "0_4": {
+      "filename": "43_tile_0_4.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "1_0": {
+      "filename": "43_tile_1_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "43_tile_1_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "43_tile_1_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "43_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "1_4": {
+      "filename": "43_tile_1_4.png",
+      "terrain": "Mine",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "43_tile_2_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "43_tile_2_1.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "2_2": {
+      "filename": "43_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "43_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "43_tile_2_4.png",
+      "terrain": "Mine",
+      "crowns": 1
+    },
+    "3_0": {
+      "filename": "43_tile_3_0.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "3_1": {
+      "filename": "43_tile_3_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "43_tile_3_2.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "3_3": {
+      "filename": "43_tile_3_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "43_tile_3_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "43_tile_4_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "43_tile_4_1.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "4_2": {
+      "filename": "43_tile_4_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "43_tile_4_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "43_tile_4_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    }
+  },
+  "44": {
+    "0_0": {
+      "filename": "44_tile_0_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "44_tile_0_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "44_tile_0_2.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "0_3": {
+      "filename": "44_tile_0_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "44_tile_0_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "1_0": {
+      "filename": "44_tile_1_0.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "1_1": {
+      "filename": "44_tile_1_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "44_tile_1_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "44_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "44_tile_1_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "44_tile_2_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "44_tile_2_1.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "2_2": {
+      "filename": "44_tile_2_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "44_tile_2_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "44_tile_2_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "44_tile_3_0.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "3_1": {
+      "filename": "44_tile_3_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "44_tile_3_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "44_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "44_tile_3_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "44_tile_4_0.png",
+      "terrain": "Mine",
+      "crowns": 3
+    },
+    "4_1": {
+      "filename": "44_tile_4_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "44_tile_4_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "44_tile_4_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "44_tile_4_4.png",
+      "terrain": "Home",
+      "crowns": 0
+    }
+  },
+  "45": {
+    "0_0": {
+      "filename": "45_tile_0_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "45_tile_0_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "45_tile_0_2.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "0_3": {
+      "filename": "45_tile_0_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "45_tile_0_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "45_tile_1_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "45_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "45_tile_1_2.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "45_tile_1_3.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "1_4": {
+      "filename": "45_tile_1_4.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "2_0": {
+      "filename": "45_tile_2_0.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "45_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "45_tile_2_2.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "2_3": {
+      "filename": "45_tile_2_3.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "45_tile_2_4.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "45_tile_3_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "45_tile_3_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "45_tile_3_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "45_tile_3_3.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "45_tile_3_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "45_tile_4_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "45_tile_4_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "4_2": {
+      "filename": "45_tile_4_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "45_tile_4_3.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "4_4": {
+      "filename": "45_tile_4_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    }
+  },
+  "46": {
+    "0_0": {
+      "filename": "46_tile_0_0.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "0_1": {
+      "filename": "46_tile_0_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "46_tile_0_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "46_tile_0_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "46_tile_0_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "46_tile_1_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "46_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "46_tile_1_2.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "1_3": {
+      "filename": "46_tile_1_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "46_tile_1_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "46_tile_2_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "46_tile_2_1.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "2_2": {
+      "filename": "46_tile_2_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "46_tile_2_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "46_tile_2_4.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "46_tile_3_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "46_tile_3_1.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "46_tile_3_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "46_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "46_tile_3_4.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "4_0": {
+      "filename": "46_tile_4_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "46_tile_4_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "46_tile_4_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "46_tile_4_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "4_4": {
+      "filename": "46_tile_4_4.png",
+      "terrain": "Home",
+      "crowns": 0
+    }
+  },
+  "47": {
+    "0_0": {
+      "filename": "47_tile_0_0.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "0_1": {
+      "filename": "47_tile_0_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "47_tile_0_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "47_tile_0_3.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "0_4": {
+      "filename": "47_tile_0_4.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "1_0": {
+      "filename": "47_tile_1_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "47_tile_1_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "47_tile_1_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "47_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "1_4": {
+      "filename": "47_tile_1_4.png",
+      "terrain": "Mine",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "47_tile_2_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "47_tile_2_1.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "2_2": {
+      "filename": "47_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "47_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "47_tile_2_4.png",
+      "terrain": "Mine",
+      "crowns": 1
+    },
+    "3_0": {
+      "filename": "47_tile_3_0.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "3_1": {
+      "filename": "47_tile_3_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "47_tile_3_2.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "3_3": {
+      "filename": "47_tile_3_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "47_tile_3_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "47_tile_4_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "47_tile_4_1.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "4_2": {
+      "filename": "47_tile_4_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "47_tile_4_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "47_tile_4_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    }
+  },
+  "48": {
+    "0_0": {
+      "filename": "48_tile_0_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "48_tile_0_1.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "0_2": {
+      "filename": "48_tile_0_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "48_tile_0_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "48_tile_0_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "48_tile_1_0.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "1_1": {
+      "filename": "48_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "48_tile_1_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "48_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "48_tile_1_4.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "2_0": {
+      "filename": "48_tile_2_0.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_1": {
+      "filename": "48_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "48_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "48_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "48_tile_2_4.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_0": {
+      "filename": "48_tile_3_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "48_tile_3_1.png",
+      "terrain": "Mine",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "48_tile_3_2.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "3_3": {
+      "filename": "48_tile_3_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "48_tile_3_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "48_tile_4_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "48_tile_4_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "48_tile_4_2.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "48_tile_4_3.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "4_4": {
+      "filename": "48_tile_4_4.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    }
+  },
+  "49": {
+    "0_0": {
+      "filename": "49_tile_0_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "49_tile_0_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "49_tile_0_2.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "0_3": {
+      "filename": "49_tile_0_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "49_tile_0_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "49_tile_1_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "49_tile_1_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "49_tile_1_2.png",
+      "terrain": "Mine",
+      "crowns": 3
+    },
+    "1_3": {
+      "filename": "49_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "49_tile_1_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "49_tile_2_0.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "2_1": {
+      "filename": "49_tile_2_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "49_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "49_tile_2_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "49_tile_2_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "49_tile_3_0.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "3_1": {
+      "filename": "49_tile_3_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "49_tile_3_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "49_tile_3_3.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "49_tile_3_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "4_0": {
+      "filename": "49_tile_4_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "49_tile_4_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "49_tile_4_2.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "4_3": {
+      "filename": "49_tile_4_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "49_tile_4_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    }
+  },
+  "4": {
+    "0_0": {
+      "filename": "4_tile_0_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "0_1": {
+      "filename": "4_tile_0_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "4_tile_0_2.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "0_3": {
+      "filename": "4_tile_0_3.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "4_tile_0_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "4_tile_1_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "4_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "4_tile_1_2.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "1_3": {
+      "filename": "4_tile_1_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "4_tile_1_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "4_tile_2_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "4_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "4_tile_2_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "4_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "4_tile_2_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "4_tile_3_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "3_1": {
+      "filename": "4_tile_3_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "4_tile_3_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "4_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "4_tile_3_4.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "4_0": {
+      "filename": "4_tile_4_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "4_tile_4_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "4_tile_4_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "4_tile_4_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "4_tile_4_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    }
+  },
+  "50": {
+    "0_0": {
+      "filename": "50_tile_0_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "50_tile_0_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "50_tile_0_2.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "0_3": {
+      "filename": "50_tile_0_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "50_tile_0_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "50_tile_1_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "50_tile_1_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "50_tile_1_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "50_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "50_tile_1_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "50_tile_2_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "50_tile_2_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "50_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "50_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "50_tile_2_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "50_tile_3_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "50_tile_3_1.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "50_tile_3_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "50_tile_3_3.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "50_tile_3_4.png",
+      "terrain": "Mine",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "50_tile_4_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "50_tile_4_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "50_tile_4_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "50_tile_4_3.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "50_tile_4_4.png",
+      "terrain": "Mine",
+      "crowns": 2
+    }
+  },
+  "51": {
+    "0_0": {
+      "filename": "51_tile_0_0.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "0_1": {
+      "filename": "51_tile_0_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "51_tile_0_2.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "0_3": {
+      "filename": "51_tile_0_3.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "0_4": {
+      "filename": "51_tile_0_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "51_tile_1_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "1_1": {
+      "filename": "51_tile_1_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "51_tile_1_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "51_tile_1_3.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "1_4": {
+      "filename": "51_tile_1_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "51_tile_2_0.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "2_1": {
+      "filename": "51_tile_2_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "2_2": {
+      "filename": "51_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "51_tile_2_3.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "2_4": {
+      "filename": "51_tile_2_4.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "3_0": {
+      "filename": "51_tile_3_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "51_tile_3_1.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "3_2": {
+      "filename": "51_tile_3_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "51_tile_3_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "51_tile_3_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "51_tile_4_0.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "4_1": {
+      "filename": "51_tile_4_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "51_tile_4_2.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "4_3": {
+      "filename": "51_tile_4_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "51_tile_4_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    }
+  },
+  "52": {
+    "0_0": {
+      "filename": "52_tile_0_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "52_tile_0_1.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "0_2": {
+      "filename": "52_tile_0_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "52_tile_0_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "52_tile_0_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "52_tile_1_0.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "1_1": {
+      "filename": "52_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "52_tile_1_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "52_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "52_tile_1_4.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "2_0": {
+      "filename": "52_tile_2_0.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_1": {
+      "filename": "52_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_2": {
+      "filename": "52_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "52_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_4": {
+      "filename": "52_tile_2_4.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_0": {
+      "filename": "52_tile_3_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "52_tile_3_1.png",
+      "terrain": "Mine",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "52_tile_3_2.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "3_3": {
+      "filename": "52_tile_3_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "52_tile_3_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "52_tile_4_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "52_tile_4_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "52_tile_4_2.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "52_tile_4_3.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "4_4": {
+      "filename": "52_tile_4_4.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    }
+  },
+  "53": {
+    "0_0": {
+      "filename": "53_tile_0_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "53_tile_0_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "53_tile_0_2.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "0_3": {
+      "filename": "53_tile_0_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "53_tile_0_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "53_tile_1_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "53_tile_1_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "53_tile_1_2.png",
+      "terrain": "Mine",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "53_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "53_tile_1_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "2_0": {
+      "filename": "53_tile_2_0.png",
+      "terrain": "Mine",
+      "crowns": 1
+    },
+    "2_1": {
+      "filename": "53_tile_2_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "53_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "53_tile_2_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "53_tile_2_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "53_tile_3_0.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "3_1": {
+      "filename": "53_tile_3_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "53_tile_3_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "53_tile_3_3.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "53_tile_3_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "4_0": {
+      "filename": "53_tile_4_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "53_tile_4_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "53_tile_4_2.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "4_3": {
+      "filename": "53_tile_4_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "53_tile_4_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    }
+  },
+  "54": {
+    "0_0": {
+      "filename": "54_tile_0_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "54_tile_0_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "54_tile_0_2.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "0_3": {
+      "filename": "54_tile_0_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "54_tile_0_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "54_tile_1_0.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "1_1": {
+      "filename": "54_tile_1_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "54_tile_1_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "54_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "1_4": {
+      "filename": "54_tile_1_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "54_tile_2_0.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "2_1": {
+      "filename": "54_tile_2_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "54_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "54_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_4": {
+      "filename": "54_tile_2_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "54_tile_3_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "54_tile_3_1.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "54_tile_3_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "54_tile_3_3.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "54_tile_3_4.png",
+      "terrain": "Mine",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "54_tile_4_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "54_tile_4_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "54_tile_4_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "54_tile_4_3.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "54_tile_4_4.png",
+      "terrain": "Mine",
+      "crowns": 2
+    }
+  },
+  "55": {
+    "0_0": {
+      "filename": "55_tile_0_0.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "0_1": {
+      "filename": "55_tile_0_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "55_tile_0_2.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "0_3": {
+      "filename": "55_tile_0_3.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "0_4": {
+      "filename": "55_tile_0_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "55_tile_1_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "55_tile_1_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "55_tile_1_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "55_tile_1_3.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "1_4": {
+      "filename": "55_tile_1_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "55_tile_2_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "55_tile_2_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "55_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "55_tile_2_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "55_tile_2_4.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "3_0": {
+      "filename": "55_tile_3_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "55_tile_3_1.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "3_2": {
+      "filename": "55_tile_3_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "55_tile_3_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "55_tile_3_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "55_tile_4_0.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "4_1": {
+      "filename": "55_tile_4_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "55_tile_4_2.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "4_3": {
+      "filename": "55_tile_4_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "55_tile_4_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    }
+  },
+  "56": {
+    "0_0": {
+      "filename": "56_tile_0_0.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "0_1": {
+      "filename": "56_tile_0_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "56_tile_0_2.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "0_3": {
+      "filename": "56_tile_0_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "56_tile_0_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "56_tile_1_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "56_tile_1_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "56_tile_1_2.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "1_3": {
+      "filename": "56_tile_1_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "56_tile_1_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "56_tile_2_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "56_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "56_tile_2_2.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "2_3": {
+      "filename": "56_tile_2_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "56_tile_2_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "3_0": {
+      "filename": "56_tile_3_0.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "3_1": {
+      "filename": "56_tile_3_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "56_tile_3_2.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "56_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "56_tile_3_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "56_tile_4_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "56_tile_4_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "56_tile_4_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "56_tile_4_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "56_tile_4_4.png",
+      "terrain": "Forest",
+      "crowns": 1
+    }
+  },
+  "57": {
+    "0_0": {
+      "filename": "57_tile_0_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "57_tile_0_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "0_2": {
+      "filename": "57_tile_0_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "57_tile_0_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "57_tile_0_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "57_tile_1_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "57_tile_1_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "57_tile_1_2.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "1_3": {
+      "filename": "57_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "57_tile_1_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "57_tile_2_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "57_tile_2_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "57_tile_2_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "57_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_4": {
+      "filename": "57_tile_2_4.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "57_tile_3_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "57_tile_3_1.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "57_tile_3_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "57_tile_3_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "57_tile_3_4.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "4_0": {
+      "filename": "57_tile_4_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "57_tile_4_1.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "4_2": {
+      "filename": "57_tile_4_2.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "4_3": {
+      "filename": "57_tile_4_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "57_tile_4_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    }
+  },
+  "58": {
+    "0_0": {
+      "filename": "58_tile_0_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "58_tile_0_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "58_tile_0_2.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "0_3": {
+      "filename": "58_tile_0_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "58_tile_0_4.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "58_tile_1_0.png",
+      "terrain": "Mine",
+      "crowns": 1
+    },
+    "1_1": {
+      "filename": "58_tile_1_1.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "1_2": {
+      "filename": "58_tile_1_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "58_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "58_tile_1_4.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "2_0": {
+      "filename": "58_tile_2_0.png",
+      "terrain": "Mine",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "58_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_2": {
+      "filename": "58_tile_2_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "58_tile_2_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "58_tile_2_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "58_tile_3_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "58_tile_3_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "58_tile_3_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "58_tile_3_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "58_tile_3_4.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "4_0": {
+      "filename": "58_tile_4_0.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "4_1": {
+      "filename": "58_tile_4_1.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "4_2": {
+      "filename": "58_tile_4_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "58_tile_4_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "58_tile_4_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    }
+  },
+  "59": {
+    "0_0": {
+      "filename": "59_tile_0_0.png",
+      "terrain": "Mine",
+      "crowns": 3
+    },
+    "0_1": {
+      "filename": "59_tile_0_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "59_tile_0_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "59_tile_0_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "59_tile_0_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "59_tile_1_0.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "1_1": {
+      "filename": "59_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "59_tile_1_2.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "1_3": {
+      "filename": "59_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "59_tile_1_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "2_0": {
+      "filename": "59_tile_2_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "59_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "59_tile_2_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "59_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_4": {
+      "filename": "59_tile_2_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "59_tile_3_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "59_tile_3_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "59_tile_3_2.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "3_3": {
+      "filename": "59_tile_3_3.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "59_tile_3_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "59_tile_4_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "59_tile_4_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "59_tile_4_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "59_tile_4_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "59_tile_4_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    }
+  },
+  "5": {
+    "0_0": {
+      "filename": "5_tile_0_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "5_tile_0_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "5_tile_0_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "5_tile_0_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "5_tile_0_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "5_tile_1_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "5_tile_1_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "5_tile_1_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "5_tile_1_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "1_4": {
+      "filename": "5_tile_1_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "5_tile_2_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "5_tile_2_1.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "2_2": {
+      "filename": "5_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "5_tile_2_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "5_tile_2_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "5_tile_3_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "5_tile_3_1.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "3_2": {
+      "filename": "5_tile_3_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "5_tile_3_3.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "3_4": {
+      "filename": "5_tile_3_4.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "4_0": {
+      "filename": "5_tile_4_0.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "4_1": {
+      "filename": "5_tile_4_1.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "4_2": {
+      "filename": "5_tile_4_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "5_tile_4_3.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "4_4": {
+      "filename": "5_tile_4_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    }
+  },
+  "60": {
+    "0_0": {
+      "filename": "60_tile_0_0.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "0_1": {
+      "filename": "60_tile_0_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "60_tile_0_2.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "0_3": {
+      "filename": "60_tile_0_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "60_tile_0_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "60_tile_1_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "60_tile_1_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "60_tile_1_2.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "1_3": {
+      "filename": "60_tile_1_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "60_tile_1_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "60_tile_2_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "60_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "60_tile_2_2.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "2_3": {
+      "filename": "60_tile_2_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "60_tile_2_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "3_0": {
+      "filename": "60_tile_3_0.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "3_1": {
+      "filename": "60_tile_3_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "60_tile_3_2.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "60_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "60_tile_3_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "60_tile_4_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "60_tile_4_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "60_tile_4_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "60_tile_4_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "60_tile_4_4.png",
+      "terrain": "Forest",
+      "crowns": 1
+    }
+  },
+  "61": {
+    "0_0": {
+      "filename": "61_tile_0_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "61_tile_0_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "0_2": {
+      "filename": "61_tile_0_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "61_tile_0_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "61_tile_0_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "61_tile_1_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "61_tile_1_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "61_tile_1_2.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "1_3": {
+      "filename": "61_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "61_tile_1_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "61_tile_2_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "61_tile_2_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "61_tile_2_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "61_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_4": {
+      "filename": "61_tile_2_4.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "61_tile_3_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "61_tile_3_1.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "61_tile_3_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "61_tile_3_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "61_tile_3_4.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "4_0": {
+      "filename": "61_tile_4_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "61_tile_4_1.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "4_2": {
+      "filename": "61_tile_4_2.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "4_3": {
+      "filename": "61_tile_4_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "61_tile_4_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    }
+  },
+  "62": {
+    "0_0": {
+      "filename": "62_tile_0_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "62_tile_0_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "62_tile_0_2.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "0_3": {
+      "filename": "62_tile_0_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "62_tile_0_4.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "62_tile_1_0.png",
+      "terrain": "Mine",
+      "crowns": 1
+    },
+    "1_1": {
+      "filename": "62_tile_1_1.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "1_2": {
+      "filename": "62_tile_1_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "62_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "62_tile_1_4.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "2_0": {
+      "filename": "62_tile_2_0.png",
+      "terrain": "Mine",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "62_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_2": {
+      "filename": "62_tile_2_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "62_tile_2_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "62_tile_2_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "62_tile_3_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "62_tile_3_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "62_tile_3_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "62_tile_3_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "62_tile_3_4.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "4_0": {
+      "filename": "62_tile_4_0.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "4_1": {
+      "filename": "62_tile_4_1.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "4_2": {
+      "filename": "62_tile_4_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "62_tile_4_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "62_tile_4_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    }
+  },
+  "63": {
+    "0_0": {
+      "filename": "63_tile_0_0.png",
+      "terrain": "Mine",
+      "crowns": 3
+    },
+    "0_1": {
+      "filename": "63_tile_0_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "63_tile_0_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "63_tile_0_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "63_tile_0_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "63_tile_1_0.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "1_1": {
+      "filename": "63_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "63_tile_1_2.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "1_3": {
+      "filename": "63_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "63_tile_1_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "2_0": {
+      "filename": "63_tile_2_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "63_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "63_tile_2_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "63_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_4": {
+      "filename": "63_tile_2_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "63_tile_3_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "63_tile_3_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "63_tile_3_2.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "3_3": {
+      "filename": "63_tile_3_3.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "63_tile_3_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "63_tile_4_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "63_tile_4_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "63_tile_4_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "63_tile_4_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "63_tile_4_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    }
+  },
+  "64": {
+    "0_0": {
+      "filename": "64_tile_0_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "64_tile_0_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "0_2": {
+      "filename": "64_tile_0_2.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "0_3": {
+      "filename": "64_tile_0_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "0_4": {
+      "filename": "64_tile_0_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "64_tile_1_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "64_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "64_tile_1_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "64_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "64_tile_1_4.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_0": {
+      "filename": "64_tile_2_0.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "2_1": {
+      "filename": "64_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "64_tile_2_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "64_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "64_tile_2_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "64_tile_3_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "64_tile_3_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "64_tile_3_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "64_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "64_tile_3_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "64_tile_4_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "64_tile_4_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "64_tile_4_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "64_tile_4_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "64_tile_4_4.png",
+      "terrain": "Home",
+      "crowns": 0
+    }
+  },
+  "65": {
+    "0_0": {
+      "filename": "65_tile_0_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "65_tile_0_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "65_tile_0_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "65_tile_0_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "65_tile_0_4.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "65_tile_1_0.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "1_1": {
+      "filename": "65_tile_1_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "65_tile_1_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "65_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "1_4": {
+      "filename": "65_tile_1_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "65_tile_2_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "65_tile_2_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "65_tile_2_2.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "2_3": {
+      "filename": "65_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "65_tile_2_4.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "65_tile_3_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "65_tile_3_1.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "65_tile_3_2.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "3_3": {
+      "filename": "65_tile_3_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "65_tile_3_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "65_tile_4_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "65_tile_4_1.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "4_2": {
+      "filename": "65_tile_4_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "65_tile_4_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "65_tile_4_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    }
+  },
+  "66": {
+    "0_0": {
+      "filename": "66_tile_0_0.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "0_1": {
+      "filename": "66_tile_0_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "66_tile_0_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "66_tile_0_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "66_tile_0_4.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "1_0": {
+      "filename": "66_tile_1_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "66_tile_1_1.png",
+      "terrain": "Mine",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "66_tile_1_2.png",
+      "terrain": "Mine",
+      "crowns": 3
+    },
+    "1_3": {
+      "filename": "66_tile_1_3.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "1_4": {
+      "filename": "66_tile_1_4.png",
+      "terrain": "Mine",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "66_tile_2_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "66_tile_2_1.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "2_2": {
+      "filename": "66_tile_2_2.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "2_3": {
+      "filename": "66_tile_2_3.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "2_4": {
+      "filename": "66_tile_2_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "66_tile_3_0.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "3_1": {
+      "filename": "66_tile_3_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "66_tile_3_2.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "66_tile_3_3.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "66_tile_3_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "66_tile_4_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "66_tile_4_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "66_tile_4_2.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "4_3": {
+      "filename": "66_tile_4_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "66_tile_4_4.png",
+      "terrain": "Home",
+      "crowns": 0
+    }
+  },
+  "67": {
+    "0_0": {
+      "filename": "67_tile_0_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "67_tile_0_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "67_tile_0_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "67_tile_0_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "67_tile_0_4.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "67_tile_1_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "1_1": {
+      "filename": "67_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "67_tile_1_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "67_tile_1_3.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "1_4": {
+      "filename": "67_tile_1_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "67_tile_2_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "2_1": {
+      "filename": "67_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "67_tile_2_2.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_3": {
+      "filename": "67_tile_2_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "67_tile_2_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "67_tile_3_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "67_tile_3_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "67_tile_3_2.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_3": {
+      "filename": "67_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "67_tile_3_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "67_tile_4_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "67_tile_4_1.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "4_2": {
+      "filename": "67_tile_4_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "67_tile_4_3.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "4_4": {
+      "filename": "67_tile_4_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    }
+  },
+  "68": {
+    "0_0": {
+      "filename": "68_tile_0_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "68_tile_0_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "0_2": {
+      "filename": "68_tile_0_2.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "0_3": {
+      "filename": "68_tile_0_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "0_4": {
+      "filename": "68_tile_0_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "68_tile_1_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "68_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "68_tile_1_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "68_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "68_tile_1_4.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_0": {
+      "filename": "68_tile_2_0.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "2_1": {
+      "filename": "68_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "68_tile_2_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "68_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "68_tile_2_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "68_tile_3_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "68_tile_3_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "68_tile_3_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "68_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "68_tile_3_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "68_tile_4_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "68_tile_4_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "68_tile_4_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "68_tile_4_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "68_tile_4_4.png",
+      "terrain": "Home",
+      "crowns": 0
+    }
+  },
+  "69": {
+    "0_0": {
+      "filename": "69_tile_0_0.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "0_1": {
+      "filename": "69_tile_0_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "69_tile_0_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "69_tile_0_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "69_tile_0_4.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "1_0": {
+      "filename": "69_tile_1_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "69_tile_1_1.png",
+      "terrain": "Mine",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "69_tile_1_2.png",
+      "terrain": "Mine",
+      "crowns": 3
+    },
+    "1_3": {
+      "filename": "69_tile_1_3.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "1_4": {
+      "filename": "69_tile_1_4.png",
+      "terrain": "Mine",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "69_tile_2_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "69_tile_2_1.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "2_2": {
+      "filename": "69_tile_2_2.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "2_3": {
+      "filename": "69_tile_2_3.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "2_4": {
+      "filename": "69_tile_2_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "69_tile_3_0.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "3_1": {
+      "filename": "69_tile_3_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "69_tile_3_2.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "69_tile_3_3.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "69_tile_3_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "69_tile_4_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "69_tile_4_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "69_tile_4_2.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "4_3": {
+      "filename": "69_tile_4_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "69_tile_4_4.png",
+      "terrain": "Home",
+      "crowns": 0
+    }
+  },
+  "6": {
+    "0_0": {
+      "filename": "6_tile_0_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "6_tile_0_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "6_tile_0_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "6_tile_0_3.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "0_4": {
+      "filename": "6_tile_0_4.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "6_tile_1_0.png",
+      "terrain": "Mine",
+      "crowns": 1
+    },
+    "1_1": {
+      "filename": "6_tile_1_1.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "6_tile_1_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "6_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "6_tile_1_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "6_tile_2_0.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "2_1": {
+      "filename": "6_tile_2_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "6_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "6_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "6_tile_2_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "6_tile_3_0.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "3_1": {
+      "filename": "6_tile_3_1.png",
+      "terrain": "Mine",
+      "crowns": 3
+    },
+    "3_2": {
+      "filename": "6_tile_3_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "6_tile_3_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "6_tile_3_4.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "4_0": {
+      "filename": "6_tile_4_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "6_tile_4_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "6_tile_4_2.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "6_tile_4_3.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "6_tile_4_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    }
+  },
+  "70": {
+    "0_0": {
+      "filename": "70_tile_0_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "70_tile_0_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "70_tile_0_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "70_tile_0_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "70_tile_0_4.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "70_tile_1_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "1_1": {
+      "filename": "70_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "70_tile_1_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "70_tile_1_3.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "1_4": {
+      "filename": "70_tile_1_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "70_tile_2_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "2_1": {
+      "filename": "70_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "70_tile_2_2.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_3": {
+      "filename": "70_tile_2_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "70_tile_2_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "70_tile_3_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "70_tile_3_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "70_tile_3_2.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_3": {
+      "filename": "70_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "70_tile_3_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "70_tile_4_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "70_tile_4_1.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "4_2": {
+      "filename": "70_tile_4_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "70_tile_4_3.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "4_4": {
+      "filename": "70_tile_4_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    }
+  },
+  "71": {
+    "0_0": {
+      "filename": "71_tile_0_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "71_tile_0_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "0_2": {
+      "filename": "71_tile_0_2.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "0_3": {
+      "filename": "71_tile_0_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "0_4": {
+      "filename": "71_tile_0_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "71_tile_1_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "71_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "71_tile_1_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "71_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "71_tile_1_4.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_0": {
+      "filename": "71_tile_2_0.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "2_1": {
+      "filename": "71_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "71_tile_2_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "71_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "71_tile_2_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "71_tile_3_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "71_tile_3_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "71_tile_3_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "71_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "71_tile_3_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "71_tile_4_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "71_tile_4_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "71_tile_4_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "71_tile_4_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "71_tile_4_4.png",
+      "terrain": "Home",
+      "crowns": 0
+    }
+  },
+  "72": {
+    "0_0": {
+      "filename": "72_tile_0_0.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "72_tile_0_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "72_tile_0_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "72_tile_0_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "72_tile_0_4.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "72_tile_1_0.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "1_1": {
+      "filename": "72_tile_1_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "72_tile_1_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "72_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "1_4": {
+      "filename": "72_tile_1_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "72_tile_2_0.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "72_tile_2_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "72_tile_2_2.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "2_3": {
+      "filename": "72_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "72_tile_2_4.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "72_tile_3_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "72_tile_3_1.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "72_tile_3_2.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "3_3": {
+      "filename": "72_tile_3_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "72_tile_3_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "72_tile_4_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "72_tile_4_1.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "4_2": {
+      "filename": "72_tile_4_2.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "72_tile_4_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "72_tile_4_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    }
+  },
+  "73": {
+    "0_0": {
+      "filename": "73_tile_0_0.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "0_1": {
+      "filename": "73_tile_0_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "73_tile_0_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "73_tile_0_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "73_tile_0_4.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "1_0": {
+      "filename": "73_tile_1_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "73_tile_1_1.png",
+      "terrain": "Mine",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "73_tile_1_2.png",
+      "terrain": "Mine",
+      "crowns": 3
+    },
+    "1_3": {
+      "filename": "73_tile_1_3.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "1_4": {
+      "filename": "73_tile_1_4.png",
+      "terrain": "Mine",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "73_tile_2_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "73_tile_2_1.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "2_2": {
+      "filename": "73_tile_2_2.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "2_3": {
+      "filename": "73_tile_2_3.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "2_4": {
+      "filename": "73_tile_2_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "73_tile_3_0.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "3_1": {
+      "filename": "73_tile_3_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "73_tile_3_2.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "73_tile_3_3.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "73_tile_3_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "73_tile_4_0.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "73_tile_4_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "73_tile_4_2.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "4_3": {
+      "filename": "73_tile_4_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "73_tile_4_4.png",
+      "terrain": "Home",
+      "crowns": 0
+    }
+  },
+  "74": {
+    "0_0": {
+      "filename": "74_tile_0_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "74_tile_0_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "74_tile_0_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "74_tile_0_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "74_tile_0_4.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "74_tile_1_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "1_1": {
+      "filename": "74_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "74_tile_1_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "74_tile_1_3.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "1_4": {
+      "filename": "74_tile_1_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "74_tile_2_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "2_1": {
+      "filename": "74_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "74_tile_2_2.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_3": {
+      "filename": "74_tile_2_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "74_tile_2_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "74_tile_3_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "74_tile_3_1.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "74_tile_3_2.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_3": {
+      "filename": "74_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "74_tile_3_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "74_tile_4_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "74_tile_4_1.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "4_2": {
+      "filename": "74_tile_4_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "74_tile_4_3.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "4_4": {
+      "filename": "74_tile_4_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    }
+  },
+  "7": {
+    "0_0": {
+      "filename": "7_tile_0_0.png",
+      "terrain": "Swamp",
+      "crowns": 2
+    },
+    "0_1": {
+      "filename": "7_tile_0_1.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "0_2": {
+      "filename": "7_tile_0_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "7_tile_0_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "7_tile_0_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "7_tile_1_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "7_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_2": {
+      "filename": "7_tile_1_2.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "1_3": {
+      "filename": "7_tile_1_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "7_tile_1_4.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "7_tile_2_0.png",
+      "terrain": "Mine",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "7_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "2_2": {
+      "filename": "7_tile_2_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "7_tile_2_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "7_tile_2_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "3_0": {
+      "filename": "7_tile_3_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "7_tile_3_1.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "7_tile_3_2.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "7_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "7_tile_3_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "7_tile_4_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "7_tile_4_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "7_tile_4_2.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "4_3": {
+      "filename": "7_tile_4_3.png",
+      "terrain": "Forest",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "7_tile_4_4.png",
+      "terrain": "Lake",
+      "crowns": 1
+    }
+  },
+  "8": {
+    "0_0": {
+      "filename": "8_tile_0_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "0_1": {
+      "filename": "8_tile_0_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_2": {
+      "filename": "8_tile_0_2.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "0_3": {
+      "filename": "8_tile_0_3.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "0_4": {
+      "filename": "8_tile_0_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "8_tile_1_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "8_tile_1_1.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "8_tile_1_2.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "1_3": {
+      "filename": "8_tile_1_3.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_4": {
+      "filename": "8_tile_1_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_0": {
+      "filename": "8_tile_2_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "8_tile_2_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "8_tile_2_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_3": {
+      "filename": "8_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "8_tile_2_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "8_tile_3_0.png",
+      "terrain": "Lake",
+      "crowns": 1
+    },
+    "3_1": {
+      "filename": "8_tile_3_1.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_2": {
+      "filename": "8_tile_3_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "8_tile_3_3.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "3_4": {
+      "filename": "8_tile_3_4.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "4_0": {
+      "filename": "8_tile_4_0.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_1": {
+      "filename": "8_tile_4_1.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "8_tile_4_2.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "4_3": {
+      "filename": "8_tile_4_3.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "8_tile_4_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    }
+  },
+  "9": {
+    "0_0": {
+      "filename": "9_tile_0_0.png",
+      "terrain": "Table",
+      "crowns": 0
+    },
+    "0_1": {
+      "filename": "9_tile_0_1.png",
+      "terrain": "Mine",
+      "crowns": 2
+    },
+    "0_2": {
+      "filename": "9_tile_0_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "0_3": {
+      "filename": "9_tile_0_3.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "0_4": {
+      "filename": "9_tile_0_4.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "1_0": {
+      "filename": "9_tile_1_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "1_1": {
+      "filename": "9_tile_1_1.png",
+      "terrain": "Grassland",
+      "crowns": 1
+    },
+    "1_2": {
+      "filename": "9_tile_1_2.png",
+      "terrain": "Lake",
+      "crowns": 0
+    },
+    "1_3": {
+      "filename": "9_tile_1_3.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "1_4": {
+      "filename": "9_tile_1_4.png",
+      "terrain": "Forest",
+      "crowns": 1
+    },
+    "2_0": {
+      "filename": "9_tile_2_0.png",
+      "terrain": "Table",
+      "crowns": 0
+    },
+    "2_1": {
+      "filename": "9_tile_2_1.png",
+      "terrain": "Grassland",
+      "crowns": 0
+    },
+    "2_2": {
+      "filename": "9_tile_2_2.png",
+      "terrain": "Grassland",
+      "crowns": 2
+    },
+    "2_3": {
+      "filename": "9_tile_2_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "2_4": {
+      "filename": "9_tile_2_4.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_0": {
+      "filename": "9_tile_3_0.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_1": {
+      "filename": "9_tile_3_1.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "3_2": {
+      "filename": "9_tile_3_2.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_3": {
+      "filename": "9_tile_3_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "3_4": {
+      "filename": "9_tile_3_4.png",
+      "terrain": "Home",
+      "crowns": 0
+    },
+    "4_0": {
+      "filename": "9_tile_4_0.png",
+      "terrain": "Swamp",
+      "crowns": 1
+    },
+    "4_1": {
+      "filename": "9_tile_4_1.png",
+      "terrain": "Swamp",
+      "crowns": 0
+    },
+    "4_2": {
+      "filename": "9_tile_4_2.png",
+      "terrain": "Field",
+      "crowns": 1
+    },
+    "4_3": {
+      "filename": "9_tile_4_3.png",
+      "terrain": "Field",
+      "crowns": 0
+    },
+    "4_4": {
+      "filename": "9_tile_4_4.png",
+      "terrain": "Lake",
+      "crowns": 0
+    }
+  }
+}
