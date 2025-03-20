@@ -1,0 +1,187 @@
+# Automatisk Terrain Klassifikation i Kingdomino
+
+## Sammenfatning
+
+Dette projekt præsenterer en automatiseret løsning til terrænklassifikation i brætspillet Kingdomino ved hjælp af computervisionsmetoder og maskinlæringsteknikker. Systemet analyserer ekstraherede felter fra spilleplader og klassificerer dem i seks forskellige terræntyper: Field, Forest, Grassland, Lake, Mine og Swamp. Vores implementering opnår en bemærkelsesværdig klassifikationsnøjagtighed på 100% ved at kombinere farvebaserede og teksturbaserede features med dimensionsreduktion via Linear Discriminant Analysis (LDA) og klassifikation med K-Nearest Neighbors (KNN). Denne rapport detaljerer vores metodiske tilgang, implementering, og evaluering af systemet.
+
+## 1. Introduktion
+
+Kingdomino er et populært brætspil, hvor spillerne bygger deres kongeriger ved at placere dominobrikker med forskellige terræntyper. En automatisk terrænklassifikationsmekanisme kan bruges til at beregne den endelige score baseret på spillets regler, hvor sammenhængende områder af samme terræntype giver point baseret på størrelse og antal kroner.
+
+Vores opgave var at udvikle et system, der kan:
+1. Identificere forskellige terræntyper i billeder af spilleplader
+2. Korrekt klassificere hvert felt i henhold til dets terræntype
+3. Håndtere forskellige layouts og konfigurationer
+4. Fungere robust på tværs af forskellige spilleplader
+
+## 2. Metode og Implementation
+
+### 2.1 Dataindsamling og Forbehandling
+
+Vores dataset bestod af udklippede og perspektivkorrigerede billeder af Kingdomino-plader. Vi behandlede dataene gennem følgende trin:
+
+1. **Tile Ekstraktion**: Alle plader blev opdelt i individuelle felter (tiles) ved hjælp af `tiles.py`, hvilket resulterede i et stort datasæt af terrænfelter.
+
+2. **Labeling**: Vi anvendte `labels.py` til at associere hver tile med den korrekte terræntype baseret på en Excel-fil med labels. Dette resulterede i en JSON-fil (`tile_labels_mapping.json`), der mappper filnavne til terræntyper og antal kroner.
+
+3. **Organisering**: Vi brugte `label_folder.py` til at organisere tiles i mapper baseret på terræntype, hvilket gjorde det lettere at visualisere og validere dataene.
+
+### 2.2 Feature Ekstraktion
+
+Baseret på undervisningsmaterialet om billedfeatures og histogram features (Materiale/5.txt), implementerede vi flere feature-ekstraktionsmetoder:
+
+1. **Farvestatistik**: Vi beregnede statistiske mål (gennemsnit, median, standardafvigelse) for hver farvekanal (R, G, B) og hver HSV-komponent (H, S, V) ved hjælp af `color_features.py`. Dette gav os grundlæggende information om farverne i hvert terræn.
+
+2. **Farvehistogrammer**: Vi ekstraherede normaliserede histogrammer for RGB- og HSV-kanalerne, hvilket gav os mere detaljeret information om farvefordelingen i hvert felt.
+
+3. **Tekstur Features**: Vi implementerede gradient-baserede teksturdeskriptorer, der fanger orienteringshistogrammer af kanter i billedet. Dette svarer til en forenklet version af Histogram of Oriented Gradients (HOG) beskrevet i undervisningsmaterialet (Materiale/3.txt).
+
+Disse features blev implementeret i funktioner som `extract_rgb_histogram()`, `extract_hsv_histogram()`, og `extract_texture_histogram()` i vores kodebase.
+
+### 2.3 Feature Analyse
+
+Vi analyserede farveegenskaberne for hver terræntype ved hjælp af `color_features.py`, som genererede en omfattende statistik gemt i `terrain_color_features.json`. Denne analyse viste tydelige farvemæssige forskelle mellem terræntyper:
+
+- **Field**: Høje R og G værdier (gul-brun), meget lav B værdi (R: 171.9, G: 144.3, B: 10.7)
+- **Forest**: Moderate G værdier, lave R og B værdier (R: 44.0, G: 52.0, B: 21.3)
+- **Lake**: Dominerende B værdi, lave R værdier (R: 20.7, G: 74.0, B: 136.6)
+- **Mine**: Generelt lave RGB værdier med høj varians (R: 61.3, G: 50.9, B: 29.7)
+- **Swamp**: Moderate R og G værdier, lavere B værdi (R: 100.9, G: 87.1, B: 53.9)
+- **Grassland**: Høj G værdi, moderat R værdi, lav B værdi (R: 89.5, G: 119.5, B: 25.9)
+
+HSV-statistikken viste også betydelige forskelle i farvetone (Hue) mellem terræntyper, hvilket støtter vores valg af både RGB- og HSV-baserede features.
+
+### 2.4 Dimensionsreduktion
+
+For at håndtere de højdimensionelle feature-vektorer og forbedre klassifikationsydelsen, anvendte vi Linear Discriminant Analysis (LDA) til dimensionsreduktion. LDA er særligt velegnet til klassifikationsproblemer, da den søger at maksimere adskillelsen mellem klasser, mens den minimerer variationen inden for klasser (som beskrevet i Materiale/4.txt).
+
+Vi reducerede feature-vektorerne til 5 dimensioner (det maksimale for 6 klasser), hvilket bevarede over 99% af den diskriminative information. Fordelingen af forklaret varians over LDA-komponenterne var:
+
+```
+LD1: 0.5355
+LD2: 0.2560
+LD3: 0.1059
+LD4: 0.0664
+LD5: 0.0362
+```
+
+De første tre komponenter (LD1, LD2, LD3) forklarede over 89% af variansen, hvilket indikerer, at de mest væsentlige diskriminative egenskaber blev fanget i disse dimensioner.
+
+### 2.5 Klassifikation
+
+Til klassifikation valgte vi K-Nearest Neighbors (KNN) algoritmen med k=5. Valget af KNN var baseret på flere faktorer:
+
+1. KNN er effektiv for veldefinerede klynger i feature-rummet, hvilket var tilfældet efter vores LDA-transformation (se 3D-visualiseringer).
+2. KNN kræver ingen yderligere træningsiteration efter feature-ekstraktion.
+3. KNN er intuitiv og relativt beregningsmæssigt effektiv, især med reduceret dimensionalitet.
+
+Som beskrevet i undervisningsmaterialet (Materiale/7.txt og Materiale/9.txt), KNN klassificerer nye data baseret på majoritetsafstemning fra de k nærmeste træningseksempler i feature-rummet.
+
+## 3. Eksperimentelt Setup
+
+Vi testede forskellige tilgange til terrænklassifikation:
+
+### 3.1 Datasplitting
+
+Vi anvendte to forskellige metoder til at opdele data i trænings- og testsæt:
+
+1. **Random Split (80/20)**: Implementeret i `model.py`, hvor vi tilfældigt opdelte hele datasættet i 80% træning og 20% test.
+
+2. **Board-baseret Split**: Implementeret i `plade_model.py` og `test_model.py`, hvor vi brugte plader 1-59 til træning og plader 60-75 til test. Dette er en mere realistisk evaluering, da det tester modellens evne til at generalisere til helt nye spilleplader.
+
+### 3.2 Feature Sammenligning
+
+Vi sammenlignede to feature-sæt for at vurdere deres respektive klassifikationsevne:
+
+1. **RGB + Tekstur**: Kombinerer RGB-histogrammer med teksturfeatures.
+2. **HSV + Tekstur**: Kombinerer HSV-histogrammer med teksturfeatures.
+
+Begge eksperimenter blev udført med samme LDA-dimensionsreduktion og KNN-klassifikation for fair sammenligning.
+
+## 4. Resultater og Evaluering
+
+### 4.1 Modelevaluering
+
+Vores modeller opnåede bemærkelsesværdige resultater:
+
+1. **Random Split (80/20)**:
+   - Precision, Recall og F1-score: 1.00 for alle klasser
+   - Samlet nøjagtighed: 100%
+
+2. **Board-baseret Split**:
+   - Precision, Recall og F1-score: 1.00 for alle klasser 
+   - Samlet nøjagtighed: 100%
+
+Disse resultater viser, at vores model er ekstremt effektiv til at skelne mellem forskellige terræntyper, selv på helt nye spilleplader.
+
+### 4.2 Feature-analyse
+
+Sammenligning af de to feature-sæt:
+
+1. **RGB + Tekstur**:
+   - Forklaret varians: LD1: 0.6506, LD2: 0.2187, LD3: 0.0803, LD4: 0.0333, LD5: 0.0171
+   - Nøjagtighed: 100%
+
+2. **HSV + Tekstur**:
+   - Forklaret varians: LD1: 0.5542, LD2: 0.2228, LD3: 0.1340, LD4: 0.0558, LD5: 0.0332
+   - Nøjagtighed: 100%
+
+Begge feature-sæt viste perfekt klassifikation, men RGB+Tekstur havde en lidt stærkere første diskriminantkomponent (65% vs. 55%), mens HSV+Tekstur havde en stærkere tredje komponent (13% vs. 8%).
+
+### 4.3 LDA Visualisering
+
+3D LDA-visualiseringerne af feature-rummet (se billederne) giver værdifuld indsigt i vores model:
+
+1. **Træningsdata (Billede 1)**: Viser tydelig adskillelse mellem de seks terrænklasser i LDA-rummet, hvilket bekræfter effektiviteten af vores feature-ekstraktion og dimensionsreduktion.
+
+2. **HSV+Tekstur (Billede 2)**: Klasterne er veladskilte, med Lake-terrænet (turkis) placeret i den øvre del af rummet, adskilt fra de andre klasser.
+
+3. **RGB+Tekstur (Billede 3)**: Viser lignende god klasseadskillelse, men med en lidt anderledes rumlig konfiguration, hvor Field-terrænet (rødt) er mere vertikalt adskilt.
+
+Den tydelige separation i LDA-rummet forklarer den perfekte klassifikationsydelse og bekræfter effektiviteten af vores feature-design.
+
+## 5. Diskussion
+
+### 5.1 Feature Effektivitet
+
+Den høje klassifikationsnøjagtighed med både RGB- og HSV-baserede features indikerer, at terræntyper i Kingdomino har meget distinkte farve- og teksturegenskaber. Vores farvestatistik (i terrain_color_features.json) bekræfter dette, med tydelige forskelle i farvefordelinger mellem terræntyper.
+
+Det er bemærkelsesværdigt, at begge feature-sæt opnåede 100% nøjagtighed, hvilket tyder på en vis redundans i informationen. Dette er en positiv egenskab for vores system, da det giver robusthed over for potentielle variationer i nye data.
+
+### 5.2 LDA-transformation
+
+LDA-transformationen viste sig at være ekstremt effektiv til dette klassifikationsproblem. Ved at projicere data til et lavdimensionelt rum, der maksimerer klasseadskillelse, gjorde LDA det muligt for den simple KNN-klassifikator at opnå perfekt ydelse.
+
+Ifølge undervisningsmaterialet (Materiale/4.txt) er LDA særligt velegnet til klassifikationsproblemer, da det i modsætning til f.eks. PCA, tager højde for klasselabels i dimensionsreduktionen. Vores resultater bekræfter denne fordel.
+
+### 5.3 Metodologiske Overvejelser
+
+Vores tilgang til dette problem var metodisk og systematisk:
+
+1. Vi udførte grundig dataforbehandling og -organisering.
+2. Vi ekstraherede relevante features baseret på domæneviden og principperne fra undervisningsmaterialet.
+3. Vi anvendte passende dimensionsreduktion og klassifikationsteknikker.
+4. Vi evaluerede modellen på en realistisk måde ved at teste på helt nye spilleplader.
+
+Den høje nøjagtighed på tværs af forskellige evalueringsmetoder bekræfter rigtigheden af denne tilgang.
+
+## 6. Konklusion
+
+Vi har udviklet et effektivt system til automatisk klassifikation af terræntyper i Kingdomino. Ved at kombinere farve- og teksturfeatures med LDA-dimensionsreduktion og KNN-klassifikation, opnår vores model perfekt klassifikationsnøjagtighed, selv på helt nye spilleplader.
+
+Nøglen til denne succes ligger i:
+1. Omhyggelig feature-design, der udnytter både farve- og teksturinformation.
+2. Effektiv dimensionsreduktion med LDA, der maksimerer klasseadskillelse.
+3. Hensigtsmæssig valg af klassifikationsalgoritme (KNN).
+
+Dette system danner grundlag for automatisk scoreberegning i Kingdomino, da terrænklassifikation er det første kritiske skridt i denne proces.
+
+### 6.1 Fremtidigt Arbejde
+
+Mens vores model opnår perfekt klassifikation på det eksisterende datasæt, kunne fremtidige forbedringer omfatte:
+
+1. **Robusthedstest på mere varierede lysbetingelser** 
+2. **Integration med en fuld scoreberegningsalgoritme**, der også identificerer sammenhængende områder og kroner
+3. **Implementering af end-to-end løsning**, der automatisk udtrækker plader fra råbilleder og beregner scores
+
+Vores nuværende implementering giver et solidt fundament for disse udvidelser.

@@ -1,0 +1,108 @@
+Terræntype statistik - Oversigt
+================================================================================
+
+Terræntype: Field
+Antal samples: 470
+
+RGB Statistik:
+  R: Middelværdi=171.88, Median=182.26, Std.afv=28.16
+  G: Middelværdi=144.34, Median=153.34, Std.afv=24.97
+  B: Middelværdi=10.71, Median=7.30, Std.afv=12.74
+
+HSV Statistik:
+  H: Middelværdi=25.29, Median=24.97, Std.afv=5.18
+  S: Middelværdi=237.37, Median=244.87, Std.afv=24.83
+  V: Middelværdi=172.39, Median=182.26, Std.afv=26.75
+
+--------------------------------------------------------------------------------
+
+Terræntype: Mine
+Antal samples: 109
+
+RGB Statistik:
+  R: Middelværdi=61.29, Median=40.77, Std.afv=46.70
+  G: Middelværdi=50.90, Median=31.96, Std.afv=40.26
+  B: Middelværdi=29.66, Median=21.55, Std.afv=25.41
+
+HSV Statistik:
+  H: Middelværdi=40.56, Median=23.32, Std.afv=46.29
+  S: Middelværdi=105.13, Median=84.03, Std.afv=76.43
+  V: Middelværdi=62.38, Median=42.18, Std.afv=46.74
+
+--------------------------------------------------------------------------------
+
+Terræntype: Table
+Antal samples: 28
+
+RGB Statistik:
+  R: Middelværdi=143.07, Median=147.32, Std.afv=17.51
+  G: Middelværdi=110.86, Median=112.57, Std.afv=11.81
+  B: Middelværdi=43.04, Median=42.43, Std.afv=12.38
+
+HSV Statistik:
+  H: Middelværdi=21.40, Median=20.11, Std.afv=6.15
+  S: Middelværdi=183.88, Median=184.54, Std.afv=19.52
+  V: Middelværdi=144.50, Median=147.46, Std.afv=14.51
+
+--------------------------------------------------------------------------------
+
+Terræntype: Lake
+Antal samples: 331
+
+RGB Statistik:
+  R: Middelværdi=20.70, Median=4.34, Std.afv=32.64
+  G: Middelværdi=73.96, Median=73.72, Std.afv=17.91
+  B: Middelværdi=136.55, Median=151.29, Std.afv=43.54
+
+HSV Statistik:
+  H: Middelværdi=95.62, Median=106.44, Std.afv=25.43
+  S: Middelværdi=229.33, Median=249.05, Std.afv=46.87
+  V: Middelværdi=146.87, Median=154.86, Std.afv=30.59
+
+--------------------------------------------------------------------------------
+
+Terræntype: Forest
+Antal samples: 406
+
+RGB Statistik:
+  R: Middelværdi=44.04, Median=36.14, Std.afv=28.19
+  G: Middelværdi=51.95, Median=47.47, Std.afv=26.60
+  B: Middelværdi=21.29, Median=17.53, Std.afv=17.07
+
+HSV Statistik:
+  H: Middelværdi=42.42, Median=41.99, Std.afv=13.38
+  S: Middelværdi=150.56, Median=154.08, Std.afv=51.60
+  V: Middelværdi=54.22, Median=48.80, Std.afv=28.75
+
+--------------------------------------------------------------------------------
+
+Terræntype: Swamp
+Antal samples: 181
+
+RGB Statistik:
+  R: Middelværdi=100.86, Median=107.02, Std.afv=28.55
+  G: Middelværdi=87.11, Median=92.84, Std.afv=29.09
+  B: Middelværdi=53.91, Median=55.06, Std.afv=28.72
+
+HSV Statistik:
+  H: Middelværdi=22.87, Median=21.46, Std.afv=11.43
+  S: Middelværdi=125.50, Median=119.71, Std.afv=52.23
+  V: Middelværdi=101.36, Median=107.46, Std.afv=28.34
+
+--------------------------------------------------------------------------------
+
+Terræntype: Grassland
+Antal samples: 251
+
+RGB Statistik:
+  R: Middelværdi=89.48, Median=88.65, Std.afv=22.44
+  G: Middelværdi=119.49, Median=125.34, Std.afv=24.03
+  B: Middelværdi=25.92, Median=18.90, Std.afv=24.54
+
+HSV Statistik:
+  H: Middelværdi=39.44, Median=40.69, Std.afv=9.57
+  S: Middelværdi=202.83, Median=217.71, Std.afv=46.64
+  V: Middelværdi=123.96, Median=127.60, Std.afv=20.80
+
+--------------------------------------------------------------------------------
+

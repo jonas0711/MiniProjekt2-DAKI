@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from collections import defaultdict
 import os
+import json
 
 def compute_rgb_statistics(image):
     """
@@ -214,6 +215,9 @@ def visualize_color_analysis(image, title="Farveanalyse"):
     Args:
         image: RGB-billede (numpy array)
         title: Titel på visualiseringen
+        
+    Returns:
+        fig: Matplotlib figure objekt
     """
     # Beregn statistik og histogrammer
     rgb_stats = compute_rgb_statistics(image)
@@ -331,6 +335,9 @@ def analyze_terrain_types(tile_labels_mapping, tiles_dir):
             filepath = os.path.join(tiles_dir, filename)
             # Indlæs billedet
             image = cv2.imread(filepath)
+            if image is None:
+                print(f"Advarsel: Kunne ikke indlæse {filepath}")
+                continue
             image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
             sample_images.append(image)
             
@@ -339,6 +346,9 @@ def analyze_terrain_types(tile_labels_mapping, tiles_dir):
             filepath = os.path.join(tiles_dir, filename)
             # Indlæs billedet
             image = cv2.imread(filepath)
+            if image is None:
+                print(f"Advarsel: Kunne ikke indlæse {filepath}")
+                continue
             image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
             
             # Beregn RGB-statistik
@@ -394,13 +404,19 @@ def analyze_terrain_types(tile_labels_mapping, tiles_dir):
     
     return terrain_features
 
-def visualize_terrain_features(terrain_features):
+def visualize_terrain_features(terrain_features, output_dir='terrain_analysis_visualizations'):
     """
-    Visualiserer farveegenskaber for forskellige terræntyper.
+    Visualiserer farveegenskaber for forskellige terræntyper og gemmer figurerne med meningsfulde navne.
     
     Args:
         terrain_features: Dictionary med farvefeatures grupperet efter terræntype
+        output_dir: Mappe hvor visualiseringerne skal gemmes
     """
+    # Opret output-mappe hvis den ikke findes
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+        print(f"Oprettet mappe: {output_dir}")
+    
     terrains = list(terrain_features.keys())
     
     # 1. Visualiser RGB-statistik
@@ -422,7 +438,12 @@ def visualize_terrain_features(terrain_features):
     plt.xticks(x, terrains, rotation=45)
     plt.legend()
     plt.tight_layout()
-    plt.show()
+    
+    # Gem figuren med et beskrivende navn
+    rgb_means_filename = os.path.join(output_dir, 'rgb_means_comparison.png')
+    plt.savefig(rgb_means_filename, dpi=300)
+    print(f"Gemt RGB-sammenligning til: {rgb_means_filename}")
+    plt.close()
     
     # 2. Visualiser HSV-statistik
     hsv_means = {
@@ -434,13 +455,18 @@ def visualize_terrain_features(terrain_features):
     plt.figure(figsize=(12, 6))
     plt.bar(x - width, hsv_means['H'], width, label='H', color='red', alpha=0.7)
     plt.bar(x, hsv_means['S'], width, label='S', color='green', alpha=0.7)
-    plt.bar(x + width, hsv_means['V'], width, label='B', color='blue', alpha=0.7)
+    plt.bar(x + width, hsv_means['V'], width, label='V', color='blue', alpha=0.7)
     
     plt.title('Gennemsnitlig HSV-værdi for hver terræntype')
     plt.xticks(x, terrains, rotation=45)
     plt.legend()
     plt.tight_layout()
-    plt.show()
+    
+    # Gem figuren med et beskrivende navn
+    hsv_means_filename = os.path.join(output_dir, 'hsv_means_comparison.png')
+    plt.savefig(hsv_means_filename, dpi=300)
+    print(f"Gemt HSV-sammenligning til: {hsv_means_filename}")
+    plt.close()
     
     # 3. Visualiser eksempel-billeder for hver terræntype
     cols = min(5, len(terrains))
@@ -459,9 +485,49 @@ def visualize_terrain_features(terrain_features):
     plt.tight_layout()
     plt.suptitle("Eksempler på terræntyper", fontsize=16)
     plt.subplots_adjust(top=0.9)
-    plt.show()
     
-    # 4. Visualiser farvehistogrammer
+    # Gem figuren med et beskrivende navn
+    samples_filename = os.path.join(output_dir, 'terrain_samples_overview.png')
+    plt.savefig(samples_filename, dpi=300)
+    print(f"Gemt terræneksempler til: {samples_filename}")
+    plt.close()
+    
+    # Gem også individuelle eksempelbilleder for hver terræntype
+    samples_dir = os.path.join(output_dir, 'individual_samples')
+    if not os.path.exists(samples_dir):
+        os.makedirs(samples_dir)
+    
+    for terrain in terrains:
+        sample_images = terrain_features[terrain]['sample_images']
+        if sample_images:
+            # Gem første eksempel for hver terræntype
+            sample_filename = os.path.join(samples_dir, f'{terrain}_sample.png')
+            plt.figure(figsize=(5, 5))
+            plt.imshow(sample_images[0])
+            plt.title(f"{terrain}")
+            plt.axis('off')
+            plt.tight_layout()
+            plt.savefig(sample_filename, dpi=300)
+            plt.close()
+            
+            # Hvis der er flere eksempelbilleder, gem dem også
+            for j, img in enumerate(sample_images[1:], 1):
+                extra_sample_filename = os.path.join(samples_dir, f'{terrain}_sample{j+1}.png')
+                plt.figure(figsize=(5, 5))
+                plt.imshow(img)
+                plt.title(f"{terrain} (eksempel {j+1})")
+                plt.axis('off')
+                plt.tight_layout()
+                plt.savefig(extra_sample_filename, dpi=300)
+                plt.close()
+    
+    print(f"Gemt individuelle terræneksempler til: {samples_dir}")
+    
+    # 4. Visualiser farvehistogrammer for hver terræntype
+    histograms_dir = os.path.join(output_dir, 'histograms')
+    if not os.path.exists(histograms_dir):
+        os.makedirs(histograms_dir)
+    
     for terrain in terrains:
         plt.figure(figsize=(15, 5))
         
@@ -490,16 +556,46 @@ def visualize_terrain_features(terrain_features):
         plt.legend()
         
         plt.tight_layout()
-        plt.show()
+        
+        # Gem figuren med et beskrivende navn
+        hist_filename = os.path.join(histograms_dir, f'{terrain}_histograms.png')
+        plt.savefig(hist_filename, dpi=300)
+        plt.close()
+    
+    print(f"Gemt histogrammer for hver terræntype til: {histograms_dir}")
+    
+    # Opret en tabel med nøglestatistik for hver terræntype
+    stats_table_filename = os.path.join(output_dir, 'terrain_statistics.txt')
+    with open(stats_table_filename, 'w') as f:
+        f.write("Terræntype statistik - Oversigt\n")
+        f.write("=" * 80 + "\n\n")
+        
+        for terrain in terrains:
+            f.write(f"Terræntype: {terrain}\n")
+            f.write(f"Antal samples: {terrain_features[terrain]['count']}\n")
+            
+            f.write("\nRGB Statistik:\n")
+            for channel in ['R', 'G', 'B']:
+                stats = terrain_features[terrain]['rgb_stats'][channel]
+                f.write(f"  {channel}: Middelværdi={stats['mean']:.2f}, Median={stats['median']:.2f}, Std.afv={stats['std']:.2f}\n")
+            
+            f.write("\nHSV Statistik:\n")
+            for channel in ['H', 'S', 'V']:
+                stats = terrain_features[terrain]['hsv_stats'][channel]
+                f.write(f"  {channel}: Middelværdi={stats['mean']:.2f}, Median={stats['median']:.2f}, Std.afv={stats['std']:.2f}\n")
+            
+            f.write("\n" + "-" * 80 + "\n\n")
+    
+    print(f"Gemt statistikoversigt til: {stats_table_filename}")
 
-# Funktion til at køre hele color_features modulet
-def run_color_analysis(tile_labels_mapping, tiles_dir):
+def run_color_analysis(tile_labels_mapping, tiles_dir, output_dir='terrain_analysis_visualizations'):
     """
     Kører hele farveanalysen for alle terræntyper.
     
     Args:
         tile_labels_mapping: Dictionary med tile-labels
         tiles_dir: Sti til mappen med tile-billeder
+        output_dir: Mappe hvor visualiseringerne skal gemmes
     
     Returns:
         dict: Dictionary med farvefeatures grupperet efter terræntype
@@ -508,17 +604,16 @@ def run_color_analysis(tile_labels_mapping, tiles_dir):
     terrain_features = analyze_terrain_types(tile_labels_mapping, tiles_dir)
     
     print("Visualiserer resultater...")
-    visualize_terrain_features(terrain_features)
+    visualize_terrain_features(terrain_features, output_dir)
     
     return terrain_features
 
-# Hvis filen køres direkte, viser vi et eksempel på farveanalyse for et enkelt billede
+# Hvis filen køres direkte
 if __name__ == "__main__":
-    import json
-    
     # Stier
     tiles_dir = "KingDominoDataset/KingDominoDataset/Extracted_Tiles"
     tile_labels_file = "tile_labels_mapping.json"
+    output_dir = "terrain_analysis_visualizations"
     
     # Hvis tile_labels_mapping.json findes, indlæs den og kør analysen
     if os.path.exists(tile_labels_file):
@@ -526,25 +621,43 @@ if __name__ == "__main__":
             tile_labels_mapping = json.load(f)
         
         # Kør farveanalyse
-        terrain_features = run_color_analysis(tile_labels_mapping, tiles_dir)
+        terrain_features = run_color_analysis(tile_labels_mapping, tiles_dir, output_dir)
         
         # Gem resultaterne til senere brug
-        with open('terrain_color_features.json', 'w') as f:
+        features_file = os.path.join(output_dir, 'terrain_color_features.json')
+        with open(features_file, 'w') as f:
             # Konverter sample_images til filnavne for at kunne gemme som JSON
+            serializable_features = {}
             for terrain, features in terrain_features.items():
-                features.pop('sample_images', None)  # Fjern billeder før gem
+                serializable_features[terrain] = features.copy()
+                serializable_features[terrain].pop('sample_images', None)  # Fjern billeder før gem
             
-            json.dump(terrain_features, f, indent=2)
+            json.dump(serializable_features, f, indent=2)
         
-        print("Farveanalyse fuldført. Resultater gemt i terrain_color_features.json")
+        print(f"Farveanalyse fuldført. Resultater gemt i {features_file}")
     else:
         print(f"Fil {tile_labels_file} ikke fundet. Kør først labels.py for at oprette denne fil.")
         
         # Vis eksempel på farveanalyse for et enkelt eksempelbillede
-        example_file = os.path.join(tiles_dir, os.listdir(tiles_dir)[0])
-        example_image = cv2.imread(example_file)
-        example_image = cv2.cvtColor(example_image, cv2.COLOR_BGR2RGB)
-        
-        print(f"Viser farveanalyse for eksempelbillede: {os.path.basename(example_file)}")
-        fig = visualize_color_analysis(example_image, f"Farveanalyse: {os.path.basename(example_file)}")
-        plt.show()
+        if os.path.exists(tiles_dir) and len(os.listdir(tiles_dir)) > 0:
+            example_file = os.path.join(tiles_dir, os.listdir(tiles_dir)[0])
+            example_image = cv2.imread(example_file)
+            if example_image is not None:
+                example_image = cv2.cvtColor(example_image, cv2.COLOR_BGR2RGB)
+                
+                print(f"Viser farveanalyse for eksempelbillede: {os.path.basename(example_file)}")
+                fig = visualize_color_analysis(example_image, f"Farveanalyse: {os.path.basename(example_file)}")
+                
+                # Gem også dette eksempel
+                if not os.path.exists(output_dir):
+                    os.makedirs(output_dir)
+                
+                example_filename = os.path.join(output_dir, 'single_tile_analysis.png')
+                fig.savefig(example_filename, dpi=300)
+                print(f"Gemt enkelt-analyse til: {example_filename}")
+                
+                plt.show()
+            else:
+                print(f"Kunne ikke indlæse eksempelbilledet: {example_file}")
+        else:
+            print(f"Ingen billeder fundet i {tiles_dir}")
