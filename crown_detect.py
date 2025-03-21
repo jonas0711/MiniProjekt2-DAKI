@@ -3,9 +3,9 @@ import numpy as np
 import os
 
 # --- Parametre ---
-board_path = "KingDominoDataset/KingDominoDataset/Cropped and perspective corrected boards/7.jpg"           # Billede af spillepladen
+board_path = "KingDominoDataset/KingDominoDataset/Cropped and perspective corrected boards/62.jpg"           # Billede af spillepladen
 templates_dir = "KingDominoDataset/Crown_Templates"    # Mappe med krone-templates
-threshold = 0.7                 # Match-tærskel
+threshold = 0.64                 # Match-tærskel
 
 # --- Indlæs bræt og konverter til grå ---
 board_img = cv2.imread(board_path)
