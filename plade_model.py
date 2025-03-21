@@ -11,7 +11,7 @@ import json
 
 # Konstanter
 TILES_DIR = "KingDominoDataset/KingDominoDataset/Extracted_Tiles"
-LABELS_FILE = "tile_labels_mapping.json"
+LABELS_FILE = "Excel+JSON/tile_labels_mapping.json"
 
 def extract_board_number(filename):
     """

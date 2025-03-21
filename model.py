@@ -12,7 +12,7 @@ import pickle
 
 # Konstanter
 TILES_DIR = "KingDominoDataset/KingDominoDataset/Extracted_Tiles"
-LABELS_FILE = "tile_labels_mapping.json"
+LABELS_FILE = "Excel+JSON/tile_labels_mapping.json"
 MODEL_FILE = "kingdomino_terrain_model.pkl"
 
 def load_data():
