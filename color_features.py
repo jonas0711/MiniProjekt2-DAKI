@@ -404,7 +404,7 @@ def analyze_terrain_types(tile_labels_mapping, tiles_dir):
     
     return terrain_features
 
-def visualize_terrain_features(terrain_features, output_dir='terrain_analysis_visualizations'):
+def visualize_terrain_features(terrain_features, output_dir='Visualiseringer'):
     """
     Visualiserer farveegenskaber for forskellige terræntyper og gemmer figurerne med meningsfulde navne.
     
@@ -588,7 +588,7 @@ def visualize_terrain_features(terrain_features, output_dir='terrain_analysis_vi
     
     print(f"Gemt statistikoversigt til: {stats_table_filename}")
 
-def run_color_analysis(tile_labels_mapping, tiles_dir, output_dir='terrain_analysis_visualizations'):
+def run_color_analysis(tile_labels_mapping, tiles_dir, output_dir='Visualiseringer'):
     """
     Kører hele farveanalysen for alle terræntyper.
     
@@ -613,7 +613,7 @@ if __name__ == "__main__":
     # Stier
     tiles_dir = "KingDominoDataset/KingDominoDataset/Extracted_Tiles"
     tile_labels_file = "tile_labels_mapping.json"
-    output_dir = "terrain_analysis_visualizations"
+    output_dir = "Visualiseringer"
     
     # Hvis tile_labels_mapping.json findes, indlæs den og kør analysen
     if os.path.exists(tile_labels_file):

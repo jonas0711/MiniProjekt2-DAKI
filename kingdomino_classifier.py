@@ -13,7 +13,7 @@ from model import load_model, extract_features, TerrainClassifier
 MODEL_FILE = "kingdomino_terrain_model.pkl"
 
 # Standard sti til plade 1
-DEFAULT_IMAGE_PATH = r"KingDominoDataset\KingDominoDataset\Cropped and perspective corrected boards\1.jpg"
+DEFAULT_IMAGE_PATH = r"KingDominoDataset\KingDominoDataset\Cropped and perspective corrected boards\74.jpg"
 
 def load_board_image(image_path):
     """
