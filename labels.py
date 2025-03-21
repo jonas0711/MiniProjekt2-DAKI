@@ -203,7 +203,7 @@ if __name__ == "__main__":
     # Definer stier
     excel_file = "kingdomino_labels_fixed.xlsx"
     tiles_dir = "KingDominoDataset/KingDominoDataset/Extracted_Tiles"
-    output_file = "tile_labels_mapping.json"
+    output_file = "Excel+JSON/tile_labels_mapping.json"
     
     # Opret det mappede datasæt
     mapping = create_labeled_dataset(excel_file, tiles_dir, output_file)
