@@ -4,14 +4,16 @@ import os
 import matplotlib.pyplot as plt
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.pipeline import Pipeline
 import json
-from skimage.feature import graycomatrix, graycoprops
+import pickle
 
 # Konstanter
 TILES_DIR = "KingDominoDataset/KingDominoDataset/Extracted_Tiles"
 LABELS_FILE = "tile_labels_mapping.json"
+MODEL_FILE = "kingdomino_terrain_model.pkl"
 
 def load_data():
     """
@@ -76,37 +78,6 @@ def load_data():
     labels = [terrain_classes[terrain] for terrain in terrain_labels]
     
     return images, np.array(labels), terrain_classes
-
-def extract_rgb_histogram(image, bins=32):
-    """
-    Udtrækker RGB histogram features fra et billede.
-    
-    Args:
-        image: RGB billede
-        bins: Antal bins for hver farvekanal
-    
-    Returns:
-        np.array: Sammenkædet normaliseret RGB histogram (3*bins features)
-    """
-    # Konverter fra BGR til RGB hvis nødvendigt (safety check)
-    if len(image.shape) == 3 and image.shape[2] == 3:
-        img_rgb = image
-    else:
-        print("Advarsel: Billede er ikke i RGB format")
-        return np.zeros(bins * 3)  # Returner tom vektor i tilfælde af fejl
-    
-    # Beregn histogrammer for hver kanal
-    hist_r = cv2.calcHist([img_rgb], [0], None, [bins], [0, 256])
-    hist_g = cv2.calcHist([img_rgb], [1], None, [bins], [0, 256])
-    hist_b = cv2.calcHist([img_rgb], [2], None, [bins], [0, 256])
-    
-    # Normaliser histogrammer
-    hist_r = cv2.normalize(hist_r, hist_r).flatten()
-    hist_g = cv2.normalize(hist_g, hist_g).flatten()
-    hist_b = cv2.normalize(hist_b, hist_b).flatten()
-    
-    # Sammenkæd histogrammer
-    return np.concatenate([hist_r, hist_g, hist_b])
 
 def extract_hsv_histogram(image, bins=32):
     """
@@ -186,9 +157,30 @@ def extract_texture_histogram(image, bins=9):
     
     return hist
 
-def extract_features(images):
+def extract_features(image):
     """
-    Udtrækker features fra billeder.
+    Udtrækker HSV og tekstur features fra et enkelt billede.
+    
+    Args:
+        image: RGB billede
+    
+    Returns:
+        np.array: Feature-vektor
+    """
+    # Udtræk HSV histogram features
+    hsv_hist = extract_hsv_histogram(image)
+    
+    # Udtræk tekstur features
+    texture_hist = extract_texture_histogram(image)
+    
+    # Kombiner features
+    combined_features = np.concatenate([hsv_hist, texture_hist])
+    
+    return combined_features
+
+def extract_features_batch(images):
+    """
+    Udtrækker features fra en liste af billeder.
     
     Args:
         images: Liste af RGB billeder
@@ -198,102 +190,135 @@ def extract_features(images):
     """
     features = []
     
-    for image in images:
-        # Udtrækker RGB histogram features
-        rgb_hist = extract_rgb_histogram(image)
+    for i, image in enumerate(images):
+        if i % 100 == 0:
+            print(f"Udtrækker features for billede {i+1}/{len(images)}...")
         
-        # Udtrækker HSV histogram features
-        hsv_hist = extract_hsv_histogram(image)
-        
-        # Udtrækker tekstur features
-        texture_hist = extract_texture_histogram(image)
-        
-        # Kombinerer features
-        combined_features = np.concatenate([rgb_hist, hsv_hist, texture_hist])
-        
-        features.append(combined_features)
+        features.append(extract_features(image))
     
     return np.array(features)
 
-def apply_lda(features, labels, n_components=None):
+class TerrainClassifier:
     """
-    Anvender Linear Discriminant Analysis til dimensionsreduktion.
-    
-    Args:
-        features: Feature-matrix
-        labels: Klasselabels
-        n_components: Antal LDA komponenter at beholde (default: min(n_classes-1, n_features))
-    
-    Returns:
-        tuple: (lda, transformed_features)
-            - lda: Fitted LDA model
-            - transformed_features: LDA-transformerede features
+    Kingdomino terrænklassifikator, der kombinerer LDA og KNN i en enkelt model.
     """
-    # Opret LDA model
-    lda = LinearDiscriminantAnalysis(n_components=n_components)
     
-    # Fit og transformer features
-    transformed_features = lda.fit_transform(features, labels)
-    
-    return lda, transformed_features
-
-def visualize_lda(lda_features, labels, terrain_classes):
-    """
-    Visualiserer data i LDA space.
-    
-    Args:
-        lda_features: LDA-transformerede features
-        labels: Klasselabels
-        terrain_classes: Dict mapping af terræntyper til numeriske labels
-    """
-    # Opret omvendt mapping fra numeriske labels til terræntyper
-    terrain_names = {v: k for k, v in terrain_classes.items()}
-    
-    # Opret plot
-    plt.figure(figsize=(12, 10))
-    
-    # Hvis vi har mindst 2 LDA komponenter
-    if lda_features.shape[1] >= 2:
-        # Scatter plot af de første to LDA komponenter
-        for label in np.unique(labels):
-            plt.scatter(
-                lda_features[labels == label, 0],
-                lda_features[labels == label, 1],
-                label=terrain_names[label]
-            )
+    def __init__(self, lda=None, knn=None, terrain_classes=None):
+        """
+        Initialiserer klassifikatoren.
         
-        plt.xlabel('LD1')
-        plt.ylabel('LD2')
-        plt.title('LDA Transformation')
-        plt.legend()
-        plt.savefig('lda_visualization.png')
-        print("LDA visualisering gemt til lda_visualization.png")
-    else:
-        print("Ikke nok LDA komponenter til visualisering.")
+        Args:
+            lda: LDA model (optional)
+            knn: KNN model (optional)
+            terrain_classes: Dictionary med mapping af terræntyper til numeriske labels
+        """
+        self.lda = lda
+        self.knn = knn
+        self.terrain_classes = terrain_classes
+        self.is_fitted = (lda is not None and knn is not None)
+    
+    def fit(self, X, y):
+        """
+        Træner modellen på features og labels.
+        
+        Args:
+            X: Feature-matrix
+            y: Klasse-labels
+        
+        Returns:
+            self: Trænet model
+        """
+        # Bestem antal komponenter (maks antal klasser - 1)
+        n_components = min(len(np.unique(y)), X.shape[1]) - 1
+        
+        # Træn LDA
+        self.lda = LinearDiscriminantAnalysis(n_components=n_components)
+        X_lda = self.lda.fit_transform(X, y)
+        
+        # Træn KNN på LDA-features
+        self.knn = KNeighborsClassifier(n_neighbors=5)
+        self.knn.fit(X_lda, y)
+        
+        self.is_fitted = True
+        return self
+    
+    def predict(self, X):
+        """
+        Forudsiger klasser for features.
+        
+        Args:
+            X: Feature-matrix eller enkelt feature-vektor
+        
+        Returns:
+            np.array: Forudsagte klasser
+        """
+        if not self.is_fitted:
+            raise ValueError("Modellen er ikke trænet endnu.")
+        
+        # Kontroller om X er en enkelt feature-vektor eller et batch
+        if X.ndim == 1:
+            X = X.reshape(1, -1)
+        
+        # Transform med LDA
+        X_lda = self.lda.transform(X)
+        
+        # Forudsig med KNN
+        return self.knn.predict(X_lda)
+    
+    def predict_terrain(self, X):
+        """
+        Forudsiger terræntyper for features.
+        
+        Args:
+            X: Feature-matrix eller enkelt feature-vektor
+        
+        Returns:
+            list: Forudsagte terræntyper
+        """
+        if self.terrain_classes is None:
+            raise ValueError("Terrain classes mapping er ikke tilgængelig.")
+        
+        # Forudsig numeriske labels
+        y_pred = self.predict(X)
+        
+        # Konverter til terræntyper
+        terrain_names = {v: k for k, v in self.terrain_classes.items()}
+        return [terrain_names[label] for label in y_pred]
 
-def train_knn(X_train, y_train, k=5):
+def save_model(model, file_path=MODEL_FILE):
     """
-    Træner en K-Nearest Neighbors klassifikator.
+    Gemmer modellen til en fil.
     
     Args:
-        X_train: Trænings-features
-        y_train: Trænings-labels
-        k: Antal naboer
+        model: TerrainClassifier-modellen der skal gemmes
+        file_path: Sti til outputfilen
+    """
+    with open(file_path, 'wb') as f:
+        pickle.dump(model, f)
+    print(f"Model gemt til: {file_path}")
+
+def load_model(file_path=MODEL_FILE):
+    """
+    Indlæser en gemt model fra en fil.
+    
+    Args:
+        file_path: Sti til modelfilen
     
     Returns:
-        KNeighborsClassifier: Trænet KNN model
+        TerrainClassifier: Indlæst model
     """
-    # Opret KNN model
-    knn = KNeighborsClassifier(n_neighbors=k)
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"Modelfilen {file_path} findes ikke.")
     
-    # Træn model
-    knn.fit(X_train, y_train)
+    with open(file_path, 'rb') as f:
+        model = pickle.load(f)
     
-    return knn
+    print(f"Model indlæst fra: {file_path}")
+    return model
 
 def main():
     """
-    Hovedfunktion til at køre hele pipeline'en.
+    Hovedfunktion til at træne terrænklassifikationsmodellen.
     """
     print("Indlæser data...")
     images, labels, terrain_classes = load_data()
@@ -301,8 +326,8 @@ def main():
     print(f"Indlæst {len(images)} billeder med {len(set(labels))} forskellige terrænklasser.")
     print("Terrænklasser:", {k: v for k, v in sorted(terrain_classes.items(), key=lambda x: x[1])})
     
-    print("Udtrækker features...")
-    features = extract_features(images)
+    print("Udtrækker HSV og tekstur features...")
+    features = extract_features_batch(images)
     print(f"Udtrukket features med form: {features.shape}")
     
     # Del data i trænings- og testsæt (80/20)
@@ -310,24 +335,12 @@ def main():
         features, labels, test_size=0.2, random_state=42, stratify=labels
     )
     
-    print("Anvender LDA...")
-    # Antal komponenter bør højst være antal klasser - 1
-    n_components = min(len(set(labels)) - 1, X_train.shape[1])
-    lda, X_train_lda = apply_lda(X_train, y_train, n_components=n_components)
+    print("Træner TerrainClassifier model (LDA + KNN)...")
+    model = TerrainClassifier(terrain_classes=terrain_classes)
+    model.fit(X_train, y_train)
     
-    # Transformer test features
-    X_test_lda = lda.transform(X_test)
-    
-    print(f"LDA reducerede features til form: {X_train_lda.shape}")
-    
-    # Visualiser LDA space
-    visualize_lda(X_train_lda, y_train, terrain_classes)
-    
-    print("Træner KNN klassifikator...")
-    knn = train_knn(X_train_lda, y_train, k=5)
-    
-    # Evaluer model
-    y_pred = knn.predict(X_test_lda)
+    print("Evaluerer model...")
+    y_pred = model.predict(X_test)
     
     print("Klassifikationsrapport:")
     print(classification_report(y_test, y_pred))
@@ -354,6 +367,12 @@ def main():
     plt.savefig('confusion_matrix.png')
     
     print("Resultater gemt til confusion_matrix.png")
+    
+    # Gem modellen
+    print("Gemmer model...")
+    save_model(model)
+    
+    print("Træning og evaluering afsluttet. Model er klar til brug med kingdomino_classifier.py")
 
 if __name__ == "__main__":
     main()
