@@ -141,11 +141,7 @@ def classify_tiles_with_crowns(tiles, model):
     terrain_types = model.predict_terrain(all_features)
     
     for i, (row, col) in enumerate(tile_positions):
-        # Hårdkod midterfeltet (2,2) til 'Home'
-        if (row, col) == (2, 2):
-            terr = 'Home'
-        else:
-            terr = terrain_types[i]
+        terr = terrain_types[i]
         terrain_results[row, col] = terr
         
         if terr in ['Home', 'Unknown']:
