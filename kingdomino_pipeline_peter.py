@@ -8,7 +8,7 @@ import cv2
 import pickle
 from collections import deque
 
-from crown_detector import detect_crowns_positions  # Brug den nye funktion
+from crown_detect_template import detect_crowns_positions  # Template matching
 
 # Standardstier
 MODEL_FILE = "kingdomino_terrain_model.pkl"
