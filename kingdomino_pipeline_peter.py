@@ -12,7 +12,7 @@ from crown_detect_template import detect_crowns_positions  # Template matching
 
 # Standardstier
 MODEL_FILE = "kingdomino_terrain_model.pkl"
-DEFAULT_IMAGE_PATH = "KingDominoDataset/KingDominoDataset/Cropped and perspective corrected boards/3.jpg"
+DEFAULT_IMAGE_PATH = "KingDominoDataset/KingDominoDataset/Cropped and perspective corrected boards/9.jpg"
 DEFAULT_OUTPUT_PATH = "kingdomino_result.png"
 
 # Vi beholder TerrainClassifier og featurefunktionerne som før

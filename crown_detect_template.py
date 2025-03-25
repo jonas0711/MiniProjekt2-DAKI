@@ -4,7 +4,7 @@ import os
 
 # Parametre
 TEMPLATE_DIR = "KingDominoDataset/Crown_Templates"
-MATCH_THRESHOLD = 0.64
+MATCH_THRESHOLD = 0.63
 
 # Indlæs alle templates i starten
 templates = []
