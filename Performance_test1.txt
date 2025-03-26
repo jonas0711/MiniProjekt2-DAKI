@@ -1,0 +1,15 @@
+========== SAMLET STATISTIK ==========
+Nøjagtig kroneantal: 181/617 (29.34%)
+Precision: 0.50, Recall: 0.65, F1-score: 0.57
+Detekterer tiles med kroner: 390/557 (70.02%)
+Detekterer tiles uden kroner: 32/60 (53.33%)
+
+Detaljeret statistik pr. terræntype:
+  Field: Nøjagtighed: 9.43%, F1: 0.00, Detekterer tiles med kroner: 0.00%
+  Forest: Nøjagtighed: 47.24%, F1: 0.66, Detekterer tiles med kroner: 94.87%
+  Grassland: Nøjagtighed: 22.22%, F1: 0.55, Detekterer tiles med kroner: 73.24%
+  Lake: Nøjagtighed: 41.80%, F1: 0.69, Detekterer tiles med kroner: 98.21%
+  Mine: Nøjagtighed: 14.14%, F1: 0.53, Detekterer tiles med kroner: 86.52%
+  Swamp: Nøjagtighed: 34.15%, F1: 0.60, Detekterer tiles med kroner: 55.56%
+
+Kronedetektion afsluttet. Detaljerede resultater er gemt i: CrownDetectionResults
