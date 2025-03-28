@@ -4,7 +4,7 @@ import argparse
 import os
 import matplotlib.pyplot as plt
 from matplotlib.colors import mcolors
-from crown_detector import detect_crowns
+from old.crown_detector import detect_crowns
 from model import load_model, extract_features, TerrainClassifier
 
 MODEL_FILE = "kingdomino_terrain_model.pkl"
