@@ -1,0 +1,897 @@
+# Projekt: Miniprojekt 2 - Design og Udvikling af AI-Systemer, Aalborg Universitet
+
+## Abstract
+
+Dette projekt adresserer udfordringen med automatisk scoreberegning i brætspillet King Domino via computer vision og machine learning. Systemet analyserer billeder af et 5x5 spiller-kongerige (kingdom) for at identificere de seks forskellige terræntyper (Field, Forest, Grassland, Lake, Mine, Swamp) og detektere antallet af kroner (0-3) på hver spillebrik (tile). 
+
+Denne rapport giver en dybdegående analyse af den teoretiske baggrund for de anvendte teknikker, herunder valg af farverum (HSV), feature extraction metoder (farve- og teksturhistogrammer), dimensionalitetsreduktion (LDA), klassifikation (KNN) og objektgenkendelse (template matching med NCC og NMS). 
+
+Implementeringsdetaljer fra Python-koden (model.py, template.py, kingdomino_scoring_fixed.py, test_model_evaluation.py m.fl.) præsenteres og forklares i sammenhæng med teorien. Rapporten argumenterer for de trufne designvalg, diskuterer fordele og ulemper, og analyserer systemets endelige performance baseret på evaluering på et dedikeret testsæt (test_model_evaluation.py), hvor systemet opnår 100% nøjagtighed for terrænklassifikation og 93% nøjagtighed for kronedetektering.
+
+## Indholdsfortegnelse
+
+1. [Introduktion](#introduktion)
+    1. [Baggrund: King Domino og Udfordringen](#baggrund-king-domino-og-udfordringen)
+    2. [Projektets Formål og Omfang](#projektets-formål-og-omfang)
+    3. [Systemarkitektur Overblik](#systemarkitektur-overblik)
+    4. [Rapportens Struktur](#rapportens-struktur)
+2. [Teoretisk Fundament og Metodiske Valg](#teoretisk-fundament-og-metodiske-valg)
+    1. [Billedrepræsentation og Farverum: Valget af HSV](#billedrepræsentation-og-farverum-valget-af-hsv)
+        1. [Teori: RGB vs. HSV](#teori-rgb-vs-hsv)
+        2. [Implementering: convert_to_hsv](#implementering-convert_to_hsv)
+        3. [Argumentation for HSV](#argumentation-for-hsv)
+    2. [Feature Extraction til Terrænklassifikation: Farve og Tekstur](#feature-extraction-til-terrænklassifikation-farve-og-tekstur)
+        1. [Teori: Histogrammer, Gradienter og HOG-inspiration](#teori-histogrammer-gradienter-og-hog-inspiration)
+        2. [Implementering: extract_hsv_histogram og extract_texture_histogram](#implementering-extract_hsv_histogram-og-extract_texture_histogram)
+        3. [Argumentation for Feature Kombination](#argumentation-for-feature-kombination)
+    3. [Dimensionalitetsreduktion: Linear Discriminant Analysis (LDA)](#dimensionalitetsreduktion-linear-discriminant-analysis-lda)
+        1. [Teori: PCA vs. LDA, Maksimering af Klasseseparation](#teori-pca-vs-lda-maksimering-af-klasseseparation)
+        2. [Implementering: sklearn.discriminant_analysis.LinearDiscriminantAnalysis](#implementering-sklearndiscriminant_analysislineardiscriminantanalysis)
+        3. [Argumentation for LDA](#argumentation-for-lda)
+    4. [Klassifikation: K-Nearest Neighbors (KNN)](#klassifikation-k-nearest-neighbors-knn)
+        1. [Teori: Nærhedsbaseret Klassifikation](#teori-nærhedsbaseret-klassifikation)
+        2. [Implementering: sklearn.neighbors.KNeighborsClassifier](#implementering-sklearnneighborskneighborsclassifier)
+        3. [Argumentation for KNN](#argumentation-for-knn)
+    5. [Objektgenkendelse: Kronedetektering via Template Matching](#objektgenkendelse-kronedetektering-via-template-matching)
+        1. [Teori: Correlation, NCC og Udfordringer](#teori-correlation-ncc-og-udfordringer)
+        2. [Implementering: cv2.matchTemplate med NCC og NMS](#implementering-cv2matchtemplate-med-ncc-og-nms)
+        3. [Argumentation for Template Matching](#argumentation-for-template-matching)
+    6. [Scoreberegning: Connected Components og Spilleregler](#scoreberegning-connected-components-og-spilleregler)
+        1. [Teori: BLOB Analysis og Graf-Traversering (DFS)](#teori-blob-analysis-og-graf-traversering-dfs)
+        2. [Implementering: find_connected_territories og calculate_board_score](#implementering-find_connected_territories-og-calculate_board_score)
+        3. [Argumentation for DFS-tilgang](#argumentation-for-dfs-tilgang)
+3. [Systemdesign og Implementeringsdetaljer](#systemdesign-og-implementeringsdetaljer)
+    1. [Dataforberedelses-pipeline (tiles.py, labels.py, label_folder.py)](#dataforberedelses-pipeline-tilespy-labelspy-label_folderpy)
+        1. [Tile Ekstraktion](#tile-ekstraktion)
+        2. [Label Indlæsning og Mapping](#label-indlæsning-og-mapping)
+        3. [Mappeorganisering](#mappeorganisering)
+    2. [Feature Extraction Modul (model.py, color_features.py)](#feature-extraction-modul-modelpy-color_featurespy)
+        1. [HSV Histogram Funktion](#hsv-histogram-funktion)
+        2. [Tekstur Histogram Funktion](#tekstur-histogram-funktion)
+        3. [Samlet Feature Vektor](#samlet-feature-vektor)
+    3. [Terrænklassifikationsmodel (model.py)](#terrænklassifikationsmodel-modelpy)
+        1. [TerrainClassifier Klasse Definition](#terrainclassifier-klasse-definition)
+        2. [Træningsproces](#træningsproces)
+        3. [Forudsigelsesproces](#forudsigelsesproces)
+        4. [Model Persistens](#model-persistens)
+    4. [Kronedetektionsmodul (template.py, test_model_evaluation.py)](#kronedetektionsmodul-templatepy-test_model_evaluationpy)
+        1. [Indlæsning af Templates](#indlæsning-af-templates)
+        2. [detect_crowns_in_tile Funktion](#detect_crowns_in_tile-funktion)
+        3. [Non-Maximum Suppression (NMS) Implementering](#non-maximum-suppression-nms-implementering)
+    5. [Scoreberegningsmodul (kingdomino_scoring_fixed.py, kingdomino_pipeline.py)](#scoreberegningsmodul-kingdomino_scoring_fixedpy-kingdomino_pipelinepy)
+        1. [Dybde-Først Søgning (DFS) for Territorier](#dybde-først-søgning-dfs-for-territorier)
+        2. [Beregning af Territorie- og Totalscore](#beregning-af-territorie-og-totalscore)
+        3. [Håndtering af Harmony Bonus](#håndtering-af-harmony-bonus)
+    6. [Pipeline Integration (kingdomino_pipeline.py, kingdomino_classifier.py, test_model_evaluation.py)](#pipeline-integration-kingdomino_pipelinepy-kingdomino_classifierpy-test_model_evaluationpy)
+        1. [Samling af Komponenter](#samling-af-komponenter)
+        2. [Visualisering af Mellemresultater og Endeligt Output](#visualisering-af-mellemresultater-og-endeligt-output)
+4. [Evaluering og Resultatanalyse](#evaluering-og-resultatanalyse)
+    1. [Evalueringsmetodologi (test_model_evaluation.py)](#evalueringsmetodologi-test_model_evaluationpy)
+        1. [Testdatasæt (Bræt 60-75)](#testdatasæt-bræt-60-75)
+        2. [Ground Truth Udtrækning](#ground-truth-udtrækning)
+        3. [Evalueringsprocedure](#evalueringsprocedure)
+    2. [Præsenterede Performance Resultater](#præsenterede-performance-resultater)
+        1. [Samlet Nøjagtighed](#samlet-nøjagtighed)
+        2. [Terrænklassifikations-Performance](#terrænklassifikations-performance)
+        3. [Kronedetektions-Performance (Detaljeret Analyse)](#kronedetektions-performance-detaljeret-analyse)
+        4. [Performance pr. Bræt](#performance-pr-bræt)
+    3. [Analyse og Fortolkning af Resultater](#analyse-og-fortolkning-af-resultater)
+        1. [Succesen med Terrænklassifikation](#succesen-med-terrænklassifikation)
+        2. [Udfordringer i Kronedetektering (Særligt 1-krone Tiles)](#udfordringer-i-kronedetektering-særligt-1-krone-tiles)
+        3. [Overordnet Systempålidelighed](#overordnet-systempålidelighed)
+    4. [Visualisering (Planlagt vs. Opnået)](#visualisering-planlagt-vs-opnået)
+        1. [Confusion Matrices (Manglende Plot)](#confusion-matrices-manglende-plot)
+5. [Diskussion](#diskussion)
+    1. [Vurdering af Metodiske Valg i Lys af Resultater](#vurdering-af-metodiske-valg-i-lys-af-resultater)
+        1. [Styrken ved HSV + Tekstur + LDA + KNN for Terræn](#styrken-ved-hsv-tekstur-lda-knn-for-terræn)
+        2. [Begrænsninger ved Template Matching for Kroner](#begrænsninger-ved-template-matching-for-kroner)
+    2. [Systemets Styrker](#systemets-styrker)
+        1. [Høj Nøjagtighed for Terræn](#høj-nøjagtighed-for-terræn)
+        2. [Modulært Design](#modulært-design)
+        3. [Anvendelse af Relevant Teori](#anvendelse-af-relevant-teori)
+        4. [Systematisk Evaluering](#systematisk-evaluering)
+    3. [Systemets Svagheder og Udfordringer](#systemets-svagheder-og-udfordringer)
+        1. [Kronedetektering (1-krone problem)](#kronedetektering-1-krone-problem)
+        2. [Afhængighed af Inputkvalitet](#afhængighed-af-inputkvalitet)
+        3. [Følsomhed over for Variation](#følsomhed-over-for-variation)
+        4. [Generalisering](#generalisering)
+        5. [Fejlfortplantning](#fejlfortplantning)
+    4. [Refleksion over Alternative Metoder](#refleksion-over-alternative-metoder)
+        1. [Terrænklassifikation](#terrænklassifikation)
+        2. [Kronedetektering](#kronedetektering)
+    5. [Samspil mellem Teori, Implementering og Empiriske Resultater](#samspil-mellem-teori-implementering-og-empiriske-resultater)
+6. [Konklusion](#konklusion)
+7. [Referencer (Baseret på kursusmateriale)](#referencer-baseret-på-kursusmateriale)
+
+## 1. Introduktion
+
+### 1.1 Baggrund: King Domino og Udfordringen
+
+King Domino er et populært moderne brætspil, hvor spillere strategisk placerer dominobrikker for at opbygge et 5x5 kongerige. Hver brik indeholder et eller to felter (tiles) med forskellige terræntyper (Field, Forest, Grassland, Lake, Mine, Swamp) og potentielt en eller flere kroner. Spillets vinder afgøres af en slutscore, der beregnes ud fra komplekse regler: sammenhængende territorier af samme terræntype multipliceres med antallet af kroner inden for det pågældende territorium (Readme.md, kingdomino_scoring_fixed.py). Manuel optælling kan være tidskrævende og fejlbehæftet, især ved komplekse brætter. Dette skaber et behov for en automatiseret løsning.
+
+### 1.2 Projektets Formål og Omfang
+
+Formålet med dette projekt, udviklet som Miniprojekt 2 under kurset "Design og Udvikling af AI-Systemer" ved Aalborg Universitet, er at designe og implementere et AI-baseret system, der kan analysere et digitalt billede af en færdig King Domino-plade og automatisk beregne den korrekte slutscore. Dette kræver, at systemet robust kan:
+
+- Identificere terræntypen for hver af de 25 tiles på brættet.
+- Detektere antallet af kroner (0, 1, 2 eller 3) på hver tile.
+- Anvende King Dominos officielle scoringsregler på de identificerede data.
+
+Projektet fokuserer på analysen af forbehandlede billeder (beskåret og perspektivkorrigeret) og anvender en kombination af computer vision (CV) og machine learning (ML) teknikker.
+
+### 1.3 Systemarkitektur Overblik
+
+Systemet er designet som en pipeline, der behandler et inputbillede gennem flere trin:
+
+1. **Tile Ekstraktion**: Inputbilledet opdeles i et 5x5 grid af individuelle tile-billeder.
+2. **Feature Extraction**: For hver tile udtrækkes deskriptive features (farve- og teksturhistogrammer).
+3. **Terrænklassifikation**: En trænet ML-model (LDA+KNN) klassificerer terræntypen baseret på de udtrukne features.
+4. **Kronedetektering**: Template matching med Normalized Cross-Correlation (NCC) anvendes til at finde og tælle kroner på hver tile.
+5. **Scoreberegning**: En algoritme (baseret på Dybde-Først Søgning) identificerer sammenhængende territorier og beregner den samlede score iht. spillereglerne.
+6. **Visualisering**: Resultaterne (klassificeret bræt, detekterede kroner, score) præsenteres visuelt.
+
+### 1.4 Rapportens Struktur
+
+Denne rapport dykker ned i de teoretiske overvejelser bag systemets design og implementering. Kapitel 2 gennemgår det teoretiske fundament for de valgte metoder (HSV, feature extraction, LDA, KNN, template matching, connected components) og argumenterer for valgene. Kapitel 3 beskriver systemets design og implementeringsdetaljer med fokus på de centrale Python-moduler og kodeblokke. Kapitel 4 præsenterer og analyserer evalueringsresultaterne fra test_model_evaluation.py. Kapitel 5 diskuterer systemets styrker, svagheder, og sammenhængen mellem teori og praksis, samt overvejer alternative metoder. Kapitel 6 konkluderer rapporten.
+
+## 2. Teoretisk Fundament og Metodiske Valg
+
+Valget af metoder i dette projekt er baseret på en kombination af teoretisk indsigt fra kursusmaterialet (1.txt - 9.txt) og pragmatiske overvejelser om effektivitet og implementeringskompleksitet for den specifikke opgave.
+
+### 2.1 Billedrepræsentation og Farverum: Valget af HSV
+
+#### 2.1.1 Teori: RGB vs. HSV (1.txt, 2.txt)
+
+Digitale farvebilleder repræsenteres typisk i RGB-farverummet, hvor hver pixel har en Rød, Grøn og Blå intensitetsværdi (typisk 0-255). Mens RGB er standard for hardware (kameraer, skærme), er det følsomt over for ændringer i belysning, da lysstyrke påvirker alle tre kanaler. Dette kan komplicere objektgenkendelse baseret på farve.
+
+HSV-farverummet (Hue, Saturation, Value) tilbyder en alternativ repræsentation, der adskiller:
+
+- **Hue (H)**: Farvetonen (f.eks. rød, grøn, blå), repræsenteret som en vinkel (0-360° eller 0-180° i OpenCV). Er relativt robust over for lysændringer.
+- **Saturation (S)**: Farvemætningen eller "renheden" af farven (fra grå til fuld farve).
+- **Value (V)**: Lysstyrken eller intensiteten af farven.
+
+Som beskrevet i 1.txt og 2.txt, er fordelen ved HSV, at Hue-komponenten er mindre afhængig af Value (lysstyrken), hvilket gør farvebaseret segmentering og klassifikation mere robust under varierende lysforhold.
+
+#### 2.1.2 Implementering: convert_to_hsv (color_features.py)
+
+I projektet bruges OpenCV's funktion cv2.cvtColor til at konvertere billeder fra RGB (eller BGR, som OpenCV ofte bruger internt) til HSV.
+
+```python
+# Uddrag fra color_features.py
+import cv2
+import numpy as np
+
+def convert_to_hsv(image):
+    """
+    Konverterer et RGB-billede til HSV-farverum.
+    Args: image: RGB-billede (numpy array)
+    Returns: numpy array: HSV-billede
+    """
+    # OpenCV forventer BGR-format, så vi skal konvertere fra RGB
+    if len(image.shape) == 3 and image.shape[2] == 3:
+        # Forsøg at konvertere fra RGB til BGR, hvis det ikke allerede er BGR
+        try:
+            bgr_image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+        except cv2.error:
+             # Antag det allerede er BGR hvis konvertering fejler (fx ved re-kald)
+             bgr_image = image
+        hsv_image = cv2.cvtColor(bgr_image, cv2.COLOR_BGR2HSV)
+    else:
+        raise ValueError("Billedet skal være i RGB/BGR-format")
+    return hsv_image
+```
+
+Denne funktion håndterer konverteringen og sikrer, at input er i korrekt format før kald til cv2.COLOR_BGR2HSV.
+
+#### 2.1.3 Argumentation for HSV
+
+Valget af HSV er strategisk for King Domino-opgaven. Spillets terræntyper har meget distinkte og karakteristiske farver (gul for Field, mørkegrøn for Forest, lysegrøn for Grassland, blå for Lake, brun for Mine, olivengrøn/brun for Swamp). Ved at bruge HSV-farverummet, især Hue-komponenten, kan systemet udnytte denne stærke farveinformation på en måde, der er mindre følsom over for variationer i belysningen, som uundgåeligt vil forekomme, når billeder tages under forskellige forhold. Dette forventes at føre til en mere robust terrænklassifikation end ved brug af RGB alene. Saturation og Value giver supplerende information, der kan hjælpe med at skelne mellem nuancer.
+
+### 2.2 Feature Extraction til Terrænklassifikation: Farve og Tekstur
+
+#### 2.2.1 Teori: Histogrammer, Gradienter og HOG-inspiration (1.txt, 3.txt, 5.txt, 6.txt)
+
+For at klassificere et billede (eller her, en tile) skal dets visuelle indhold repræsenteres numerisk via features.
+
+- **Histogrammer** (1.txt, 5.txt): En simpel, men effektiv måde at opsummere fordelingen af pixelværdier (intensitet, farvekanaler) i et billede eller en region. Farvehistogrammer (f.eks. for H, S, V kanalerne) fanger den overordnede farvesammensætning.
+- **Gradienter og Kanter** (1.txt, 6.txt): Kanter, hvor intensiteten ændrer sig brat, indeholder vigtig strukturel information. Gradienten (∇I) måler retningen og styrken af den største intensitetsændring. Sobel-operatorer er almindelige filtre (kernels) til at estimere gradienten.
+- **Tekstur** (3.txt, 6.txt): Beskriver lokale mønstre og overfladestrukturer. En måde at kvantificere tekstur er ved at analysere fordelingen af gradientorienteringer. Histogram of Oriented Gradients (HOG, 3.txt) er en avanceret metode, der bygger histogrammer over gradientorienteringer i lokale celler og normaliserer dem på tværs af større blokke for robusthed.
+
+#### 2.2.2 Implementering: extract_hsv_histogram og extract_texture_histogram (model.py)
+
+Systemet kombinerer to typer histogram-baserede features:
+
+- **HSV Histogram**: Funktionen extract_hsv_histogram beregner et normaliseret histogram for hver af H, S og V kanalerne med 32 bins hver.
+
+```python
+# Uddrag fra model.py
+def extract_hsv_histogram(image, bins=32):
+    try:
+        hsv_img = cv2.cvtColor(image, cv2.COLOR_RGB2HSV) # Konverter til HSV
+    except cv2.error:
+        return np.zeros(bins * 3) # Returner nul-vektor ved fejl
+    # Beregn histogram for H (0-180), S (0-256), V (0-256)
+    hist_h = cv2.calcHist([hsv_img], [0], None, [bins], [0, 180])
+    hist_s = cv2.calcHist([hsv_img], [1], None, [bins], [0, 256])
+    hist_v = cv2.calcHist([hsv_img], [2], None, [bins], [0, 256])
+    # Normaliser og flad ud
+    hist_h = cv2.normalize(hist_h, hist_h).flatten()
+    hist_s = cv2.normalize(hist_s, hist_s).flatten()
+    hist_v = cv2.normalize(hist_v, hist_v).flatten()
+    # Sammenkæd til én feature-vektor
+    return np.concatenate([hist_h, hist_s, hist_v]) # Total 3*32 = 96 features
+```
+
+- **Tekstur Histogram (Gradient Orientering)**: Funktionen extract_texture_histogram beregner et 9-bins histogram over gradientretninger, vægtet med gradientens magnitude. Dette er en simplificeret HOG-lignende feature.
+
+```python
+# Uddrag fra model.py
+def extract_texture_histogram(image, bins=9):
+    try:
+        gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY) # Konverter til gråskala
+    except cv2.error:
+        return np.zeros(bins) # Returner nul-vektor ved fejl
+    # Beregn Sobel gradienter i x og y retning
+    gradient_x = cv2.Sobel(gray, cv2.CV_64F, 1, 0, ksize=3)
+    gradient_y = cv2.Sobel(gray, cv2.CV_64F, 0, 1, ksize=3)
+    # Beregn magnitude (styrke) og direction (retning)
+    magnitude = np.sqrt(gradient_x**2 + gradient_y**2)
+    direction = np.arctan2(gradient_y, gradient_x) * (180 / np.pi) % 180 # Retning i grader (0-180)
+    # Byg histogram
+    hist = np.zeros(bins)
+    bin_width = 180 / bins
+    for i in range(bins):
+        bin_start = i * bin_width
+        bin_end = (i + 1) * bin_width
+        mask = ((direction >= bin_start) & (direction < bin_end)) # Find pixels i denne retnings-bin
+        hist[i] = np.sum(magnitude[mask]) # Summér magnituden for disse pixels
+    # Normaliser histogrammet
+    if np.sum(hist) > 0:
+        hist = hist / np.sum(hist)
+    return hist # Total 9 features
+```
+
+Funktionen extract_features i model.py kalder begge disse funktioner og sammenkæder resultaterne til en samlet feature-vektor på 96 + 9 = 105 dimensioner.
+
+#### 2.2.3 Argumentation for Feature Kombination
+
+Valget om at kombinere HSV-histogrammer med et tekstur-histogram er truffet for at opnå en mere diskriminerende feature-repræsentation end farve eller tekstur alene ville give.
+
+- **HSV**: Fanger de globale farveegenskaber, som er primære kendetegn for King Domino-terræner. Robust over for lys.
+- **Tekstur**: Tilføjer information om lokale mønstre og kanter. Dette er vigtigt for at skelne mellem terræner med lignende farver, men forskellig struktur (f.eks. Forest vs. Grassland, eller Mine vs. Swamp). Den HOG-inspirerede tilgang fanger dominant kantorientering.
+
+Kombinationen giver en balance mellem global farveinformation og lokal strukturinformation. Valget af histogram-baserede features er også relativt beregningsmæssigt effektivt sammenlignet med mere komplekse deskriptorer som fuld SIFT (3.txt). Valget af 32 bins for HSV og 9 for tekstur er et empirisk kompromis mellem detaljeringsgrad og dimensionalitet.
+
+### 2.3 Dimensionalitetsreduktion: Linear Discriminant Analysis (LDA)
+
+#### 2.3.1 Teori: PCA vs. LDA, Maksimering af Klasseseparation (4.txt)
+
+Arbejde med højdimensionelle feature-vektorer (her 105D) kan føre til "The Curse of Dimensionality", hvor modeller bliver ineffektive, overfitter, og beregningstiden stiger. Dimensionalitetsreduktion søger at projicere data ned i et lavere-dimensionelt rum, mens vigtig information bevares.
+
+- **PCA (Principal Component Analysis)**: En usuperviseret metode, der finder de akser (principal components), der fanger mest af den samlede varians i dataene, uafhængigt af eventuelle klasselabels.
+- **LDA (Linear Discriminant Analysis)**: En superviseret metode, der eksplicit bruger klasselabels. LDA finder de akser (lineære diskriminanter), der maksimerer separationen mellem klasserne og samtidig minimerer variansen inden for hver klasse. Dette gøres ved at maksimere forholdet mellem "between-class scatter" (Sb, spredning mellem klassemidler) og "within-class scatter" (Sw, spredning inden for klasser).
+
+Da terrænklassifikation er en superviseret opgave (vi har kendte terræn-labels), er LDA teoretisk set et bedre valg end PCA, da LDA direkte optimerer på at gøre klasserne så adskillelige som muligt i det reducerede rum. Antallet af dimensioner i LDA er begrænset til højst C-1, hvor C er antallet af klasser (her 6 terræntyper, så LDA reducerer til max 5 dimensioner).
+
+#### 2.3.2 Implementering: sklearn.discriminant_analysis.LinearDiscriminantAnalysis (model.py)
+
+Klassen TerrainClassifier i model.py bruger Scikit-learns implementering af LDA.
+
+```python
+# Uddrag fra model.py (inden i TerrainClassifier.fit)
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+
+# ... (X er feature matrix, y er labels)
+# Bestem antal komponenter (max antal klasser - 1)
+n_components = min(len(np.unique(y)), X.shape[1]) - 1
+# Initialiser og træn LDA
+self.lda = LinearDiscriminantAnalysis(n_components=n_components)
+X_lda = self.lda.fit_transform(X, y) # Transformer træningsdata
+# ... (Træn KNN på X_lda)
+```
+
+Koden beregner det maksimale antal LDA-komponenter (C-1) og bruger fit_transform til at træne LDA og transformere træningsdataene til det lavere-dimensionelle rum. Ved forudsigelse bruges transform.
+
+#### 2.3.3 Argumentation for LDA
+
+LDA er valgt frem for PCA, fordi:
+
+- **Superviseret**: Opgaven er klassifikation med kendte labels, og LDA udnytter denne information til at finde et rum, der er optimeret til klasseseparation, hvilket direkte gavner klassifikationsperformance.
+- **Dimensionalitetsreduktion**: Reducerer de 105 features markant (til 5), hvilket bekæmper "curse of dimensionality", reducerer risikoen for overfitting og gør den efterfølgende KNN-klassifikator hurtigere.
+- **Fokus**: LDA fokuserer på at adskille klasserne, hvilket er præcis det, der er brug for i en klassifikationsopgave, modsat PCA der fokuserer på overordnet varians.
+
+### 2.4 Klassifikation: K-Nearest Neighbors (KNN)
+
+#### 2.4.1 Teori: Nærhedsbaseret Klassifikation (7.txt)
+
+K-Nearest Neighbors (KNN) er en simpel, ikke-parametrisk klassifikationsalgoritme. Den klassificerer et nyt, uset datapunkt baseret på klasserne af dets 'K' nærmeste naboer i feature-rummet. Afstanden måles typisk med Euklidisk afstand. Majoritetsklassen blandt de K naboer bestemmer klassifikationen af det nye punkt. KNN laver ingen antagelser om den underliggende datafordeling udover afstandsmetrikken.
+
+#### 2.4.2 Implementering: sklearn.neighbors.KNeighborsClassifier (model.py)
+
+TerrainClassifier bruger Scikit-learns KNN-implementering på de data, der er transformeret af LDA.
+
+```python
+# Uddrag fra model.py (inden i TerrainClassifier.fit)
+from sklearn.neighbors import KNeighborsClassifier
+
+# ... (X_lda er de LDA-transformerede features, y er labels)
+# Initialiser og træn KNN
+self.knn = KNeighborsClassifier(n_neighbors=5) # Brug K=5
+self.knn.fit(X_lda, y) # Træn KNN på de reducerede data
+# ...
+
+# Uddrag fra model.py (inden i TerrainClassifier.predict)
+# ... (X er input features)
+X_lda = self.lda.transform(X) # Transformer input med trænet LDA
+return self.knn.predict(X_lda) # Forudsig med trænet KNN
+```
+
+Koden initialiserer KNN med K=5 og træner den på de LDA-reducerede features. Ved forudsigelse transformeres nye data først med LDA, hvorefter KNN bruges til klassifikation.
+
+#### 2.4.3 Argumentation for KNN
+
+KNN er valgt i kombination med LDA af flere grunde:
+
+- **Simpelhed**: KNN er konceptuelt enkel og let at implementere.
+- **Effektivitet efter LDA**: Efter at LDA har projiceret data ned i et lav-dimensionelt rum optimeret for klasseseparation, er klasserne ofte relativt veladskilte. I sådanne tilfælde kan en simpel, lokal metode som KNN være meget effektiv.
+- **Ikke-parametrisk**: KNN laver få antagelser om datafordelingen, hvilket kan være en fordel, hvis klasserne i det transformerede rum ikke følger en pæn fordeling (f.eks. Gaussisk).
+- **Valg af K=5**: Dette er et standard heuristisk valg, der ofte giver en god balance mellem bias (for stort K kan udglatte for meget) og varians (for lille K er følsomt over for støj/outliers).
+
+### 2.5 Objektgenkendelse: Kronedetektering via Template Matching
+
+#### 2.5.1 Teori: Correlation, NCC og Udfordringer (1.txt, 2.txt - "Kapitel 5 Noter", 3.txt - "Noter: Feature Detectors")
+
+Template matching er en teknik til at finde forekomster af et lille "skabelon"-billede (template) inden i et større billede.
+
+- **Grundprincip**: Templaten fungerer som et filter (kernel), der slides hen over det store billede. For hver position beregnes en lighedsscore mellem templaten og det underliggende billedområde (patch). Høj score indikerer et match.
+- **Korrelation**: En simpel lighedsscore er korrelationen (eller dot-produktet). Dog er den følsom over for variationer i billedets lysstyrke og kontrast.
+- **Normalized Cross-Correlation (NCC)**: En mere robust metrik, der normaliserer for lys og kontrast. NCC beregner cosinus til vinklen mellem template-vektoren og patch-vektoren (efter centrering), hvilket giver en score typisk mellem -1 og 1 (eller 0 og 1 for cv2.TM_CCOEFF_NORMED). Værdier tæt på 1 indikerer et godt match uafhængigt af lineære lysændringer.
+
+Udfordringer (1.txt): Standard template matching er følsom over for:
+
+- Rotation af objektet i billedet.
+- Skalaændringer af objektet.
+- Perspektivforvrængning.
+- Okklusion (delvis tildækning).
+
+**Non-Maximum Suppression (NMS)**: Da NCC ofte giver høje scores i et lille område omkring det bedste match, er det nødvendigt at fjerne redundante, overlappende detektioner for kun at beholde det mest sandsynlige match for hver forekomst af objektet.
+
+#### 2.5.2 Implementering: cv2.matchTemplate med NCC og NMS (template.py, test_model_evaluation.py)
+
+Systemet implementerer kronedetektering ved hjælp af template matching med NCC og NMS.
+
+```python
+# Uddrag fra test_model_evaluation.py (lignende logik i template.py)
+import cv2
+import numpy as np
+
+def detect_crowns_in_tile(tile_image, templates, template_names, threshold=0.6):
+    # ... (Konverter tile_image til gråskala: tile_gray) ...
+    tile_gray = cv2.cvtColor(tile_image, cv2.COLOR_RGB2GRAY) # Konverter til grå
+    best_matches = []
+    # For hver template (op, ned, venstre, højre)
+    for template, template_name in zip(templates, template_names):
+        # Udfør template matching med NCC
+        result = cv2.matchTemplate(tile_gray, template, cv2.TM_CCOEFF_NORMED)
+        # Find lokationer over threshold
+        locations = np.where(result >= threshold)
+        # Gem matches (position og score)
+        for pt in zip(*locations[::-1]): # (x, y) koordinater
+            match_value = result[pt[1], pt[0]]
+            best_matches.append({
+                'value': match_value,
+                'position': pt,
+                'template': template_name,
+                'template_size': template.shape
+            })
+    # Sortér matches efter score (højeste først)
+    best_matches.sort(key=lambda x: x['value'], reverse=True)
+
+    # Non-maximum suppression (NMS)
+    final_matches = []
+    while best_matches:
+        best_match = best_matches.pop(0) # Tag bedste match
+        final_matches.append(best_match)
+        # Fjern andre matches der overlapper for meget med best_match
+        non_overlapping_matches = []
+        for match in best_matches:
+            # Beregn afstand mellem centre
+            best_center_x = best_match['position'][0] + best_match['template_size'][1] // 2
+            best_center_y = best_match['position'][1] + best_match['template_size'][0] // 2
+            match_center_x = match['position'][0] + match['template_size'][1] // 2
+            match_center_y = match['position'][1] + match['template_size'][0] // 2
+            distance = np.sqrt((best_center_x - match_center_x)**2 + (best_center_y - match_center_y)**2)
+            # Behold kun match hvis afstanden er stor nok (her: > halv template størrelse)
+            if distance > min(best_match['template_size']) // 2:
+                non_overlapping_matches.append(match)
+        best_matches = non_overlapping_matches # Opdater listen til næste iteration
+
+    return len(final_matches), final_matches # Returner antal fundne kroner
+```
+
+Koden:
+
+- Itererer gennem fire pre-loadede gråskala-templates for kroner (op, ned, venstre, højre) for at håndtere simpel rotation.
+- Bruger cv2.matchTemplate med cv2.TM_CCOEFF_NORMED (NCC).
+- Finder alle match-lokationer over en given threshold (her 0.6).
+- Implementerer NMS ved at sortere matches og iterativt fjerne dem, hvis deres centre er for tæt på et allerede valgt, bedre match.
+- Returnerer antallet af final_matches som antallet af detekterede kroner.
+
+#### 2.5.3 Argumentation for Template Matching
+
+Template matching er valgt til kronedetektering fordi:
+
+- **Fast Form**: Kroner i King Domino har en relativt fast og genkendelig form, hvilket er ideelt for template matching.
+- **NCC Robusthed**: Brug af NCC giver robusthed mod variationer i lysstyrke og kontrast på tværs af forskellige terrænbaggrunde.
+- **Simpel Rotation**: Variationen i kroners orientering er primært 90-graders rotationer, hvilket kan håndteres ved at bruge fire separate templates.
+- **Implementeringssimpelhed**: Metoden er relativt enkel at implementere med standard CV-biblioteker som OpenCV.
+
+Selvom metoden er følsom over for skala, kompleks rotation og okklusion, vurderes den som et rimeligt kompromis mellem performance og kompleksitet for denne specifikke opgave, hvor kronerne forventes at være af nogenlunde samme størrelse og orientering inden for tiles. Valget af threshold (0.6) er et empirisk bestemt kompromis.
+
+### 2.6 Scoreberegning: Connected Components og Spilleregler
+
+#### 2.6.1 Teori: BLOB Analysis og Graf-Traversering (DFS) (7.txt)
+
+Beregning af King Domino-score kræver identifikation af sammenhængende territorier af samme terræntype. Dette er et klassisk problem inden for billedanalyse kendt som Connected Component Analysis (CCA) eller BLOB (Binary Large Object) Analysis (7.txt).
+
+- **Connectivity**: Definerer, hvornår to pixels (eller her, tiles) betragtes som forbundne (typisk 4-connectivity: op, ned, venstre, højre; eller 8-connectivity: inkluderer diagonaler). Her bruges 4-connectivity, da spillet definerer sammenhæng vandret/lodret.
+- **Algoritmer**: CCA kan implementeres med forskellige algoritmer:
+  - **Grass-Fire Algorithm** (7.txt): En intuitiv algoritme, der "spreder ild" fra et startpixel til alle forbundne pixels af samme type. Kan implementeres rekursivt eller sekventielt (iterativt).
+  - **Graf-Traversering (DFS/BFS)**: Brættet kan ses som en graf, hvor tiles er knuder og naboskab (med samme terræntype) definerer kanter. Standard algoritmer som Dybde-Først Søgning (DFS) eller Bredde-Først Søgning (BFS) kan bruges til at finde alle knuder (tiles) i en sammenhængende komponent (territorium).
+
+#### 2.6.2 Implementering: find_connected_territories og calculate_board_score (kingdomino_scoring_fixed.py)
+
+kingdomino_scoring_fixed.py implementerer scoreberegningen ved hjælp af DFS.
+
+```python
+# Uddrag fra kingdomino_scoring_fixed.py
+def find_connected_territories(board, x, y, terrain, visited, home_coords):
+    # Base cases: Uden for bræt, allerede besøgt, forkert terræn (eller Home)
+    if x < 0 or x >= 5 or y < 0 or y >= 5 or (x, y) in visited or (x, y) not in board:
+        return []
+    if board[(x, y)][0] != terrain and (x,y) != home_coords: # Home kan forbinde, men er ikke en del af terræn
+         return []
+    if (x, y) == home_coords: # Håndter Home specielt
+         visited.add((x, y)) # Marker som besøgt
+         territory = [] # Home tæller ikke med i territoriet
+         # Udforsk naboer rekursivt
+         for dx, dy in [(0, 1), (1, 0), (0, -1), (-1, 0)]:
+             territory.extend(find_connected_territories(board, x + dx, y + dy, terrain, visited, home_coords))
+         return territory
+    # Marker nuværende (x,y) som besøgt
+    visited.add((x, y))
+    # Tilføj til territoriet
+    territory = [(x, y)]
+    # Udforsk naboer rekursivt (DFS)
+    for dx, dy in [(0, 1), (1, 0), (0, -1), (-1, 0)]:
+        territory.extend(find_connected_territories(board, x + dx, y + dy, terrain, visited, home_coords))
+    return territory
+
+def calculate_board_score(board_data):
+    # ... (Opbyg 'board' dictionary fra board_data) ...
+    board = {}
+    home_coords = None
+    # ... (find home_coords) ...
+    if home_coords is None: home_coords = (2,2) # Default home
+    visited = set()
+    territories = []
+    if home_coords in board: visited.add(home_coords) # Start med at besøge Home
+
+    # Gennemgå alle tiles
+    for (x, y) in board:
+        if (x, y) not in visited:
+            terrain = board[(x, y)][0]
+            if terrain in ['Home', 'Table', 'Unknown']: # Spring over ikke-scorende
+                visited.add((x, y))
+                continue
+            # Find hele territoriet via DFS
+            territory = find_connected_territories(board, x, y, terrain, visited, home_coords)
+            if territory:
+                territories.append((terrain, territory)) # Gem fundet territorium
+
+    # Beregn score for hvert territorium
+    total_score = 0
+    territory_details = []
+    for terrain_type, territory in territories:
+        # ... (Beregn score = len(territory) * sum(kroner i territory)) ...
+        crowns = sum(board[tile][1] for tile in territory)
+        tile_count = len(territory)
+        score = tile_count * crowns # Kun > 0 hvis crowns > 0
+        total_score += score
+        # ... (Gem detaljer) ...
+    return total_score, territory_details
+```
+
+Koden bruger en rekursiv DFS (find_connected_territories) til at finde alle sammenhængende tiles af samme terræntype, startende fra en ubesøgt tile. Den holder styr på besøgte tiles (visited set) for at undgå redundans. calculate_board_score itererer over brættet, starter DFS for hvert nyt territorium og summerer scorerne. 'Home'-tile behandles specielt, så den ikke tæller med i territorier, men kan forbinde dem.
+
+#### 2.6.3 Argumentation for DFS-tilgang
+
+Valget af DFS (eller alternativt BFS) er standard og effektivt til at løse connected components-problemer på et grid. DFS er relativt let at implementere rekursivt og garanterer, at alle tiles i et sammenhængende territorium findes. Den systematiske gennemgang af brættet sikrer, at alle potentielle territorier undersøges.
+
+## 3. Systemdesign og Implementeringsdetaljer
+
+Systemet er bygget op af flere Python-moduler, der tilsammen udgør den fulde analyse-pipeline.
+
+### 3.1 Dataforberedelses-pipeline (tiles.py, labels.py, label_folder.py)
+
+#### 3.1.1 Tile Ekstraktion (tiles.py)
+
+Formål: At opdele et inputbillede af et (forudsat korrekt beskåret og perspektivkorrigeret) King Domino-bræt i et uniformt 5x5 grid af individuelle tile-billeder.
+
+Implementering: Bruger simpel division af billedets dimensioner med grid-størrelsen (5) til at beregne tile-størrelser og udtrækker derefter hver tile vha. NumPy-slicing. Funktionen save_tiles gemmer disse individuelle billedfiler med et systematisk navn (f.eks. BoardNum_tile_row_col.png).
+
+Betydning: Standardiserer inputtet til de efterfølgende feature extraction og klassifikationstrin.
+
+#### 3.1.2 Label Indlæsning og Mapping (labels.py)
+
+Formål: At forbinde de fysiske tile-billeder med deres korrekte "ground truth"-labels (terræntype og antal kroner), som er manuelt indtastet i en ekstern Excel-fil (kingdomino_labels_fixed.xlsx - ikke inkluderet i dokumentationen, men essentiel for træning/evaluering).
+
+Implementering: load_labels_from_excel læser Excel-filen ark for ark (hvert ark er et bræt) og bruger extract_coordinates og extract_terrain_and_crowns til at parse informationen. map_labels_to_extracted_tiles itererer derefter gennem de gemte tile-billedfiler i tiles_dir, parser brætnummer, række og kolonne fra filnavnet, og slår den tilsvarende label op i de indlæste Excel-data. Resultatet er en JSON-fil (tile_labels_mapping.json), der mapper hvert bræt og tile-position til et dictionary med filnavn, terræn og kroner.
+
+Betydning: Skaber det nødvendige superviserede datasæt, der forbinder billeddata med korrekte klasser til træning og evaluering af modellerne.
+
+#### 3.1.3 Mappeorganisering (label_folder.py)
+
+Formål: En hjælpefunktion, der bruger den genererede tile_labels_mapping.json til fysisk at kopiere og organisere alle tile-billeder ind i undermapper navngivet efter deres terræntype (f.eks. TerrainCategories/Forest/, TerrainCategories/Lake/). Filnavnene omdøbes også til at inkludere kroneantallet (f.eks. BoardNum_tile_row_col_Terrain_Crowns crowns.png).
+
+Implementering: Læser JSON-mappingen, itererer gennem alle tiles, og bruger shutil.copy2 til at kopiere filerne til de korrekte destinationsmapper med nye navne.
+
+Betydning: Gør det nemmere manuelt at inspicere billeder af specifikke terræntyper eller potentielt bruge en mappestruktur direkte til træning af visse ML-frameworks (selvom model.py her bruger JSON-filen).
+
+### 3.2 Feature Extraction Modul (model.py, color_features.py)
+
+#### 3.2.1 HSV Histogram Funktion (extract_hsv_histogram i model.py)
+
+Se kode og forklaring i afsnit 2.2.2. Udtrækker 3x32 = 96 farvefeatures.
+
+#### 3.2.2 Tekstur Histogram Funktion (extract_texture_histogram i model.py)
+
+Se kode og forklaring i afsnit 2.2.2. Udtrækker 9 teksturfeatures baseret på gradientorientering.
+
+#### 3.2.3 Samlet Feature Vektor (extract_features i model.py)
+
+```python
+# Uddrag fra model.py
+def extract_features(image):
+    # Udtræk HSV histogram features
+    hsv_hist = extract_hsv_histogram(image)
+    # Udtræk tekstur features
+    texture_hist = extract_texture_histogram(image)
+    # Kombiner features til én vektor
+    combined_features = np.concatenate([hsv_hist, texture_hist])
+    return combined_features
+```
+
+Denne funktion orkestrerer feature extraction ved at kalde de to specialiserede funktioner og sammenkæde deres output til den endelige 105-dimensionelle feature-vektor, der repræsenterer en enkelt tile. extract_features_batch kalder denne funktion iterativt for alle billeder i datasættet.
+
+### 3.3 Terrænklassifikationsmodel (model.py)
+
+#### 3.3.1 TerrainClassifier Klasse Definition
+
+```python
+# Uddrag fra model.py
+class TerrainClassifier:
+    def __init__(self, lda=None, knn=None, terrain_classes=None):
+        self.lda = lda
+        self.knn = knn
+        self.terrain_classes = terrain_classes # Gemmer mapping fra navn til tal
+        self.is_fitted = (lda is not None and knn is not None)
+    # ... (fit, predict, predict_terrain metoder som vist i 2.3.2 og 2.4.2)
+```
+
+Denne klasse indkapsler LDA- og KNN-modellerne samt mappingen mellem terrænnavne og de numeriske klasselabels, som Scikit-learn bruger. Den holder styr på, om modellen er trænet (is_fitted).
+
+#### 3.3.2 Træningsproces (fit metode)
+
+Se kode i 2.3.2 og 2.4.2. Metoden tager feature-matricen X og label-vektoren y som input. Den træner først LDA på (X, y) og transformerer X til X_lda. Derefter træner den KNN på (X_lda, y). terrain_classes skal sættes under initialisering for at predict_terrain virker.
+
+#### 3.3.3 Forudsigelsesproces (predict og predict_terrain metoder)
+
+- **predict(X)**: Tager en ny feature-matrix X, transformerer den med den trænede self.lda, og forudsiger de numeriske klasselabels med den trænede self.knn.
+- **predict_terrain(X)**: Kalder predict(X) og bruger derefter den gemte self.terrain_classes mapping til at konvertere de numeriske labels tilbage til læsbare terrænnavne (strenge).
+
+#### 3.3.4 Model Persistens (pickle)
+
+```python
+# Uddrag fra model.py
+import pickle
+
+def save_model(model, file_path=MODEL_FILE):
+    with open(file_path, 'wb') as f:
+        pickle.dump(model, f) # Gemmer hele TerrainClassifier objektet
+    print(f"Model gemt til: {file_path}")
+
+def load_model(file_path=MODEL_FILE):
+    # ... (fejlhåndtering) ...
+    with open(file_path, 'rb') as f:
+        model = pickle.load(f) # Indlæser hele objektet
+    print(f"Model indlæst fra: {file_path}")
+    return model
+```
+
+pickle-biblioteket bruges til at serialisere (gemme) det trænede TerrainClassifier-objekt (inklusive de trænede LDA- og KNN-modeller samt terrain_classes mapping) til en fil (kingdomino_terrain_model.pkl) og til at deserialisere (indlæse) det igen senere for brug i klassifikations-scripts (kingdomino_classifier.py, kingdomino_pipeline.py, test_model_evaluation.py). Det er kritisk, at definitionen af TerrainClassifier-klassen er tilgængelig (importeret), når modellen indlæses.
+
+### 3.4 Kronedetektionsmodul (template.py, test_model_evaluation.py)
+
+#### 3.4.1 Indlæsning af Templates (load_crown_templates i test_model_evaluation.py)
+
+```python
+# Uddrag fra test_model_evaluation.py
+def load_crown_templates(templates_dir=CROWN_TEMPLATES_DIR):
+    template_paths = [ # Definer stier til de 4 templates
+        os.path.join(templates_dir, "Crown_up.png"),
+        # ... (down, left, right) ...
+    ]
+    templates = []
+    for path in template_paths:
+        try:
+            template = cv2.imread(path) # Indlæs billede
+            # ... (fejlhåndtering) ...
+            template_gray = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY) # Konverter til gråskala
+            templates.append(template_gray)
+        # ... (fejlhåndtering) ...
+    return templates, CROWN_TEMPLATE_NAMES # Returner liste af gråskala templates
+```
+
+Funktionen indlæser de fire krone-billeder, konverterer dem til gråskala (for at matche mod gråskala-versionen af tile-billedet og reducere farvefølsomhed), og returnerer dem som en liste.
+
+#### 3.4.2 detect_crowns_in_tile Funktion
+
+Se kode og detaljeret forklaring i afsnit 2.5.2. Denne funktion udfører kerne-logikken for template matching.
+
+#### 3.4.3 Non-Maximum Suppression (NMS) Implementering
+
+Se NMS-loopet i koden i afsnit 2.5.2. Implementeringen er en grådig algoritme:
+
+- Sorter alle potentielle matches (over threshold) efter deres NCC-score (højeste først).
+- Tag det bedste match og tilføj det til final_matches.
+- Gennemgå de resterende matches. Fjern ethvert match, hvis centrum er for tæt på centrum af det netop valgte best_match (her defineret som mindre end halvdelen af template-størrelsen).
+- Gentag fra trin 2 med de resterende, ikke-overlappende matches.
+
+Denne simple NMS-tilgang virker rimeligt for at undgå multiple detektioner af den samme krone, men mere sofistikerede metoder findes (f.eks. baseret på overlap af bounding boxes).
+
+### 3.5 Scoreberegningsmodul (kingdomino_scoring_fixed.py, kingdomino_pipeline.py)
+
+#### 3.5.1 Dybde-Først Søgning (DFS) for Territorier
+
+Se koden for find_connected_territories i afsnit 2.6.2. Funktionen implementerer en klassisk rekursiv DFS for at finde alle tiles i et sammenhængende territorium af en given type, startende fra et givet (x, y) punkt. Den håndterer brætgrænser, besøgte tiles og 'Home'-tile korrekt.
+
+#### 3.5.2 Beregning af Territorie- og Totalscore
+
+Se koden i afsnit 2.6.2. Funktionen orkestrerer scoreberegningen:
+
+- Konverterer input board_data (oprindeligt fra Excel, men i kingdomino_pipeline.py vil det være output fra klassifikation/detektion) til et board dictionary {(x, y): (terrain, crowns)}.
+- Finder 'Home'-koordinater (default (2,2)).
+- Initialiserer visited set.
+- Itererer over alle tiles på brættet. Hvis en tile ikke er besøgt og ikke er 'Home'/'Unknown', kaldes find_connected_territories for at finde hele territoriet.
+- For hvert fundet territorium beregnes scoren: score = len(territory) * sum(crowns in territory). Kun territorier med mindst én krone giver point.
+- Summerer scorerne for alle territorier.
+
+#### 3.5.3 Håndtering af Harmony Bonus (calculate_harmony_bonus i kingdomino_scoring_fixed.py)
+
+```python
+# Uddrag fra kingdomino_scoring_fixed.py
+def calculate_harmony_bonus(board_data):
+    board_coords = set()
+    # ... (udtræk alle (x,y) koordinater fra board_data) ...
+    for _, row in board_data.iterrows():
+         coord_text = row.iloc[0]
+         coords = extract_coordinates(coord_text)
+         if coords: board_coords.add(coords)
+    # Tjek om der er præcis 25 unikke tiles
+    if len(board_coords) == 25:
+        # Tjek om de dækker et 5x5 grid
+        all_coords = {(x, y) for x in range(5) for y in range(5)}
+        if board_coords == all_coords:
+            return 5 # Harmony bonus
+    return 0
+```
+
+Denne funktion tjekker, om der er præcis 25 udfyldte felter, og om de dækker hele 5x5 griddet. Hvis ja, returneres 5 bonuspoint. calculate_board_score lægger denne bonus til den samlede score.
+
+### 3.6 Pipeline Integration (kingdomino_pipeline.py, kingdomino_classifier.py, test_model_evaluation.py)
+
+#### 3.6.1 Samling af Komponenter
+
+- **kingdomino_classifier.py**: En simpel pipeline, der fokuserer på terrænklassifikation. Den indlæser model (load_model), indlæser billede (load_board_image), opdeler i tiles (divide_board_into_tiles), klassificerer (classify_tiles), og visualiserer (visualize_classification_results). Den inkluderer ikke kronedetektering eller scoreberegning.
+- **kingdomino_pipeline.py**: En mere komplet pipeline, der sigter mod at udføre hele processen. Den indlæser model, billede, opdeler i tiles. Den kalder classify_tiles_with_crowns, som internt bruger extract_features og model.predict_terrain til terrænklassifikation og kalder detect_crowns_positions (fra old.crown_detector - muligvis en ældre/anden version af kronedetekteringslogikken set i template.py/test_model_evaluation.py) til kronedetektering. Derefter kalder den score_board (som bruger identify_connected_territories, der ligner DFS-logikken fra kingdomino_scoring_fixed.py) til at beregne scoren. Til sidst visualiserer den det hele med visualize_scored_board.
+- **test_model_evaluation.py**: En evaluerings-pipeline. Den fokuserer på at køre terrænklassifikation (model.predict_terrain) og kronedetektering (detect_crowns_in_tile) på et sæt af test-tiles (fra bræt 60-75), sammenligne resultaterne med ground truth fra filnavne, og beregne detaljerede nøjagtighedsmetrikker. Den beregner ikke den samlede King Domino-score.
+
+#### 3.6.2 Visualisering af Mellemresultater og Endeligt Output
+
+- **kingdomino_classifier.py** og **kingdomino_pipeline.py** bruger matplotlib til at generere visualiseringer, der viser det originale bræt, det klassificerede terræn-grid, og (i kingdomino_pipeline.py) de detekterede kroner (som stjerner) og den beregnede score. Dette er nyttigt for at forstå systemets output visuelt.
+- **test_model_evaluation.py** forsøger at plotte confusion matrices for terræn og kroner, hvilket giver en kvantitativ visualisering af klassifikationsfejl (selvom plottingen fejlede i det medfølgende output).
+
+## 4. Evaluering og Resultatanalyse
+
+Denne sektion fokuserer på resultaterne fra test_model_evaluation.py, som angivet i brugerprompten.
+
+### 4.1 Evalueringsmetodologi (test_model_evaluation.py)
+
+#### 4.1.1 Testdatasæt (Bræt 60-75)
+
+Evalueringen udføres specifikt på et dedikeret testsæt bestående af alle tiles fra King Domino bræt nummer 60 til 75. Disse brætter er ikke brugt under træningen af terrænklassifikationsmodellen (som typisk bruger en 80/20 split af alle tilgængelige data). Dette sikrer en fair vurdering af systemets generaliseringsevne på usete data.
+
+#### 4.1.2 Ground Truth Udtrækning
+
+Scriptet antager, at ground truth (korrekt terræntype og kroneantal) kan udtrækkes direkte fra filnavnene på de individuelle tile-billeder. Funktionen extract_info_from_filename bruger regulære udtryk til at parse navne i formatet BoardNum_tile_row_col_Terrain_Crowns crowns.png. Korrektheden af evalueringen afhænger kritisk af nøjagtigheden af disse filnavne.
+
+#### 4.1.3 Evalueringsprocedure
+
+Scriptet test_model_evaluation.py udfører følgende trin:
+
+1. Indlæser den trænede TerrainClassifier model (load_model).
+2. Indlæser de fire krone-templates (load_crown_templates).
+3. Itererer gennem alle .png filer i mapperne under TERRAIN_CATEGORIES_DIR (som er organiseret af label_folder.py).
+4. For hver fil udtrækkes brætnummeret. Hvis brætnummeret er inden for TEST_BOARD_RANGE (60-75):
+    - Indlæses tile-billedet (cv2.imread).
+    - Ground truth (terræn, kroner) udtrækkes fra filnavnet (extract_info_from_filename).
+    - Terræntypen forudsiges ved at kalde model.predict_terrain på de udtrukne features (extract_features).
+    - Antal kroner forudsiges ved at kalde detect_crowns_in_tile (med threshold=0.6).
+    - De forudsagte værdier sammenlignes med ground truth, og resultatet (korrekt/forkert for terræn, kroner, og samlet) gemmes.
+5. Efter at have behandlet alle test-tiles, beregnes samlede nøjagtighedsstatistikker, klassifikationsrapport for terræn, nøjagtighed fordelt på kroneantal, og nøjagtighed fordelt på brætnummer.
+6. Forsøger at plotte confusion matrices for terræn og kroner.
+
+### 4.2 Præsenterede Performance Resultater
+
+Outputtet fra test_model_evaluation.py viser følgende nøgleresultater for de 360 test-tiles fra bræt 60-75:
+
+#### 4.2.1 Samlet Nøjagtighed
+
+- **Terrain classification accuracy**: 1.00 (360/360) - Alle terræner blev klassificeret korrekt.
+- **Crown detection accuracy**: 0.93 (333/360) - 93% af tiles havde korrekt antal detekterede kroner.
+- **Overall accuracy**: 0.93 (333/360) - 93% af tiles havde både korrekt terræn og korrekt kroneantal.
+
+#### 4.2.2 Terrænklassifikations-Performance
+
+Perfekt score: Precision, Recall og F1-score er 1.00 for alle seks terræntyper (Field, Forest, Grassland, Lake, Mine, Swamp). Dette indikerer, at den valgte featurekombination (HSV + Tekstur) og klassifikationsmodel (LDA + KNN) er yderst effektiv til at adskille disse terræntyper i det anvendte datasæt.
+
+#### 4.2.3 Kronedetektions-Performance (Detaljeret Analyse)
+
+Nøjagtigheden varierer markant afhængigt af det faktiske antal kroner:
+
+- **0 kroner**: 1.00 (246/247) - Næsten perfekt. Kun én tile med 0 kroner blev fejlagtigt detekteret med kroner.
+- **1 krone**: 0.70 (58/83) - Markant lavere nøjagtighed. Ca. 30% af tiles med én krone fik detekteret et forkert antal (sandsynligvis 0).
+- **2 kroner**: 0.96 (25/26) - Meget høj nøjagtighed. Kun én fejl.
+- **3 kroner**: 1.00 (4/4) - Perfekt nøjagtighed (dog baseret på få samples).
+
+Dette viser tydeligt, at systemets primære svaghed i kronedetekteringen ligger i korrekt at identificere tiles med præcis én krone.
+
+#### 4.2.4 Performance pr. Bræt
+
+Nøjagtigheden er generelt høj og stabil på tværs af de 16 testbrætter.
+
+- Overall accuracy pr. bræt ligger mellem 0.88 (for 5 brætter) og 0.96 (for 11 brætter).
+
+Dette indikerer, at systemet performer konsistent på forskellige brætlayouts inden for testsættet. Fejlene (primært 1-krone fejl) fordeler sig relativt jævnt.
+
+### 4.3 Analyse og Fortolkning af Resultater
+
+#### 4.3.1 Succesen med Terrænklassifikation
+
+Den perfekte score på 1.00 for terrænklassifikation på testsættet er et stærkt resultat. Det validerer effektiviteten af den valgte tilgang:
+
+- HSV-farverummet udnytter effektivt de distinkte terrænfarver robust over for lysvariationer.
+- Tilføjelsen af tekstur-histogrammet hjælper sandsynligvis med at differentiere mellem farvemæssigt lignende terræner.
+- LDA's superviserede dimensionalitetsreduktion skaber et feature-rum, hvor klasserne er lineært separerbare.
+- KNN (K=5) er tilstrækkelig til at udføre klassifikationen korrekt i dette velstrukturerede, lav-dimensionelle rum.
+
+Resultatet indikerer, at de valgte features fanger de essentielle forskelle mellem terræntyperne i datasættet meget godt.
+
+#### 4.3.2 Udfordringer i Kronedetektering (Særligt 1-krone Tiles)
+
+Den samlede kronedetektionsnøjagtighed på 93% er god, men ikke perfekt. Den detaljerede analyse afslører, at problemet primært ligger ved tiles med én krone (kun 70% nøjagtighed). Mulige årsager til dette:
+
+- **Template Matching Følsomhed**: En enkelt krone kan ligne baggrundsstrukturer eller støj mere end multiple kroner gør. Templaten matcher måske ikke godt nok, eller NCC-scoren falder under threshold (0.6).
+- **Threshold Valg**: Den valgte threshold på 0.6 er et kompromis. En lavere threshold kunne måske fange flere 1-krone tilfælde, men ville sandsynligvis øge antallet af falske positiver (detektere kroner hvor der er 0). En højere threshold ville reducere falske positiver, men misse endnu flere 1-krone tilfælde. At finde én optimal threshold for alle kroneantal kan være svært.
+- **NMS Effekt**: NMS-processen fjerner overlappende detektioner. Det er usandsynligt, at det er hovedårsagen til at misse 1-krone tilfælde, men det kan potentielt fjerne et korrekt match, hvis et svagt falsk positivt match i nærheden har en marginalt højere score.
+- **Visuel Variation**: Variationer i kronens udseende (små rotationer ud over 90 grader, delvis okklusion af terrænelementer, skygger) kan påvirke NCC-scoren negativt, især når der kun er én krone at matche.
+
+#### 4.3.3 Overordnet Systempålidelighed
+
+Med 100% terrænnøjagtighed og 93% kronenøjagtighed er den samlede nøjagtighed på 93%. Dette betyder, at systemet i 93% af tilfældene korrekt identificerer både terræn og kroneantal for en given tile på testbrætterne. Dette er et højt niveau af pålidelighed, men de resterende 7% fejl (primært missede 1-krone tiles) vil føre til fejl i den endelige scoreberegning.
+
+### 4.4 Visualisering (Planlagt vs. Opnået)
+
+#### 4.4.1 Confusion Matrices (Manglende Plot)
+
+test_model_evaluation.py indeholder kode til at plotte confusion matrices for både terrænklassifikation og kronedetektering (plot_confusion_matrix). Outputtet fra kørslen indikerer dog, at disse plots ikke kunne genereres ("Kunne ikke plotte…").
+
+Hvad de ville vise:
+
+- **Terræn Confusion Matrix**: Ville have været en diagonalmatrix (kun værdier på diagonalen), da alle terræner blev klassificeret korrekt. Den ville visuelt bekræfte den perfekte klassifikation.
+- **Krone Confusion Matrix**: Ville have vist, hvordan forudsigelserne fordeler sig i forhold til de faktiske kroneantal. Man ville forvente at se de fleste værdier på diagonalen (korrekte forudsigelser). Den ville tydeligt vise fejlene: f.eks. ville rækken for "Faktisk=1 krone" have værdier i kolonnerne for "Forudsagt=0 kroner" (de 30% missede tilfælde) og "Forudsagt=1 krone" (de 70% korrekte tilfælde). Værdierne uden for diagonalen ville kvantificere fejlene.
+
+Mulige årsager til fejl: Fejlen ("'actualterrains'" / "'actualcrowns'") skyldes sandsynligvis en fejl i, hvordan listerne actual_terrains, predicted_terrains, actual_crowns, predicted_crowns overføres til plot_confusion_matrix funktionen eller en intern fejl i confusion_matrix kaldet (f.eks. hvis en af listerne var tom eller i forkert format).
+
+## 5. Diskussion
+
+Denne sektion reflekterer over de trufne valg, systemets performance og sammenhængen mellem teori og praksis.
+
+### 5.1 Vurdering af Metodiske Valg i Lys af Resultater
+
+#### 5.1.1 Styrken ved HSV + Tekstur + LDA + KNN for Terræn
+
+Evalueringsresultaterne (100% nøjagtighed) validerer kraftigt valget af denne pipeline til terrænklassifikation. Kombinationen af robuste farvefeatures (HSV), supplerende strukturinformation (tekstur-histogram), superviseret dimensionalitetsreduktion optimeret for klasseseparation (LDA), og en simpel, men effektiv klassifikator i det reducerede rum (KNN) viste sig at være yderst velegnet til at adskille de 6 terræntyper i det givne datasæt. Dette understøtter de teoretiske argumenter for valget af HSV (robusthed), LDA (superviseret reduktion) og KNN (effektivitet i velseparerede rum).
+
+#### 5.1.2 Begrænsninger ved Template Matching for Kroner
+
+Den lavere nøjagtighed for 1-krone tiles (70%) og den samlede kronenøjagtighed på 93% illustrerer begrænsningerne ved den valgte template matching-tilgang. Selvom NCC giver robusthed mod lys, og multiple templates håndterer simpel rotation, er metoden stadig følsom over for subtile variationer i kronens udseende, skala, og potentielt okklusion/baggrundsstøj, især når der kun er én forekomst. Threshold-værdien på 0.6 er et kompromis, der tydeligvis ikke fanger alle 1-krone tilfælde optimalt uden at introducere for mange falske positiver for 0-krone tilfælde (som har næsten perfekt nøjagtighed). Dette peger på, at template matching, trods sin enkelhed, måske når sin grænse her, især for enkeltstående, potentielt tvetydige objekter.
+
+### 5.2 Systemets Styrker
+
+- **Høj Terrænklassifikationsnøjagtighed**: Systemet identificerer terræntyperne med perfekt nøjagtighed på testsættet, hvilket er fundamentalt for korrekt scoreberegning.
+- **Modulært Design**: Koden er organiseret i logiske moduler (dataforberedelse, feature extraction, klassifikation, detektion, scoring, evaluering), hvilket letter forståelse, vedligeholdelse og potentiel udskiftning af komponenter.
+- **Teoretisk Fundament**: Valget af metoder er generelt godt begrundet i relevant teori fra computer vision og machine learning (HSV robusthed, LDA klasseseparation, NCC invarians, DFS for connectivity).
+- **Systematisk Evaluering**: Brugen af et dedikeret testsæt (test_model_evaluation.py) og detaljerede metrikker giver en grundig vurdering af systemets performance og identificerer specifikke svagheder (1-krone detektion).
+
+### 5.3 Systemets Svagheder og Udfordringer
+
+#### 5.3.1 Kronedetektering (1-krone problem)
+
+Som diskuteret er den primære svaghed den reducerede nøjagtighed for tiles med én krone, hvilket direkte påvirker scoreberegningens korrekthed. Dette skyldes sandsynligvis template matching-metodens iboende følsomheder og vanskeligheden ved at finde en globalt optimal threshold.
+
+#### 5.3.2 Afhængighed af Inputkvalitet
+
+Systemet antager, at inputbillederne er korrekt beskåret til 5x5 brættet og perspektivkorrigeret. Afvigelser herfra (f.eks. skæve vinkler, objekter uden for brættet) vil sandsynligvis kræve yderligere pre-processing trin (f.eks. automatisk brætdetektering og korrektion), som ikke er implementeret.
+
+#### 5.3.3 Følsomhed over for Variation
+
+Selvom HSV og NCC giver en vis robusthed, kan systemet stadig være følsomt over for ekstreme lysændringer, skygger, genskin, eller usædvanlige udgaver af spillets brikker, som ikke er repræsenteret i trænings-/testdata.
+
+#### 5.3.4 Generalisering
+
+Selvom performance er høj på testbrætterne (60-75), er det et begrænset sæt. Generalisering til billeder taget under markant anderledes forhold (andet kamera, anden belysning, slidte brikker) er ikke garanteret. LDA+KNN kan også have begrænsninger ift. meget komplekse, ikke-lineære sammenhænge i data, selvom det fungerer godt her.
+
+#### 5.3.5 Fejlfortplantning
+
+Fejl i et trin af pipelinen (f.eks. kronedetektering) vil uundgåeligt forplante sig til det endelige resultat (scoren).
+
+### 5.4 Refleksion over Alternative Metoder
+
+Baseret på teorien og de observerede resultater, kunne man overveje følgende alternativer:
+
+#### 5.4.1 Terrænklassifikation
+
+Selvom den nuværende metode er perfekt, kunne man for øget robusthed eller ved mere komplekse datasæt overveje:
+
+- **Andre Klassifikatorer**: SVM (Support Vector Machines) eller simple Neurale Netværk efter LDA.
+- **Mere Avancerede Features**: Fuld HOG eller SIFT (3.txt) kunne potentielt give endnu mere robusthed, men øger kompleksiteten.
+- **Deep Learning (CNN)**: Et Convolutional Neural Network trænet end-to-end direkte på tile-billederne ville sandsynligvis også opnå høj nøjagtighed og potentielt være mere robust over for variationer, men kræver markant mere data og beregningskraft til træning.
+
+#### 5.4.2 Kronedetektering
+
+Givet udfordringerne med template matching, ville mere avancerede objektgenkendelsesmetoder være relevante:
+
+- **Keypoint Matching (SIFT/SURF)**: Match keypoints fra en krone-template til keypoints i tile-billedet. Mere robust over for skala/rotation end NCC, men mere komplekst. (3.txt)
+- **HOG + SVM**: Træne en SVM-klassifikator på HOG features udtrækket fra billedvinduer for at klassificere, om en krone er til stede.
+- **Deep Learning Objektgenkendelse (YOLO, Faster R-CNN, etc.)**: State-of-the-art metoder, der kan trænes til at detektere og lokalisere kroner direkte. Ville sandsynligvis give den højeste nøjagtighed og robusthed, men kræver et annoteret datasæt (bounding boxes for kroner) og betydelig træning.
+
+### 5.5 Samspil mellem Teori, Implementering og Empiriske Resultater
+
+Projektet illustrerer et godt samspil:
+
+- Teorien om farverums robusthed (HSV) og superviseret dimensionalitetsreduktion (LDA) førte til et designvalg, der empirisk resulterede i perfekt terrænklassifikation.
+- Teorien om template matching (NCC for lysinvarians, NMS for oprydning) blev implementeret korrekt, men de empiriske resultater afslørede metodens praktiske begrænsninger (følsomhed, især for 1-krone tiles), som også er kendt fra teorien.
+- Teorien om connected components (CCA/BLOB analysis) blev omsat til en standard DFS-implementering for korrekt at afspejle spillets scoringsregler.
+- Valget af relativt simple, men teoretisk velfunderede, metoder (histogrammer, LDA, KNN, NCC) viste sig at være meget effektivt til dele af problemet (terræn), men ramte en grænse for andre dele (kroner), hvilket åbner for overvejelser om mere avancerede teknikker baseret på dybere teori (f.eks. SIFT, CNNs).
+
+## 6. Konklusion
+
+Dette projekt har succesfuldt udviklet og evalueret et AI-baseret system til automatisk scoreberegning for brætspillet King Domino. Gennem en pipeline, der integrerer tile-ekstraktion, feature extraction (HSV-farvehistogrammer og tekstur-histogrammer), superviseret dimensionalitetsreduktion (LDA), klassifikation (KNN), kronedetektering (template matching med NCC og NMS) og regelbaseret scoreberegning (via DFS), opnår systemet imponerende resultater på et dedikeret testsæt (bræt 60-75).
+
+Terrænklassifikationen opnår perfekt nøjagtighed (1.00), hvilket validerer den valgte kombination af features og LDA+KNN-modellen for dette datasæt. Kronedetekteringen opnår en samlet nøjagtighed på 93%, hvilket er et godt resultat, men analysen afslører en signifikant svaghed i detekteringen af tiles med præcis én krone (70% nøjagtighed). Dette peger på begrænsningerne ved den anvendte template matching-tilgang for denne specifikke delopgave.
+
+Samlet set leverer systemet en høj grad af nøjagtighed (93% overall) og demonstrerer en vellykket anvendelse af teoretiske koncepter fra computer vision og machine learning i en praktisk applikation. Projektet opfylder de primære mål ved at levere et fungerende system til automatisk scoreberegning, men fremtidigt arbejde kunne fokusere på at forbedre robustheden af kronedetekteringen, potentielt ved at anvende mere avancerede objektgenkendelsesmetoder.
+
+## 7. Referencer (Baseret på kursusmateriale)
+
+- 1.txt: Grundlæggende Billedbehandling (Repræsentation, Filtre, Kanter, Template Matching)
+- 2.txt: Farvebilledbehandling (Farverum, Konvertering, Thresholding, Logiske Operationer)
+- 3.txt: Komplekse Features (Tekst: BoW, TF-IDF; Billed: HOG, SIFT; Feature Detectors)
+- 4.txt: Dimensionsreduktion (PCA, LDA)
+- 5.txt: Histogram Features (Kategorisk, Tekst, Billede, Audio)
+- 6.txt: Simple Image Features (Kanter, Tekstur, Optisk Flow, Segmentering)
+- 7.txt: BLOB Analysis og Clustering i Scikit-learn (K-Means, DBSCAN, Evaluering)
+- 8.txt: StatQuest K-means Clustering
+- 9.txt: Clustering (Generelt, K-means, DBSCAN, Evaluering)
